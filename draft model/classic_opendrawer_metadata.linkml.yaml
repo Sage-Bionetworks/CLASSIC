@@ -1,0 +1,459 @@
+id: https://sagebionetworks.org/classic/opendrawer/metadata
+name: classic_opendrawer_metadata
+description: 'LinkML schema generated from CLASSIC OpenDrawer draft data model (sheet: data model-draft).'
+prefixes:
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+  DUO: http://purl.obolibrary.org/obo/DUO_
+  OBI: http://purl.obolibrary.org/obo/OBI_
+default_prefix: classic
+default_range: string
+imports:
+- linkml:types
+classes:
+  ClassicMetadataRecord:
+    description: A single metadata record as represented in the metadata submission file.
+    slots:
+    - component
+    - relatedStudies
+    - studyProjectIdentifier
+    - studyKey
+    - studyName
+    - studyDescription
+    - studyAbstract
+    - studyMetadata
+    - grantNumber
+    - principalInvestigator
+    - principalInvestigatorContact
+    - institution
+    - protocolDescription
+    - diseaseFocus
+    - primaryHealthFocus
+    - ascertainmentContext
+    - selectionIntensity
+    - dataType
+    - dataSubtype
+    - metadataType
+    - irbApproval
+    - consentType
+    - deidentificationMethod
+    - accesRestrictions
+    - dataUseConditions
+    - appliesTo
+    - aggregationLevel
+    - populationScope
+    - dataAvailabilitySummary
+    - temporalCoverage
+    - startYear
+    - endYear
+    - years
+    - seasons
+    - temporalCoverageDescription
+    - cohortID
+    - cohortName
+    - longitudinalStudyID
+    - participantID
+    - totalParticipants
+    - externalParticipantID
+    - GUID
+    - enrollmentAge
+    - enrollmentTimepoint
+    - administrationContext
+    - propotion
+    - sex
+    - sexDistribution
+    - gender
+    - genderDistribution
+    - race
+    - raceDistribution
+    - ethnicity
+    - ethnicityDistribution
+    - collectionModailty
+    - deviceType
+    - softwarePlatform
+    - inputMethod
+    - administrationMode
+    - manufacturerModel
+    - operatingSystem
+    - appPlatform
+    - sensors
+    - promptingScheduleType
+    - promptFrequency
+    - responseWindowMinutes
+    - itemID
+    - questionText
+    - responseType
+    - scaleAnchors
+    - timestamp
+    - eventType
+    - complianceStatus
+    - deviceStatus
+    - location
+    - rawOrDerived
+    - preprocessingSteps
+    - derivedVariables
+    - recruitmentWave
+    - generation
+    - relationToOriginal
+    - followUpYear
+slots:
+  component:
+    description: Category of metadata level (e.g., study level, file level, etc.); provide the same one for all items/rows.
+    range: string
+    required: true
+  relatedStudies:
+    description: The synIDs of related studies OR names of related studies not in Synapse
+    range: string
+  studyProjectIdentifier:
+    description: The Synapse Project identifier (synID) with which this Study is related.
+    range: string
+    required: true
+  studyKey:
+    description: The short acronym for a project the study is associated with.
+    range: string
+    required: true
+  studyName:
+    description: Name of the study
+    range: string
+    required: true
+  studyDescription:
+    description: The synID of the wiki that contains the study description.Description of the study, including the types of
+      experimental assays, model systems, types of analysis, description of cohort, associated vulnerable populations, special
+      categories of data, rare diseases, etc. Maps to DUOplus2.
+    range: string
+    required: true
+  studyAbstract:
+    description: The short study description/abstract used to describe the study that is visible on the Portal study card.
+    range: string
+    required: true
+  studyMetadata:
+    description: The wiki from the CLASSIC Portal - backend that describes study metadata files
+    range: string
+    required: true
+  grantNumber:
+    description: Grant number including activity code, institute code, and serial number (e.g. U01MH103392)
+    range: string
+    multivalued: true
+    required: true
+  principalInvestigator:
+    description: Name of PI
+    range: string
+    required: true
+  principalInvestigatorContact:
+    description: Email of PI
+    range: string
+    required: true
+  institution:
+    description: Institution conducting study
+    range: string
+    required: true
+  protocolDescription:
+    description: The synID of the wiki that contains the protocol, study design and goals
+    range: string
+    required: true
+  diseaseFocus:
+    description: Primary disease or condition focus of the study. A categorical descriptor summarizing participant health
+      status selection and ascertainment context for a study cohort, intended to support discovery and comparison across studies.
+    range: diseaseFocus_enum
+    required: true
+  primaryHealthFocus:
+    description: 'Why participants were included: these categories describe participant health status at enrollment, not outcomes.'
+    range: string
+    multivalued: true
+    required: true
+  ascertainmentContext:
+    description: 'Where participants came from: the categories describe sampling context, independent of diseas focus'
+    range: string
+    multivalued: true
+    required: true
+  selectionIntensity:
+    description: 'How restrictive enrollment was: the categories describe selection methodology'
+    range: string
+    multivalued: true
+    required: true
+  dataType:
+    description: Types of input/output data in bioinformatics pipelines
+    range: string
+    multivalued: true
+    required: true
+  dataSubtype:
+    description: Further qualification of dataType, which may be used to indicate the state of processing of the data, aggregation
+      of the data, or presence of metadata.
+    range: string
+    multivalued: true
+    required: true
+  metadataType:
+    description: 'For files of dataSubtype: metadata, a description of the type of metadata in the file.'
+    range: string
+    multivalued: true
+    required: true
+  irbApproval:
+    description: 'IRB approval # and details'
+    range: string
+    required: true
+  consentType:
+    description: Consent type (broad, tiered, etc.)
+    range: string
+  deidentificationMethod:
+    description: De-ID method applied
+    range: string
+  accesRestrictions:
+    description: Access level (ex., open, controlled, embargoed)
+    range: string
+  dataUseConditions:
+    description: Data use conditions
+    range: string
+  appliesTo:
+    description: Indicates the level of entity to which a metadata value applies (e.g., individual participant or population
+      summary).
+    range: string
+  aggregationLevel:
+    description: Specifies whether a metadata value represents individual-level data or an aggregate summary
+    range: string
+  populationScope:
+    description: Identifies the population described by the metadata (e.g., study-wide, cohort, or study arm).
+    range: string
+  dataAvailabilitySummary:
+    description: An aggregate description of the amount and demographic composition of available data for a study, cohort,
+      or variable, provided without individual-level records.
+    range: string
+  temporalCoverage:
+    description: The time period or periods during which data were collected for a study, cohort, or variable, summarized
+      at an aggregate level.
+    range: string
+  startYear:
+    description: Earliest calendar year of data collection
+    range: integer
+    comments: 'DependsOn: temporalCoverage'
+  endYear:
+    description: Latest calendar year of data collection
+    range: integer
+    comments: 'DependsOn: temporalCoverage'
+  years:
+    description: Explicit list of years, if non-continuous. Four-digit integers (e.g., 2019)
+    range: string
+    comments: 'DependsOn: temporalCoverage'
+  seasons:
+    description: Seasons during which data were collected
+    range: string
+    comments: 'DependsOn: temporalCoverage'
+  temporalCoverageDescription:
+    description: Free-text clarification (optional)
+    range: string
+    comments: 'DependsOn: temporalCoverage'
+  cohortID:
+    description: Unique identifier for the cohort
+    range: string
+  cohortName:
+    description: Name of cohort
+    range: string
+  longitudinalStudyID:
+    description: Linked longitudinal study identifier
+    range: string
+  participantID:
+    description: De-identified participant ID; unique to a specific study or program
+    range: string
+  totalParticipants:
+    description: The total number of unique participants for whom data are available within the specified study, cohort, or
+      scope.
+    range: integer
+  externalParticipantID:
+    description: Other external identifier, if no GUID exists
+    range: string
+  GUID:
+    description: 'Global Unique Identifier: unique across studies and repositories. If a participant has been assigned a global
+      identifier (e.g., NDAR GUID), include it here to support linkage across studies and repositories. Otherwise, leave this
+      field blank.'
+    range: string
+  enrollmentAge:
+    description: The age or ages of a participant at the time of enrollment or at defined enrollment-related timepoints in
+      a study, including single ages, age ranges, or multiple ages associated with longitudinal or staged enrollment.
+    range: integer
+  enrollmentTimepoint:
+    description: A named study milestone at which enrollment occurs (e.g., baseline, re-enrollment, extension phase).
+    range: string
+  administrationContext:
+    description: The physical or situational setting in which a data collection activity or assessment is administered. Describes
+      where data collection occurs, not how, who, or what. Intended for general or summary-level reporting, not per-participant
+      metadata.
+    range: string
+  propotion:
+    description: A numeric value representing the fraction of a population associated with a given category, typically expressed
+      as a percentage or decimal.
+    range: integer
+  sex:
+    description: The biological classification of a participant, typically assigned at birth based on physical and genetic
+      characteristics.
+    range: sex_enum
+  sexDistribution:
+    description: A summary of the proportion or count of participants in a population by sex category.
+    range: string
+  gender:
+    description: The socially and culturally constructed identity that describes a person’s self-identified gender, which
+      may or may not correspond to sex assigned at birth and may change over time.
+    range: gender_enum
+  genderDistribution:
+    description: A summary of the proportion or count of participants in a population by self-identified gender.
+    range: string
+  race:
+    description: Self-reported race/ethnicity. A socially defined classification that reflects a participant’s self-identified
+      racial group(s), based on shared social, historical, or cultural experiences, and not biological or genetic differences.
+    range: string
+  raceDistribution:
+    description: A summary of the proportion or count of participants in a population by self-identified race category or
+      categories.
+    range: string
+  ethnicity:
+    description: Self-reported race/ethnicity. A self-identified cultural classification that reflects whether a participant
+      identifies as being of Hispanic or Latino origin, independent of race.
+    range: string
+  ethnicityDistribution:
+    description: A summary of the proportion or count of participants in a population by self-identified ethnicity.
+    range: string
+  collectionModailty:
+    description: The primary mode by which data were collected for a variable or assessment.
+    range: string
+  deviceType:
+    description: The type of digital device used for data collection, applicable only when data are collected digitally.
+    range: string
+  softwarePlatform:
+    description: The software environment or application used to deliver, collect, or manage digitally collected data.
+    range: string
+    comments: 'DependsOn: collectionModality = Digital'
+  inputMethod:
+    description: The primary method by which participant input or data capture occurs during digital data collection.
+    range: string
+    comments: 'DependsOn: collectionModality = Digital'
+  administrationMode:
+    description: The manner in which a digital assessment or data collection activity is administered to participants.
+    range: string
+    comments: 'DependsOn: collectionModality = Digital'
+  manufacturerModel:
+    description: Device make/model
+    range: string
+    comments: 'DependsOn: collectionModality = Digital'
+  operatingSystem:
+    description: OS and version
+    range: string
+    comments: 'DependsOn: collectionModality = Digital'
+  appPlatform:
+    description: App or platform used
+    range: string
+    comments: 'DependsOn: collectionModality = Digital'
+  sensors:
+    description: Sensors enabled (GPS, accelerometer, etc.)
+    range: string
+    multivalued: true
+    comments: 'DependsOn: collectionModality = Digital'
+  promptingScheduleType:
+    description: EMA schedule type
+    range: promptingScheduleType_enum
+    comments: 'DependsOn: collectionModality = Digital'
+  promptFrequency:
+    description: Frequency of prompts
+    range: string
+    comments: 'DependsOn: collectionModality = Digital'
+  responseWindowMinutes:
+    description: Response window (minutes)
+    range: integer
+    comments: 'DependsOn: collectionModality = Digital'
+  itemID:
+    description: Survey item identifier. Identifies a specific survey or assessment item within an instrument.
+    range: string
+  questionText:
+    description: Survey item wording
+    range: string
+  responseType:
+    description: Response type (Likert, numeric, free text)
+    range: string
+  scaleAnchors:
+    description: Scale endpoints
+    range: string
+  timestamp:
+    description: Date/time of response (ISO 8601)
+    range: datetime
+  eventType:
+    description: Type of entry (prompted, self-report, passive)
+    range: eventType_enum
+  complianceStatus:
+    description: Completion status
+    range: complianceStatus_enum
+  deviceStatus:
+    description: Device state (battery, connectivity)
+    range: string
+  location:
+    description: GPS coordinates or coded region
+    range: string
+  rawOrDerived:
+    description: Raw vs derived data flag
+    range: rawOrDerived_enum
+  preprocessingSteps:
+    description: Preprocessing/cleaning applied
+    range: string
+  derivedVariables:
+    description: Variables created from EMA
+    range: string
+  recruitmentWave:
+    description: Enrollment wave (baseline, follow-up, etc.)
+    range: string
+  generation:
+    description: Generation within family cohort (ex., F0=original, F1=child, F2=grandchild)
+    range: generation_enum
+  relationToOriginal:
+    description: Relationship to original participant (ex., self, child, grandchild, spouse)
+    range: string
+  followUpYear:
+    description: Years since original cohort enrollment
+    range: integer
+enums:
+  diseaseFocus_enum:
+    permissible_values:
+      Normative/General Population: {}
+      At-Risk/Enriched Populations: {}
+      Condition-Focused Populations: {}
+      Mixed/Comparative Designs: {}
+      Registry/Administraive Cohorts: {}
+  sex_enum:
+    permissible_values:
+      Female: {}
+      Male: {}
+      Intersex: {}
+      Unknown: {}
+      Not reported: {}
+  gender_enum:
+    permissible_values:
+      Woman: {}
+      Man: {}
+      Non-binary: {}
+      Another gender identity: {}
+      Did not disclose: {}
+      Unknown: {}
+  promptingScheduleType_enum:
+    permissible_values:
+      Multiple: {}
+      Varies: {}
+      Unknown: {}
+  eventType_enum:
+    permissible_values:
+      Prompted: {}
+      Self-report: {}
+      Passive: {}
+      Unknown: {}
+  complianceStatus_enum:
+    permissible_values:
+      Completed: {}
+      Incomplete: {}
+      Skipped: {}
+      Unknown: {}
+  rawOrDerived_enum:
+    permissible_values:
+      Raw: {}
+      Derived: {}
+      Unknown: {}
+  generation_enum:
+    permissible_values:
+      F0: {}
+      F1: {}
+      F2: {}
+      F3: {}
+      Unknown: {}

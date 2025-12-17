@@ -1,0 +1,450 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sagebionetworks.org/classic/opendrawer/metadata.schema.json",
+  "title": "Classic OpenDrawer Metadata Record",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "component": {
+      "type": "string",
+      "description": "Category of metadata level (e.g., study level, file level, etc.); provide the same one for all items/rows."
+    },
+    "relatedStudies": {
+      "type": "string",
+      "description": "The synIDs of related studies OR names of related studies not in Synapse"
+    },
+    "studyProjectIdentifier": {
+      "type": "string",
+      "description": "The Synapse Project identifier (synID) with which this Study is related."
+    },
+    "studyKey": {
+      "type": "string",
+      "description": "The short acronym for a project the study is associated with."
+    },
+    "studyName": {
+      "type": "string",
+      "description": "Name of the study"
+    },
+    "studyDescription": {
+      "type": "string",
+      "description": "The synID of the wiki that contains the study description.Description of the study, including the types of experimental assays, model systems, types of analysis, description of cohort, associated vulnerable populations, special categories of data, rare diseases, etc. Maps to DUOplus2."
+    },
+    "studyAbstract": {
+      "type": "string",
+      "description": "The short study description/abstract used to describe the study that is visible on the Portal study card."
+    },
+    "studyMetadata": {
+      "type": "string",
+      "description": "The wiki from the CLASSIC Portal - backend that describes study metadata files"
+    },
+    "grantNumber": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Grant number including activity code, institute code, and serial number (e.g. U01MH103392)"
+    },
+    "principalInvestigator": {
+      "type": "string",
+      "description": "Name of PI"
+    },
+    "principalInvestigatorContact": {
+      "type": "string",
+      "description": "Email of PI"
+    },
+    "institution": {
+      "type": "string",
+      "description": "Institution conducting study"
+    },
+    "protocolDescription": {
+      "type": "string",
+      "description": "The synID of the wiki that contains the protocol, study design and goals"
+    },
+    "diseaseFocus": {
+      "type": "string",
+      "enum": [
+        "Normative/General Population",
+        "At-Risk/Enriched Populations",
+        "Condition-Focused Populations",
+        "Mixed/Comparative Designs",
+        "Registry/Administraive Cohorts"
+      ],
+      "description": "Primary disease or condition focus of the study. A categorical descriptor summarizing participant health status selection and ascertainment context for a study cohort, intended to support discovery and comparison across studies."
+    },
+    "primaryHealthFocus": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Why participants were included: these categories describe participant health status at enrollment, not outcomes."
+    },
+    "ascertainmentContext": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Where participants came from: the categories describe sampling context, independent of diseas focus"
+    },
+    "selectionIntensity": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "How restrictive enrollment was: the categories describe selection methodology"
+    },
+    "dataType": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Types of input/output data in bioinformatics pipelines"
+    },
+    "dataSubtype": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Further qualification of dataType, which may be used to indicate the state of processing of the data, aggregation of the data, or presence of metadata."
+    },
+    "metadataType": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "For files of dataSubtype: metadata, a description of the type of metadata in the file."
+    },
+    "irbApproval": {
+      "type": "string",
+      "description": "IRB approval # and details"
+    },
+    "consentType": {
+      "type": "string",
+      "description": "Consent type (broad, tiered, etc.)"
+    },
+    "deidentificationMethod": {
+      "type": "string",
+      "description": "De-ID method applied"
+    },
+    "accesRestrictions": {
+      "type": "string",
+      "description": "Access level (ex., open, controlled, embargoed)"
+    },
+    "dataUseConditions": {
+      "type": "string",
+      "description": "Data use conditions"
+    },
+    "appliesTo": {
+      "type": "string",
+      "description": "Indicates the level of entity to which a metadata value applies (e.g., individual participant or population summary)."
+    },
+    "aggregationLevel": {
+      "type": "string",
+      "description": "Specifies whether a metadata value represents individual-level data or an aggregate summary"
+    },
+    "populationScope": {
+      "type": "string",
+      "description": "Identifies the population described by the metadata (e.g., study-wide, cohort, or study arm)."
+    },
+    "dataAvailabilitySummary": {
+      "type": "string",
+      "description": "An aggregate description of the amount and demographic composition of available data for a study, cohort, or variable, provided without individual-level records."
+    },
+    "temporalCoverage": {
+      "type": "string",
+      "description": "The time period or periods during which data were collected for a study, cohort, or variable, summarized at an aggregate level."
+    },
+    "startYear": {
+      "type": "integer",
+      "description": "Earliest calendar year of data collection",
+      "$comment": "DependsOn: temporalCoverage"
+    },
+    "endYear": {
+      "type": "integer",
+      "description": "Latest calendar year of data collection",
+      "$comment": "DependsOn: temporalCoverage"
+    },
+    "years": {
+      "type": "string",
+      "description": "Explicit list of years, if non-continuous. Four-digit integers (e.g., 2019)",
+      "$comment": "DependsOn: temporalCoverage"
+    },
+    "seasons": {
+      "type": "string",
+      "description": "Seasons during which data were collected",
+      "$comment": "DependsOn: temporalCoverage"
+    },
+    "temporalCoverageDescription": {
+      "type": "string",
+      "description": "Free-text clarification (optional)",
+      "$comment": "DependsOn: temporalCoverage"
+    },
+    "cohortID": {
+      "type": "string",
+      "description": "Unique identifier for the cohort"
+    },
+    "cohortName": {
+      "type": "string",
+      "description": "Name of cohort"
+    },
+    "longitudinalStudyID": {
+      "type": "string",
+      "description": "Linked longitudinal study identifier"
+    },
+    "participantID": {
+      "type": "string",
+      "description": "De-identified participant ID; unique to a specific study or program"
+    },
+    "totalParticipants": {
+      "type": "integer",
+      "description": "The total number of unique participants for whom data are available within the specified study, cohort, or scope."
+    },
+    "externalParticipantID": {
+      "type": "string",
+      "description": "Other external identifier, if no GUID exists"
+    },
+    "GUID": {
+      "type": "string",
+      "description": "Global Unique Identifier: unique across studies and repositories. If a participant has been assigned a global identifier (e.g., NDAR GUID), include it here to support linkage across studies and repositories. Otherwise, leave this field blank."
+    },
+    "enrollmentAge": {
+      "type": "integer",
+      "description": "The age or ages of a participant at the time of enrollment or at defined enrollment-related timepoints in a study, including single ages, age ranges, or multiple ages associated with longitudinal or staged enrollment."
+    },
+    "enrollmentTimepoint": {
+      "type": "string",
+      "description": "A named study milestone at which enrollment occurs (e.g., baseline, re-enrollment, extension phase)."
+    },
+    "administrationContext": {
+      "type": "string",
+      "description": "The physical or situational setting in which a data collection activity or assessment is administered. Describes where data collection occurs, not how, who, or what. Intended for general or summary-level reporting, not per-participant metadata."
+    },
+    "propotion": {
+      "type": "integer",
+      "description": "A numeric value representing the fraction of a population associated with a given category, typically expressed as a percentage or decimal."
+    },
+    "sex": {
+      "type": "string",
+      "enum": [
+        "Female",
+        "Male",
+        "Intersex",
+        "Unknown",
+        "Not reported"
+      ],
+      "description": "The biological classification of a participant, typically assigned at birth based on physical and genetic characteristics."
+    },
+    "sexDistribution": {
+      "type": "string",
+      "description": "A summary of the proportion or count of participants in a population by sex category."
+    },
+    "gender": {
+      "type": "string",
+      "enum": [
+        "Woman",
+        "Man",
+        "Non-binary",
+        "Another gender identity",
+        "Did not disclose",
+        "Unknown"
+      ],
+      "description": "The socially and culturally constructed identity that describes a person\u2019s self-identified gender, which may or may not correspond to sex assigned at birth and may change over time."
+    },
+    "genderDistribution": {
+      "type": "string",
+      "description": "A summary of the proportion or count of participants in a population by self-identified gender."
+    },
+    "race": {
+      "type": "string",
+      "description": "Self-reported race/ethnicity. A socially defined classification that reflects a participant\u2019s self-identified racial group(s), based on shared social, historical, or cultural experiences, and not biological or genetic differences."
+    },
+    "raceDistribution": {
+      "type": "string",
+      "description": "A summary of the proportion or count of participants in a population by self-identified race category or categories."
+    },
+    "ethnicity": {
+      "type": "string",
+      "description": "Self-reported race/ethnicity. A self-identified cultural classification that reflects whether a participant identifies as being of Hispanic or Latino origin, independent of race."
+    },
+    "ethnicityDistribution": {
+      "type": "string",
+      "description": "A summary of the proportion or count of participants in a population by self-identified ethnicity."
+    },
+    "collectionModailty": {
+      "type": "string",
+      "description": "The primary mode by which data were collected for a variable or assessment."
+    },
+    "deviceType": {
+      "type": "string",
+      "description": "The type of digital device used for data collection, applicable only when data are collected digitally."
+    },
+    "softwarePlatform": {
+      "type": "string",
+      "description": "The software environment or application used to deliver, collect, or manage digitally collected data.",
+      "$comment": "DependsOn: collectionModality = Digital"
+    },
+    "inputMethod": {
+      "type": "string",
+      "description": "The primary method by which participant input or data capture occurs during digital data collection.",
+      "$comment": "DependsOn: collectionModality = Digital"
+    },
+    "administrationMode": {
+      "type": "string",
+      "description": "The manner in which a digital assessment or data collection activity is administered to participants.",
+      "$comment": "DependsOn: collectionModality = Digital"
+    },
+    "manufacturerModel": {
+      "type": "string",
+      "description": "Device make/model",
+      "$comment": "DependsOn: collectionModality = Digital"
+    },
+    "operatingSystem": {
+      "type": "string",
+      "description": "OS and version",
+      "$comment": "DependsOn: collectionModality = Digital"
+    },
+    "appPlatform": {
+      "type": "string",
+      "description": "App or platform used",
+      "$comment": "DependsOn: collectionModality = Digital"
+    },
+    "sensors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Sensors enabled (GPS, accelerometer, etc.)",
+      "$comment": "DependsOn: collectionModality = Digital"
+    },
+    "promptingScheduleType": {
+      "type": "string",
+      "enum": [
+        "Multiple",
+        "Varies",
+        "Unknown"
+      ],
+      "description": "EMA schedule type",
+      "$comment": "DependsOn: collectionModality = Digital"
+    },
+    "promptFrequency": {
+      "type": "string",
+      "description": "Frequency of prompts",
+      "$comment": "DependsOn: collectionModality = Digital"
+    },
+    "responseWindowMinutes": {
+      "type": "integer",
+      "description": "Response window (minutes)",
+      "$comment": "DependsOn: collectionModality = Digital"
+    },
+    "itemID": {
+      "type": "string",
+      "description": "Survey item identifier. Identifies a specific survey or assessment item within an instrument."
+    },
+    "questionText": {
+      "type": "string",
+      "description": "Survey item wording"
+    },
+    "responseType": {
+      "type": "string",
+      "description": "Response type (Likert, numeric, free text)"
+    },
+    "scaleAnchors": {
+      "type": "string",
+      "description": "Scale endpoints"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date/time of response (ISO 8601)"
+    },
+    "eventType": {
+      "type": "string",
+      "enum": [
+        "Prompted",
+        "Self-report",
+        "Passive",
+        "Unknown"
+      ],
+      "description": "Type of entry (prompted, self-report, passive)"
+    },
+    "complianceStatus": {
+      "type": "string",
+      "enum": [
+        "Completed",
+        "Incomplete",
+        "Skipped",
+        "Unknown"
+      ],
+      "description": "Completion status"
+    },
+    "deviceStatus": {
+      "type": "string",
+      "description": "Device state (battery, connectivity)"
+    },
+    "location": {
+      "type": "string",
+      "description": "GPS coordinates or coded region"
+    },
+    "rawOrDerived": {
+      "type": "string",
+      "enum": [
+        "Raw",
+        "Derived",
+        "Unknown"
+      ],
+      "description": "Raw vs derived data flag"
+    },
+    "preprocessingSteps": {
+      "type": "string",
+      "description": "Preprocessing/cleaning applied"
+    },
+    "derivedVariables": {
+      "type": "string",
+      "description": "Variables created from EMA"
+    },
+    "recruitmentWave": {
+      "type": "string",
+      "description": "Enrollment wave (baseline, follow-up, etc.)"
+    },
+    "generation": {
+      "type": "string",
+      "enum": [
+        "F0",
+        "F1",
+        "F2",
+        "F3",
+        "Unknown"
+      ],
+      "description": "Generation within family cohort (ex., F0=original, F1=child, F2=grandchild)"
+    },
+    "relationToOriginal": {
+      "type": "string",
+      "description": "Relationship to original participant (ex., self, child, grandchild, spouse)"
+    },
+    "followUpYear": {
+      "type": "integer",
+      "description": "Years since original cohort enrollment"
+    }
+  },
+  "required": [
+    "component",
+    "studyProjectIdentifier",
+    "studyKey",
+    "studyName",
+    "studyDescription",
+    "studyAbstract",
+    "studyMetadata",
+    "grantNumber",
+    "principalInvestigator",
+    "principalInvestigatorContact",
+    "institution",
+    "protocolDescription",
+    "diseaseFocus",
+    "primaryHealthFocus",
+    "ascertainmentContext",
+    "selectionIntensity",
+    "dataType",
+    "dataSubtype",
+    "metadataType",
+    "irbApproval"
+  ]
+}
