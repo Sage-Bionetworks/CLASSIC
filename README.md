@@ -1,3 +1,7 @@
+# ReadMe
+
+This repository contains draft files that are being edited by the assigned data manager for the CLASSIC OpenDrawer Portal. Final revised files will be uploaded to the `model` folder when ready.
+
 # Data Models
 
 This repository contains 3 major files:
