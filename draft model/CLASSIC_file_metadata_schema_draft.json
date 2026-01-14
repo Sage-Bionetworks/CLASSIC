@@ -1,0 +1,157 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CLASSIC OpenDrawer File Metadata (Draft)",
+  "description": "JSON Schema generated from the '(C1) file metadata-draft' sheet of 'CLASSIC OpenDrawer_data model_draft (1).xlsx'.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "projectShortName": {
+      "description": "The abbreviated name of the CLASSIC projects",
+      "type": "string"
+    },
+    "studyKey": {
+      "description": "The short acronym for a study name in a URL-friendly format",
+      "type": "string",
+      "enum": [
+        "Not controlled"
+      ]
+    },
+    "fileFormat": {
+      "description": "Defined format of the data file, typically corresponding to extension, but sometimes indicating more general group of files produced by the same tool or software",
+      "type": "string"
+    },
+    "consortium": {
+      "description": "The name of the consortium",
+      "type": "string",
+      "enum": [
+        "CLASSIC",
+        "CLASSIC CDCP"
+      ]
+    },
+    "grant": {
+      "description": "Grant number including activity code, institute code, and serial number (e.g. U01MH103392)",
+      "type": "string"
+    },
+    "resourceType": {
+      "description": "The type of resource being stored and annotated",
+      "type": "string",
+      "enum": [
+        "experimentalData",
+        "metadata",
+        "tool",
+        "analysis",
+        "computationalNotebook"
+      ]
+    },
+    "dataTypeAll": {
+      "description": "Types of input/output data in bioinformatics pipelines",
+      "type": "string",
+      "enum": [
+        "proteomics",
+        "metabolomics..."
+      ]
+    },
+    "dataSubtype": {
+      "description": "Further qualification of dataType, which may be used to indicate the state of processing of the data, aggregation of the data, or presence of metadata.",
+      "type": "string",
+      "enum": [
+        "raw",
+        "processed",
+        "results",
+        "normalized",
+        "metadata"
+      ]
+    },
+    "isModelSystem": {
+      "description": "Boolean flag indicating whether or not a file has data from a model system",
+      "type": "string"
+    },
+    "familyStudyParticipant": {
+      "description": "Indicates whether or not a file has data from a human participant involved in a family or multigenerational study",
+      "type": "string"
+    },
+    "metadataType": {
+      "description": "For files of dataSubtype: metadata, a description of the type of metadata in the file.",
+      "type": "string"
+    },
+    "analysisType": {
+      "description": "Type of analysis",
+      "type": "string",
+      "enum": [
+        "enrichment analysis",
+        "expression analysis",
+        "genetic variation analysis",
+        "image analysis",
+        "network analysis",
+        "pathway analysis",
+        "phylogenetic analysis",
+        "protein function analysis",
+        "sequence analysis",
+        "spectral analysis",
+        "structure analysis",
+        "text mining",
+        "transmembrane protein analysis",
+        "other",
+        "not applicable"
+      ]
+    },
+    "resultType": {
+      "description": "The result type used for result methods.",
+      "type": "string",
+      "enum": [
+        "Final Result",
+        "Intermediate Result",
+        "Negative Result",
+        "Positive Result",
+        "Available",
+        "Not available",
+        "Tabular",
+        "Graphical",
+        "Descriptive/summary statistics",
+        "other",
+        "not applicable"
+      ]
+    },
+    "dataFormat": {
+      "description": "The type of data format by the content of the data that is represented.",
+      "type": "string"
+    },
+    "experimentalDesign": {
+      "description": "The design of an experiment intended to test a hypothesis, and describe or explain empirical data obtained under various experimental conditions.",
+      "type": "string",
+      "enum": [
+        "preclinical and clinical studies",
+        "other",
+        "not applicable"
+      ]
+    },
+    "entity": {
+      "description": "A distinct, identifiable object or concept that is the subject of data collection, analysis, or result reporting. In the context of analysis and results-level metadata, an entity typically corresponds to the primary unit of analysis, such as a file, image, instrument, or computational result, with which metadata and results are associated. This could be a SynapseID, a DOI, or a stable URL to the experimental data from which the results are derived.",
+      "type": "string",
+      "enum": [
+        "experimental material",
+        "file",
+        "image",
+        "result",
+        "analysis",
+        "collection",
+        "instrument",
+        "plan",
+        "setting",
+        "other",
+        "not applicable"
+      ]
+    }
+  },
+  "required": [
+    "consortium",
+    "dataSubtype",
+    "dataTypeAll",
+    "fileFormat",
+    "grant",
+    "isModelSystem",
+    "projectShortName",
+    "resourceType",
+    "studyKey"
+  ]
+}
