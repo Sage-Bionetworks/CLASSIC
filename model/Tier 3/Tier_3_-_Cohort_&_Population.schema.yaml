@@ -1,0 +1,78 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: OpenDrawer Metadata Tier 3 - Cohort & Population
+type: object
+properties:
+  ? 'The stable, unique identifier for a study that never changes, even if other study
+    metadata changes (like the study name, short name, owner, or project). Example:
+    STUDY_SCA'
+  : type: string
+    x-optional-persistent-row-identifier: Use studyID as the anchor, plus a persistent
+      row identifier to identify a specific file/version, etc.
+    x-optional-persistent-row-identifier-value: Enter a unique identifier for the
+      selection made.
+    x-optional-appliesto: Indicates the level of entity to which a metadata value
+      applies (e.g., individual participant or population summary).
+    x-optional-aggregationlevel: Specifies whether a metadata value represents individual-level
+      data or an aggregate summary
+    x-optional-populationscope: Identifies the population described by the metadata
+      (e.g., study-wide, cohort, or study arm).
+    x-optional-persistent-row-identifier-externalparticipantid: Other external identifier,
+      if no GUID exists
+    x-optional-persistent-row-identifier-guid: 'Global Unique Identifier: unique across
+      studies and repositories. If a participant has been assigned a global identifier
+      (e.g., NDAR GUID), include it here to support linkage across studies and repositories.
+      Otherwise, leave this field blank.'
+    x-diseasefocus: Primary disease or condition focus of the study. A categorical
+      descriptor summarizing participant health status selection and ascertainment
+      context for a study cohort, intended to support discovery and comparison across
+      studies.
+    x-primaryhealthfocus: 'Why participants were included: these categories describe
+      participant health status at enrollment, not outcomes.'
+    x-ascertainmentcontext: 'Where participants came from: the categories describe
+      sampling context, independent of diseas focus'
+    x-selectionintensity: 'How restrictive enrollment was: the categories describe
+      selection methodology'
+    x-populationtype: Broad classification of the population sampled in the study/cohort.
+    x-populationdescriptor: Free-text descriptor capturing key population characteristics
+      not covered by controlled terms (e.g., “male veterans”, “older adults with caregiver
+      support”).
+    x-agegroup: Broad age-based population grouping represented in the cohort.
+    x-sex: The biological classification of a participant, typically assigned at birth
+      based on physical and genetic characteristics.
+    x-sexdistribution: A summary of the proportion or count of participants in a population
+      by sex category.
+    x-sexeligible: Sex eligibility criteria for cohort inclusion (if the study restricts
+      enrollment).
+    x-gender: The socially and culturally constructed identity that describes a person’s
+      self-identified gender, which may or may not correspond to sex assigned at birth
+      and may change over time.
+    x-genderdistribution: A summary of the proportion or count of participants in
+      a population by self-identified gender.
+    x-race: Self-reported race/ethnicity. A socially defined classification that reflects
+      a participant’s self-identified racial group(s), based on shared social, historical,
+      or cultural experiences, and not biological or genetic differences.
+    x-racedistribution: A summary of the proportion or count of participants in a
+      population by self-identified race category or categories.
+    x-ethnicity: Self-reported race/ethnicity. A self-identified cultural classification
+      that reflects whether a participant identifies as being of Hispanic or Latino
+      origin, independent of race.
+    x-ethnicitydistribution: A summary of the proportion or count of participants
+      in a population by self-identified ethnicity.
+    x-generation: Generation within family cohort (ex., F0=original, F1=child, F2=grandchild).
+      Indicates the generational position of participants within a family-based cohort,
+      relative to the originally enrolled participant(s).
+    x-relationtooriginal: Relationship to original participant (ex., self, child,
+      grandchild, spouse). Describes the familial relationship(s) of participants
+      to the initially enrolled participant(s) in a family-based cohort.
+    x-constructdomain: Domain of measured construct
+    x-eligibilitycriteriasummary: A brief summary of the major inclusion and exclusion
+      criteria that determined who could enroll in the study/cohort.
+    x-eligibilitycriteriaurl: Link to the protocol, registry record, or document containing
+      full inclusion/exclusion criteria.
+    x-inclusiontags: High-level inclusion characteristics used to define the enrolled
+      population.
+    x-exclusiontags: High-level exclusion characteristics used to restrict enrollment.
+    x-critieriaselectionintensity: Overall restrictiveness of inclusion/exclusion
+      criteria.
+required: []
+additionalProperties: false
