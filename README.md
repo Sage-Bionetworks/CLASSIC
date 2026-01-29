@@ -1,5 +1,7 @@
 # ReadMe
 
+The Consortium for Longitudinal Behavioral and Social Science Data Integration and Coordination (CLASSIC) (U24AG081810) is an NIH-funded initiative that facilitates and stimulates collaboration among deeply phenotyped longitudinal studies of aging.
+
 This repository is currently for internal, private use by Sage Bionetworks.
 
 This repository contains draft files that are being edited by the assigned data manager for the CLASSIC OpenDrawer Portal. Final revised files will be uploaded to the `model` folder when ready.
