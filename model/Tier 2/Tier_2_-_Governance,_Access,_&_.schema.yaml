@@ -1,0 +1,46 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: 'OpenDrawer Metadata Tier 2 - Governance, Access, & '
+type: object
+properties:
+  ? 'The stable, unique identifier for a study that never changes, even if other study
+    metadata changes (like the study name, short name, owner, or project). Example:
+    STUDY_SCA'
+  : type: string
+    description: Free-text description providing additional context about IRB approval,
+      exemption, or oversight.
+    x-optional-persistent-row-identifier: Use studyID as the anchor, plus a persistent
+      row identifier to identify a specific file/version, etc.
+    x-optional-persistent-row-identifier-value: Enter a unique identifier for the
+      selection made.
+    x-optional-appliesto: Indicates the level of entity to which a metadata value
+      applies (e.g., individual participant or population summary).
+    x-optional-aggregationlevel: Specifies whether a metadata value represents individual-level
+      data or an aggregate summary
+    x-optional-populationscope: Identifies the population described by the metadata
+      (e.g., study-wide, cohort, or study arm).
+    x-externallyrequestable: Availability indicator to request the data.
+    x-irbapprovalnumber: The identifier assigned by the IRB for an approved or reviewed
+      study, if applicable.
+    x-irbstatus: The regulatory determination of IRB oversight for the study.
+    x-irbinstitution: The institution or ethics committee responsible for IRB review
+      or determination.
+    x-irbexemptiontype: The regulatory exemption category under which the study was
+      determined to be exempt from IRB review.
+    x-irbscope: Scope of IRB in relation to the study.
+    x-consenttype: Consent type (broad, tiered, etc.)
+    x-deidentificationmethod: De-ID method applied
+    x-accesrestrictions: Access level (ex., open, controlled, embargoed)
+    x-datauseconditions: Data use conditions
+    x-accessprocedure: Brief description of the steps required to request and obtain
+      access to the dataset.
+    x-accessrequesturl: URL to the access request page/portal or repository instructions
+      for obtaining access.
+    x-datalocation: Where the dataset is hosted or distributed (e.g., Synapse project,
+      NIMH/NDAR collection, dbGaP).
+    x-accesscontact: Point of contact (team, email alias, or role) for access questions.
+    x-accessreviewbody: The entity that reviews/approves access requests (e.g., DAC,
+      IRB, sponsor).
+    x-accessrequirements: Checklist of materials required for access (e.g., DUA, IRB
+      letter, training).
+required: []
+additionalProperties: false
