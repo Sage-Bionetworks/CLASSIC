@@ -1,0 +1,46 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: OpenDrawer Metadata Tier 1 - Study Identity & Disco
+type: object
+properties:
+  Name of the study:
+    type: string
+    description: The synID of the wiki that contains the study description.Description
+      of the study, including the types of experimental assays, model systems, types
+      of analysis, description of cohort, associated vulnerable populations, special
+      categories of data, rare diseases, etc. Maps to DUOplus2.
+    x-studyid: 'The stable, unique identifier for a study that never changes, even
+      if other study metadata changes (like the study name, short name, owner, or
+      project). Example: STUDY_SCA'
+    x-studyprojectidentifier: The Synapse Project identifier (synID) with which this
+      Study is related.
+    x-studykey: The short acronym for a project the study is associated with.
+    x-studyabstract: The short study description/abstract used to describe the study
+      that is visible on the Portal study card.
+    x-studymetadata: The wiki from the CLASSIC Portal - backend that describes study
+      metadata files
+    x-grantnumber: Grant number including activity code, institute code, and serial
+      number (e.g. U01MH103392)
+    x-principalinvestigator: Name(s) of PI
+    x-principalinvestigatorroles: Distinguishes original vs current vs co-PI
+    x-principalinvestigatorcontact: Email of (each) PI
+    x-institution: Institution conducting study
+    x-datatype: Types of input/output data in bioinformatics pipelines
+    x-datasubtype: Further qualification of dataType, which may be used to indicate
+      the state of processing of the data, aggregation of the data, or presence of
+      metadata.
+    x-metadatatype: 'For files of dataSubtype: metadata, a description of the type
+      of metadata in the file.'
+    x-metadatafileid: 'Identifies a specific metadata artifact or file (i.e, a particular
+      "measures.tsv" version, etc. If the file is uploaded to Synapse, this will be
+      the Synapse file entity ID. Examples: syn99887766 (or FILE_STUDY_SCA_measures_v2)'
+    x-metadatacoveragescope: Indicates whether the archived metadata describes all
+      data collected in the study or only the data types made available for external
+      access.
+    x-metadatacoveragenotes: Free-text clarification of what is included/excluded
+      in the metadata record and why (e.g., “some measures collected but not shareable
+      due to licensing”).
+    x-cohortid: Unique identifier for the cohort
+    x-cohortname: Name of cohort
+    x-longitudinalstudyid: Linked longitudinal study identifier
+required: []
+additionalProperties: false
