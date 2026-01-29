@@ -1,0 +1,67 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: OpenDrawer Metadata Tier 5 - Measures and Instrumen
+type: object
+properties:
+  Name of the instrument or scale used (e.g., PHQ-9, NIH Toolbox).:
+    type: string
+    description: One-sentence description of how the construct was operationalized
+      in the study.
+    x-studyid: 'The stable, unique identifier for a study that never changes, even
+      if other study metadata changes (like the study name, short name, owner, or
+      project). Example: STUDY_SCA'
+    x-optional-persistent-row-identifier: Use studyID as the anchor, plus a persistent
+      row identifier to identify a specific file/version, etc.
+    x-optional-persistent-row-identifier-value: Enter a unique identifier for the
+      selection made.
+    x-optional-appliesto: Indicates the level of entity to which a metadata value
+      applies (e.g., individual participant or population summary).
+    x-optional-aggregationlevel: Specifies whether a metadata value represents individual-level
+      data or an aggregate summary
+    x-optional-populationscope: Identifies the population described by the metadata
+      (e.g., study-wide, cohort, or study arm).
+    x-devicetype: The type of digital device used for data collection, applicable
+      only when data are collected digitally.
+    x-softwareplatform: The software environment or application used to deliver, collect,
+      or manage digitally collected data.
+    x-inputmethod: The primary method by which participant input or data capture occurs
+      during digital data collection.
+    x-administrationmode: The manner in which a digital assessment or data collection
+      activity is administered to participants.
+    x-manufacturermodel: 'Device make/model. Valid values: free text OR Multiple,
+      Varies, Unknown.'
+    x-operatingsystem: 'OS and version. Valid values: free text OR Multiple, Varies,
+      Unknown.'
+    x-appplatform: 'App or platform used. Valid values: free text OR Multiple, Varies,
+      Unknown.'
+    x-sensors: 'Sensors enabled (GPS, accelerometer, etc.). Valid values: free text
+      OR Multiple, Varies, Unknown.'
+    x-if-not-provided-as-a-row-identifier-measureid: Persistent per-measure row identifier.
+      (ex., "MEAS_SCA_STROOP_v1")
+    x-measuredconstruct: A conceptual domain or construct that a study collected data
+      on (e.g., depression, working memory, physical activity).
+    x-measuretype: The general type of measure used to assess a construct.
+    x-isvalidatedmeasure: Indicates whether a measure or instrument used to assess
+      a construct has been previously validated.
+    x-measuredescription: A brief description of how a measure was administered and
+      what it was designed to assess.
+    x-if-not-provided-as-a-row-identifier-instrumentid: a stable identifier used to
+      reference a specific instrument, measure, or assessment used in a study (e.g.,
+      a validated questionnaire, cognitive task, interview protocol, or sensor-based
+      assessment).
+    x-instrumentsource: Where the instrument originated
+    x-instrumentcitation: The primary citation(s) describing the instrument/task implementation
+      used in the study (e.g., published paper, manual, DOI).
+    x-instrumentversion: Version identifier for the instrument implementation used
+      (e.g., vendor version, protocol revision, “v2”, “2016 revision”).
+    x-stimulusresponsemode: How participants interacted with the instrument during
+      administration.
+    x-administrationinstructions: The instructions provided to participants describing
+      exactly how to perform the instrument/task (verbatim or summarized).
+    x-administrationprocedure: The source of the implementation (e.g., NIH Toolbox,
+      PEBL, PsychoPy script, custom app).
+    x-protocoldescription: The synID of the wiki that contains the protocol, study
+      design and goals
+    x-protocolurl: Link to the protocol, manual, script, or documentation describing
+      the instrument implementation.
+required: []
+additionalProperties: false
