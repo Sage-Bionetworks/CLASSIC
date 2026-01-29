@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OpenDrawer Metadata Tier 6 - Derived Scores, Variab",
+  "type": "object",
+  "properties": {
+    "The name of a derived variable or score as it appears in the dataset or metadata record.": {
+      "type": "string",
+      "x-studyid": "The stable, unique identifier for a study that never changes, even if other study metadata changes (like the study name, short name, owner, or project). Example: STUDY_SCA",
+      "x-optional-persistent-row-identifier": "Use studyID as the anchor, plus a persistent row identifier to identify a specific file/version, etc.",
+      "x-optional-persistent-row-identifier-value": "Enter a unique identifier for the selection made.",
+      "x-optional-appliesto": "Indicates the level of entity to which a metadata value applies (e.g., individual participant or population summary).",
+      "x-optional-aggregationlevel": "Specifies whether a metadata value represents individual-level data or an aggregate summary",
+      "x-optional-populationscope": "Identifies the population described by the metadata (e.g., study-wide, cohort, or study arm).",
+      "x-derivedvariabletype": "A controlled category describing the general method or type of derivation used to compute a derived variable or score (e.g., sum score, composite score, standardized score).",
+      "x-variablesummary": "Aggregate summary statistics describing the observed distribution and availability of a variable in a dataset, without exposing participant-level values.",
+      "x-scorename": "Is the human-readable name of a score derived from a measure, as used or labeled by the study.",
+      "x-scoretype": "Describes the general method or form by which a score was derived from a measure or assessment.",
+      "x-derivedscore": "A summary description of a score derived from a measure, including how it was calculated.",
+      "x-derivationmethod": "A high-level description of how a score was derived from raw or intermediate data.",
+      "x-valuerange": "The observed minimum and maximum values of a continuous variable within the reported population scope.",
+      "x-totalparticipants": "The total number of unique participants for whom data are available within the specified study, cohort, or scope.",
+      "x-propotion": "A numeric value representing the fraction of a population associated with a given category, typically expressed as a percentage or decimal.",
+      "x-dataavailabilitysummary": "An aggregate description of the amount and demographic composition of available data for a study, cohort, or variable, provided without individual-level records.",
+      "x-valuerangeminvalue": "The minimum observed value of a continuous variable within the specified population scope.",
+      "x-valuerangemaxvalue": "The maximum observed value of a continuous variable within the specified population scope.",
+      "x-unit": "The unit of measurement associated with a variable’s values or summary statistics (e.g., years, kg/m²).",
+      "x-timepoint": "A label identifying the study timepoint or phase at which the variable value or summary applies (e.g., baseline, follow-up).",
+      "x-raworderived": "Raw vs derived data flag",
+      "x-preprocessingsteps": "Preprocessing/cleaning applied"
+    }
+  },
+  "required": [],
+  "additionalProperties": false
+}
