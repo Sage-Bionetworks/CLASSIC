@@ -4,6 +4,12 @@ This repository is currently for internal, private use by Sage Bionetworks.
 
 This repository contains draft files that are being edited by the assigned data manager for the CLASSIC OpenDrawer Portal. Final revised files will be uploaded to the `model` folder when ready.
 
+# To view the data model in Google Sheets
+
+1. [Data Model](https://docs.google.com/spreadsheets/d/1nPqZvSdzWbtT78D6dA3knpdTvNamahy-xASoA16n8ew/edit?usp=sharing)
+
+2. [Metadata Template](https://docs.google.com/spreadsheets/d/1Negf_XoDv29OjXrNXxyhsL2TKTsyRbRY/edit?usp=sharing&ouid=114808658189033289995&rtpof=true&sd=true)
+
 # Data Models
 
 This repository contains 3 major files:
