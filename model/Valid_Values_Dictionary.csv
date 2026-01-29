@@ -1,0 +1,411 @@
+﻿Metadata Field Name,Value,Definition
+administrationContext,Lab,A controlled research environment specifically designed for standardized data collection or experimentation.
+administrationContext,Clinic,A healthcare setting where data are collected as part of clinical care or clinical research activities.
+administrationContext,Field,"A real-world setting outside controlled laboratory or clinical environments (e.g., community, workplace, school)."
+administrationContext,Home,A participant’s personal residence where data collection occurs.
+administrationContext,Remote,"A setting in which data collection occurs without in-person contact, mediated by digital or communication technologies."
+administrationContext,Mixed,Data collection occurs across multiple administration contexts.
+administrationContext,Unknown,The administration context is not known or not recorded.
+irbStatus,Approved ,Study reviewed and approved by an IRB
+irbStatus,Exempt ,Study determined to be exempt from IRB review
+irbStatus,Waived ,IRB review or consent requirements waived
+irbStatus,Not Required ,IRB review not required under applicable regulations
+irbStatus,Pending ,IRB determination not yet finalized
+irbStatus,Unknown ,IRB status not known or not recorded
+irbExemptionType,Exemption Category 1 ,Educational practices
+irbExemptionType,Exemption Category 2 ,"Educational tests, surveys, interviews, public behavior"
+irbExemptionType,Exemption Category 3 ,Benign behavioral interventions
+irbExemptionType,Exemption Category 4 ,Secondary research using identifiable data or biospecimens
+irbExemptionType,Exemption Category 5 ,Public benefit or service programs
+irbExemptionType,Exemption Category 6 ,Taste and food quality studies
+irbExemptionType,Other Exemption ,Exempt under non–Common Rule framework
+irbExemptionType,Unknown ,Exemption type not known or not recorded
+metadataCoverageScope,Exhaustive (Collected) ,"Metadata aims to cover all data types collected for the study, including those not available for external sharing."
+metadataCoverageScope,Shareable-only ,Metadata includes only data types that are available for external access requests.
+metadataCoverageScope,Mixed/Partial,"Metadata covers some collected data types beyond those shareable, but is not intended to be exhaustive."
+metadataCoverageScope,Unknown Scope,Scope is not known or not specified.
+principalInvestigatorRoles,Original PI,The principal investigator who initially established or led the study at its start.
+principalInvestigatorRoles,Current PI,The principal investigator currently responsible for the study’s scientific leadership.
+principalInvestigatorRoles,Co-PI,An individual who shares principal investigator responsibilities with another PI.
+principalInvestigatorRoles,Acting PI,A temporary or interim principal investigator responsible during a transition period.
+principalInvestigatorRoles,Multiple,More than one PI role applies or multiple PI roles are represented but not specified.
+principalInvestigatorRoles,Unknown,The PI role is not known or not recorded.
+diseaseFocus,Normative/General Population,Participants are selected to represent a general or normative population without requiring a specific disease or elevated risk status.
+diseaseFocus,At-Risk/Enriched Populations,"Participants are selected based on elevated risk for a condition (e.g., family history, exposure, prodromal symptoms) but may not meet diagnostic criteria."
+diseaseFocus,Condition-Focused Populations,Participants are selected because they have a specified disease or condition (or meet defined clinical criteria for that condition).
+diseaseFocus,Mixed/Comparative Designs,"The study includes two or more contrasting groups (e.g., cases vs controls, condition vs normative, multiple conditions) to enable comparison."
+diseaseFocus,Registry/Administrative Cohorts,Participants are identified through registries or administrative/health record sources where cohort definition is driven by existing records rather than direct recruitment.
+primaryHealthFocus,Normative/General Health,Participants were enrolled without requiring a specific diagnosis or elevated risk status at baseline.
+primaryHealthFocus,Condition-Focused,Participants were enrolled because they met criteria for a specified disease/condition at baseline.
+primaryHealthFocus,At-Risk/Enriched,"Participants were enrolled based on elevated risk indicators (e.g., family history, exposure, symptom threshold) without necessarily meeting diagnostic criteria."
+primaryHealthFocus,Mixed Comparative,"The study enrolled two or more baseline health groups (e.g., condition and normative, or multiple conditions) for comparison."
+ascertainmentContext,Community-ascertained,"Participants were recruited or identified from community sources outside of clinical care settings (e.g., advertisements, schools, workplaces)."
+ascertainmentContext,Clinic-ascertained,"Participants were recruited or identified through clinical care settings (e.g., clinics, hospitals, specialty practices)."
+ascertainmentContext,Administrative/Registry-Based,"Participants were identified using existing administrative sources or registries (e.g., EHR systems, claims data, disease registries)."
+ascertainmentContext,Hybrid,"Participants were recruited or identified using a combination of community, clinic, and/or administrative/registry sources."
+selectionIntensity,Broad/Minimally Selective,"Enrollment used minimal inclusion/exclusion criteria beyond basic eligibility (e.g., age range, consent capacity)."
+selectionIntensity,Moderately Selective,Enrollment applied multiple inclusion/exclusion criteria that narrow eligibility but remain relatively general.
+selectionIntensity,Highly Selective,"Enrollment applied stringent or specialized inclusion/exclusion criteria (e.g., specific phenotype thresholds, comorbidity exclusions, protocol adherence requirements)."
+selectionIntensity,Unknown,The restrictiveness of enrollment criteria is not known or not recorded.
+irbScope,Primary study,IRB oversight pertains to the original conduct of the study (initial enrollment and primary data collection).
+irbScope,Secondary analysis,"IRB oversight pertains to secondary analysis of previously collected data (e.g., reuse of an existing dataset)."
+irbScope,Site-specific,"IRB oversight pertains to a specific site within a multi-site study (e.g., local IRB approvals)."
+irbScope,Data reuse,"IRB oversight pertains to sharing or reuse of data outside the original study context (e.g., repository deposition or downstream reuse)."
+consentType,Broad,Consent permits future research use without restriction to specific diseases or narrowly defined purposes.
+consentType,Tiered,"Consent permits some types of research uses while restricting others (i.e., multiple allowed-use options are specified)."
+consentType,Specific,"Consent limits data use to a specific disease, condition, purpose, or study context."
+consentType,No Consent for Sharing,Consent does not permit sharing beyond the original study team or stated original purpose.
+consentType,Unknown,Consent type is not known or not recorded.
+deidentificationMethod,HIPAA Safe Harbor,Direct identifiers were removed according to HIPAA Safe Harbor criteria.
+deidentificationMethod,Expert Determination,An expert assessed and documented that re-identification risk is sufficiently low under applicable standards.
+deidentificationMethod,Pseudonymized,Direct identifiers were replaced with codes while a re-identification key may exist under separate control.
+deidentificationMethod,Anonymized,Identifiers were removed or transformed such that re-identification is not reasonably possible.
+deidentificationMethod,Limited Dataset,Data were shared as a HIPAA limited dataset (some indirect identifiers such as dates may be retained under agreement).
+deidentificationMethod,Unknown,De-identification method is not known or not recorded.
+accesRestrictions,Open,Data are publicly available without registration or approval.
+accesRestrictions,Registered,"Access requires account registration and acceptance of basic terms, but not a formal review process."
+accesRestrictions,Controlled,"Access requires review and approval (e.g., DAC review and/or a DUA) prior to obtaining the data."
+accesRestrictions,Embargoed,Access is restricted until a specified date or condition is met.
+accesRestrictions,Restricted,Access is limited to a specific set of approved users or groups beyond standard controlled access processes.
+accesRestrictions,Unknown,Access restriction level is not known or not recorded.
+dataUseConditions,General Research Use,Use is permitted for any research purpose.
+dataUseConditions,Disease-Specific Research,Use is permitted only for research on a specified disease or condition.
+dataUseConditions,Health/Medical/Biomedical Research,Use is permitted only for health-related or biomedical research purposes.
+dataUseConditions,Population Origins/Ancestry Research Prohibited,Use for population origins or ancestry research is prohibited.
+dataUseConditions,No Commercial Use,Use for commercial purposes is prohibited.
+dataUseConditions,No Methods Development,Use for methods or tool development is prohibited.
+dataUseConditions,No Secondary Use,Secondary use beyond the originally permitted purpose is not allowed.
+dataUseConditions,Ethics Approval Required,Use requires additional ethics/IRB approval prior to research use.
+dataLocation,Synapse,Dataset is hosted and distributed via a Synapse project or file entity.
+dataLocation,NIMH Data Archive (NDA),Dataset is hosted within the NIMH Data Archive (formerly NDAR) as a collection or study.
+dataLocation,dbGaP,Dataset is deposited in the NIH Database of Genotypes and Phenotypes (dbGaP).
+dataLocation,Zenodo,"Dataset is hosted on Zenodo, typically with a DOI and public or restricted access settings."
+dataLocation,OSF,Dataset is hosted on the Open Science Framework (OSF) platform.
+dataLocation,Institutional Repository,"Dataset is hosted in an institution-managed repository (e.g., university or hospital repository)."
+dataLocation,Other,Dataset is hosted on a platform not listed above.
+dataLocation,Unknown,Hosting/distribution location is not known or not recorded.
+accessReviewBody,Data Access Committee (DAC),Access requests are reviewed and approved by a designated Data Access Committee.
+accessReviewBody,IRB/Ethics Committee,Access requests require review or approval by an IRB or ethics committee.
+accessReviewBody,Repository-controlled,Access requests are reviewed and approved through repository governance processes (not a separate DAC).
+accessReviewBody,PI approval,Access requests require approval by the study’s principal investigator(s).
+accessReviewBody,Other,Access requests are reviewed by a body not listed above.
+accessReviewBody,Unknown,The approving/reviewing body is not known or not recorded.
+accessRequirements,DUA required,A data use agreement must be executed before access is granted.
+accessRequirements,IRB approval required,Proof of IRB/ethics approval is required prior to access.
+accessRequirements,Ethics exemption accepted,An IRB/ethics exemption determination is acceptable in lieu of full approval.
+accessRequirements,Data security plan required,A documented plan for secure data handling/storage is required.
+accessRequirements,Institutional signature required,An authorized institutional representative must sign required agreements or forms.
+accessRequirements,Human subjects training required,Completion of human subjects research training is required for requestors.
+accessRequirements,Account/ID required,"A specific account or repository identifier is required (e.g., Synapse account, eRA Commons)."
+accessRequirements,Other,Additional requirements apply that are not listed above.
+accessRequirements,Unknown,Access requirements are not known or not recorded.
+appliesTo,participant,The metadata value applies to an individual participant entity (participant-level).
+appliesTo,cohort,The metadata value applies to a cohort or group of participants considered as a unit.
+aggregationLevel,individual,The metadata value represents an individual-level value (not aggregated).
+aggregationLevel,summary,The metadata value represents an aggregate summary across a defined population scope.
+populationScope,study,The metadata value summarizes or pertains to the full study population.
+populationScope,arm,The metadata value summarizes or pertains to a specific study arm or group.
+populationScope,cohort,The metadata value summarizes or pertains to a defined cohort within the study.
+populationType,General Population,Participants are sampled to broadly represent a general population without specific health-status eligibility.
+populationType,Healthy Volunteers,Participants are enrolled as generally healthy volunteers without a targeted disease or condition requirement.
+populationType,Patient,"Participants are enrolled as patients receiving care, typically in a clinical context."
+populationType,Clinical Population,"Participants are enrolled based on clinical criteria, diagnosis, or engagement with clinical services."
+populationType,At-Risk Population,"Participants are enrolled based on indicators of elevated risk for a condition (e.g., family history, exposure, symptoms) without requiring diagnosis."
+populationType,Enriched Population,"Participants are enrolled using criteria intended to increase the prevalence of a trait/condition of interest (e.g., high-risk or phenotype-enriched sampling)."
+populationType,Caregivers,Participants are enrolled because they provide care to an individual with a condition or functional need.
+populationType,Family Members,"Participants are enrolled because they are family members of an index participant (e.g., relatives in family-based studies)."
+populationType,Occupational,Participants are enrolled based on occupation or workplace affiliation.
+populationType,Workforce Population,"Participants are enrolled from a defined workforce (e.g., employees in an organization or industry)."
+populationType,Military,Participants are enrolled based on active-duty military status or affiliation.
+populationType,Veteran Population,Participants are enrolled based on veteran status.
+populationType,Student,"Participants are enrolled based on student status (e.g., college or university samples)."
+populationType,School-based Population,"Participants are enrolled through a school-based setting (e.g., K–12 schools) or education system."
+populationType,Community Sample,"Participants are recruited from community settings (outside clinics), such as advertisements, community orgs, or events."
+populationType,Other,Population classification is not captured by the listed categories.
+populationType,Unknown,Population classification is not known or not recorded.
+seasons,Winter,Data collection occurred during the winter season.
+seasons,Spring,Data collection occurred during the spring season.
+seasons,Summer,Data collection occurred during the summer season.
+seasons,Fall,Data collection occurred during the fall season.
+seasons,Unknown,Season(s) of data collection are not known or not recorded.
+ageGroup,Children (0–12),Cohort includes participants primarily aged 0 through 12 years.
+ageGroup,Adolescents (13–17),Cohort includes participants primarily aged 13 through 17 years.
+ageGroup,Adults (18–64),Cohort includes participants primarily aged 18 through 64 years.
+ageGroup,Older Adults (65+),Cohort includes participants primarily aged 65 years and older.
+ageGroup,Mixed,Cohort includes participants spanning multiple age groups.
+ageGroup,Unknown,Age group composition is not known or not recorded.
+sex,Female,Sex recorded as female.
+sex,Male,Sex recorded as male.
+sex,Intersex,Sex recorded as intersex or having variations of sex characteristics.
+sex,Unknown,Sex is not known or not recorded.
+sex,Not reported,Sex was not provided by the participant or was intentionally not reported.
+sexEligible,Female only,Only participants recorded as female are eligible for enrollment.
+sexEligible,Male only,Only participants recorded as male are eligible for enrollment.
+sexEligible,All sexes eligible,Participants of any sex are eligible for enrollment.
+sexEligible,Not specified,Sex eligibility criteria are not specified in available documentation.
+sexEligible,Unknown,Sex eligibility criteria are not known or not recorded.
+gender,Woman,Participant self-identifies as a woman.
+gender,Man,Participant self-identifies as a man.
+gender,Non-binary,Participant self-identifies as non-binary.
+gender,Another gender identity,"Participant self-identifies with a gender identity not listed (e.g., genderqueer, agender); details may be captured elsewhere if allowed."
+gender,Did not disclose,Participant chose not to disclose their gender identity.
+gender,Unknown,Gender identity is not known or not recorded.
+race,American Indian or Alaska Native,Participant self-identifies as American Indian or Alaska Native.
+race,Asian,Participant self-identifies as Asian.
+race,Black or African American,Participant self-identifies as Black or African American.
+race,Native Hawaiian or Other Pacific Islander,Participant self-identifies as Native Hawaiian or Other Pacific Islander.
+race,White,Participant self-identifies as White.
+race,Other race,Participant self-identifies as a race not listed.
+race,Did not disclose,Participant chose not to disclose their race.
+race,Unknown,Race is not known or not recorded.
+ethnicity,Hispanic or Latino,Participant self-identifies as Hispanic or Latino origin.
+ethnicity,Not Hispanic or Latino,Participant self-identifies as not Hispanic or Latino origin.
+ethnicity,Did not disclose,Participant chose not to disclose ethnicity.
+ethnicity,Unknown,Ethnicity is not known or not recorded.
+collectionModailty,Digital,"Data were collected using a digital system (e.g., web/app, electronic form, device, sensor)."
+collectionModailty,Paper-based,Data were collected on paper forms intended for later entry or scoring.
+collectionModailty,In-person (non-digital),"Data were collected in person without a digital capture system (e.g., clinical observation or interview scored offline)."
+collectionModailty,Mixed,"Data were collected using a combination of modes (e.g., some paper-based and some digital)."
+generation,F0,Original enrolled participant(s) forming the initial cohort generation.
+generation,F1,First generation descendants of the original participant(s).
+generation,F2,Second generation descendants of the original participant(s).
+generation,F3+,Third or later generation descendants of the original participant(s).
+generation,Multiple,Participants span multiple generational levels.
+generation,Unknown,Generational position is not known or not recorded.
+relationToOriginal,Self,The participant is the original enrolled participant (index participant).
+relationToOriginal,Child,The participant is a biological or adopted child of the original participant.
+relationToOriginal,Grandchild,The participant is a biological or adopted grandchild of the original participant.
+relationToOriginal,Parent,The participant is a biological or adoptive parent of the original participant.
+relationToOriginal,Sibling,The participant is a biological or adoptive sibling of the original participant.
+relationToOriginal,Spouse or Partner,The participant is a spouse or long-term partner of the original participant.
+relationToOriginal,Other Relative,The participant is a family relation not otherwise specified.
+relationToOriginal,Multiple,Multiple relationship types are represented but not specified individually.
+relationToOriginal,Unknown,Relationship to the original participant is not known or not recorded.
+recruitmentWave,Wave 1,Participants enrolled during the first recruitment phase.
+recruitmentWave,Wave 2,Participants enrolled during the second recruitment phase.
+recruitmentWave,Wave 3,Participants enrolled during the third recruitment phase.
+recruitmentWave,Wave 4+,Participants enrolled during the fourth or later recruitment phases.
+recruitmentWave,Pilot,Participants enrolled during a pilot or feasibility recruitment phase.
+recruitmentWave,Extension,Participants enrolled during a follow-on or extension recruitment phase.
+recruitmentWave,Multiple,Participants span multiple recruitment waves.
+recruitmentWave,Unknown,Recruitment wave is not known or not recorded.
+studyWaves,Wave 1,The study population includes participants from the first recruitment/enrollment wave.
+studyWaves,Wave 2,The study population includes participants from the second recruitment/enrollment wave.
+studyWaves,Wave 3,The study population includes participants from the third recruitment/enrollment wave.
+studyWaves,Wave 4+,The study population includes participants from the fourth or later recruitment/enrollment waves.
+studyWaves,Pilot,The study population includes participants from a pilot or feasibility phase.
+studyWaves,Extension,The study population includes participants from a follow-on or extension phase.
+studyWaves,Multiple,The study population includes participants from multiple waves.
+studyWaves,Unknown,Study wave representation is not known or not recorded.
+studyComponentType,Wave,A study component representing a defined recruitment/enrollment wave.
+studyComponentType,Arm,A study component representing a defined study arm or group assignment.
+studyComponentType,Period,A study component representing a defined time period or collection window.
+studyComponentType,Cohort,A study component representing a defined cohort or subcohort within the study.
+studyComponentType,Site,A study component representing a study site or location in a multi-site design.
+studyComponentType,Phase,"A study component representing a study phase (e.g., pilot, main study, extension)."
+studyComponentType,Other,A study component type not captured by the listed categories.
+studyComponentType,Unknown,The study component type is not known or not recorded.
+deviceType,Smartphone,Data were collected using a smartphone device.
+deviceType,Tablet,"Data were collected using a tablet device (e.g., iPad, Android tablet)."
+deviceType,Wearable,"Data were collected using a wearable device (e.g., smartwatch, activity tracker)."
+deviceType,Desktop or Laptop Computer,Data were collected using a desktop or laptop computer.
+deviceType,Dedicated Research Device,Data were collected using a purpose-built or study-issued research device not captured by other categories.
+deviceType,Multiple Digital Devices,"Data were collected using more than one digital device type (e.g., both smartphone and tablet)."
+deviceType,Unknown,Digital device type is not known or not recorded.
+softwarePlatform,REDCap,"Data were delivered, collected, or managed using REDCap."
+softwarePlatform,Custom Application,Data were delivered or collected using a study-specific custom-built application.
+softwarePlatform,Commercial Platform,Data were delivered or collected using a commercial software platform (non-custom).
+softwarePlatform,Open-source Platform,Data were delivered or collected using an open-source software platform or framework.
+softwarePlatform,Web-based Application,Data were delivered or collected through a browser-based web application.
+softwarePlatform,Multiple Platforms,More than one software platform was used for digital data collection.
+softwarePlatform,Unknown,Software platform is not known or not recorded.
+inputMethod,Touch,Data capture occurred primarily via touchscreen interaction.
+inputMethod,Keyboard,Data capture occurred primarily via typed keyboard input.
+inputMethod,Mouse or Trackpad,Data capture occurred primarily via mouse or trackpad input.
+inputMethod,Sensor,"Data capture occurred primarily via sensors (e.g., accelerometer, GPS, heart rate)."
+inputMethod,Voice,Data capture occurred primarily via voice input or audio capture.
+inputMethod,Multiple Input Methods,More than one input method was used for data capture.
+inputMethod,Unknown,Input method is not known or not recorded.
+administrationMode,Self-administered,Participants completed the activity independently without live administration.
+administrationMode,Interviewer-administered,"The activity was administered by an interviewer (e.g., structured interview)."
+administrationMode,Clinician-administered,The activity was administered by a clinician or trained assessor in a clinical role.
+administrationMode,Assisted,"Participants completed the activity with assistance (e.g., help operating device or understanding prompts)."
+administrationMode,Mixed Administration,The study used more than one administration mode across participants or timepoints.
+administrationMode,Unknown,Administration mode is not known or not recorded.
+measuredConstruct,Anxiety,"Construct related to worry, fear, or anxious arousal."
+measuredConstruct,Stress,Construct related to perceived or physiological stress responses.
+measuredConstruct,Affect / Mood,"Construct related to emotional state, mood, or affective tone."
+measuredConstruct,Emotional Regulation,Construct related to monitoring and modulating emotional responses.
+measuredConstruct,Psychological Well-being,"Construct related to positive mental health, life satisfaction, or well-being."
+measuredConstruct,Social Functioning,"Construct related to social behavior, relationships, or social role performance."
+measuredConstruct,Quality of Life,"Construct related to perceived quality of life, functioning, or life impact."
+measuredConstruct,Behavioral Symptoms,Construct related to behavioral or neurobehavioral symptom expression.
+measuredConstruct,Attention,"Construct related to orienting, sustained attention, or selective attention."
+measuredConstruct,Working Memory,Construct related to holding and manipulating information over short periods.
+measuredConstruct,Executive Function,"Construct related to planning, control, and goal-directed regulation of behavior."
+measuredConstruct,Cognitive Flexibility,"Construct related to switching, adapting, or shifting between tasks or mental sets."
+measuredConstruct,Inhibitory Control,Construct related to suppressing or inhibiting automatic or prepotent responses.
+measuredConstruct,Processing Speed,Construct related to the speed of cognitive processing or response.
+measuredConstruct,Learning,Construct related to acquisition of knowledge or skills over time.
+measuredConstruct,Memory,"Construct related to encoding, storage, and retrieval of information."
+measuredConstruct,Language,Construct related to comprehension or production of spoken or written language.
+measuredConstruct,Visuospatial Ability,"Construct related to spatial perception, visual construction, or visuospatial reasoning."
+measuredConstruct,Decision Making,Construct related to evaluating options and selecting actions under uncertainty or choice.
+measuredConstruct,Motor Function,"Construct related to movement, motor performance, or motor control."
+measuredConstruct,Balance and Gait,"Construct related to postural stability, balance, or walking gait."
+measuredConstruct,Sensory Processing,"Construct related to sensory perception, integration, or sensory responsiveness."
+measuredConstruct,Sleep,"Construct related to sleep patterns, sleep quality, or sleep disturbance."
+measuredConstruct,Fatigue,"Construct related to tiredness, exhaustion, or fatigue-related impairment."
+measuredConstruct,Pain,"Construct related to pain experience, severity, or pain-related interference."
+measuredConstruct,Cognitive Impairment,Construct related to cognitive decline or impaired cognitive functioning.
+measuredConstruct,Physical Activity,"Construct related to bodily movement, activity level, or exercise behavior."
+measuredConstruct,Sedentary Behavior,Construct related to time spent inactive or in low-energy postures.
+measuredConstruct,Dietary Intake,"Construct related to nutrition, diet patterns, or food consumption."
+measuredConstruct,Body Composition,"Construct related to body size or composition measures (e.g., BMI, adiposity)."
+measuredConstruct,Cardiometabolic Health,"Construct related to cardiovascular/metabolic status (e.g., blood pressure, glucose risk)."
+measuredConstruct,Respiratory Function,"Construct related to breathing, lung function, or respiratory symptoms."
+measuredConstruct,General Health Status,"Construct related to overall health, self-rated health, or general functioning."
+measuredConstruct,Developmental Milestones,Construct related to attainment of developmental milestones or developmental progress.
+measuredConstruct,Adaptive Functioning,Construct related to adaptive behaviors and everyday functioning.
+measuredConstruct,Daily Living Skills,Construct related to skills for independent living and daily activities.
+measuredConstruct,Educational Attainment,"Construct related to education level, schooling, or educational outcomes."
+measuredConstruct,Occupational Functioning,"Construct related to work participation, employment, or occupational performance."
+measuredConstruct,Environmental Exposure,Construct related to environmental exposures or external contextual factors.
+measuredConstruct,Socioeconomic Status,"Construct related to socioeconomic conditions (e.g., income, education, neighborhood factors)."
+measuredConstruct,Life Events,Construct related to significant life events or stressor exposures.
+measuredConstruct,Seasonality,Construct related to seasonal patterns or time-of-year influences.
+measuredConstruct,Demographics,"Construct related to demographic characteristics (e.g., age, sex, race/ethnicity, education)."
+measuredConstruct,Clinical History,Construct related to medical/clinical history or prior diagnoses/treatments.
+measuredConstruct,Medication Use,"Construct related to medication exposure, use patterns, or medication history."
+measuredConstruct,Health Behaviors,"Construct related to behaviors affecting health (e.g., smoking, alcohol use, diet, exercise)."
+measuredConstruct,Other,Construct not captured by the listed categories.
+measuredConstruct,Unknown,Construct is not known or not recorded.
+measureType,Questionnaire / Survey,A self-report or informant-report instrument collected via written or electronic questions (including scales and inventories).
+measureType,Cognitive task,"A performance-based task designed to assess cognitive processes (e.g., reaction time, accuracy, task switching)."
+measureType,Clinical assessment,A clinician- or assessor-administered evaluation or standardized clinical test/battery.
+measureType,Behavioral observation,A measure based on observed behavior recorded or rated in a structured manner.
+measureType,Sensor-derived measure,"A measure derived from passive or active sensor signals (e.g., accelerometry, GPS, heart rate)."
+measureType,Interview,A structured or semi-structured interview administered by an interviewer to collect responses or ratings.
+measureType,Composite index,A measure combining multiple variables or sources into a single index value (not tied to a single instrument).
+measureType,Other,A measure type not captured by the listed categories.
+derivationMethod,Sum or Total Score,"Score is computed by summing item, trial, or component values into a total."
+derivationMethod,Mean or Average,"Score is computed as an arithmetic mean (average) of item, trial, or component values."
+derivationMethod,Composite Score,"Score is computed by combining multiple items, trials, subscales, or measures into a single value."
+derivationMethod,Standardized Score,"Score is transformed to a standardized metric (e.g., z-score, T-score, percentile) relative to a reference distribution."
+derivationMethod,Algorithmic / Model-derived,"Score is produced using a defined algorithm, model, or computational procedure beyond simple aggregation."
+derivationMethod,Clinician-rated,"Score is assigned by a clinician or trained assessor based on observation, judgment, or a scoring rubric."
+derivationMethod,Other (specify),Score derivation method is not covered by the listed categories and should be specified in accompanying text.
+derivationMethod,Unknown,Score derivation method is not known or not recorded.
+scoreType,raw score,Direct score output from a measure without aggregation or transformation.
+scoreType,sum score,"Score calculated as the sum of item, trial, or component values."
+scoreType,mean score,"Score calculated as the arithmetic mean of item, trial, or component values."
+scoreType,composite score,"Score combining multiple items, trials, subscales, or measures into a single value."
+scoreType,standardized score,"Score transformed to a standardized metric relative to a reference distribution (e.g., z, T, percentile)."
+scoreType,algorithmic score,Score produced via a defined algorithm or computational model beyond simple aggregation.
+scoreType,clinician-rated score,Score assigned by a clinician or trained assessor based on observation or a scoring rubric.
+scoreType,derived index,Higher-level index derived from one or more intermediate scores or metrics.
+scoreType,other,Score type not captured by the listed categories.
+scoreType,unknown,Score type is not known or not recorded.
+stimulusResponseMode,Keyboard,Participants responded using a physical or on-screen keyboard.
+stimulusResponseMode,Touchscreen,"Participants responded using touchscreen input (e.g., tapping, swiping)."
+stimulusResponseMode,Mouse/Trackpad,Participants responded using a mouse or trackpad pointing device.
+stimulusResponseMode,Voice,Participants responded using spoken responses or voice input.
+stimulusResponseMode,Clinician-administered,Responses were elicited and recorded by a clinician or trained assessor.
+stimulusResponseMode,Paper-and-pencil,Participants responded using paper forms and writing instruments.
+stimulusResponseMode,Other,Response mode not captured by the listed categories.
+stimulusResponseMode,Unknown,Response mode is not known or not recorded.
+administrationProcedure,Published manual/protocol,"Implementation follows a published manual, protocol, or standardized administration guide."
+administrationProcedure,NIH Toolbox,Implementation uses an NIH Toolbox instrument or platform.
+administrationProcedure,PEBL,Implementation uses the Psychology Experiment Building Language (PEBL) platform.
+administrationProcedure,PsychoPy,Implementation uses a PsychoPy script or PsychoPy-based application.
+administrationProcedure,E-Prime,Implementation uses the E-Prime software platform.
+administrationProcedure,REDCap,Implementation is delivered/managed through REDCap.
+administrationProcedure,Qualtrics,Implementation is delivered/managed through Qualtrics.
+administrationProcedure,Custom implementation,"Implementation is study-specific or custom-built (e.g., custom app or bespoke task code)."
+administrationProcedure,Other,Implementation source is not captured by the listed categories.
+administrationProcedure,Unknown,Implementation source is not known or not recorded.
+constructDomain,Depression,"Constructs related to depressive symptoms, mood disturbance, or depression-related functioning."
+constructDomain,Cognitive,"Constructs related to cognitive processes (e.g., attention, memory, executive function)."
+constructDomain,Neurological & Neurobehavioral,"Constructs related to neurological function and neurobehavioral symptoms (e.g., motor, sleep, pain)."
+constructDomain,Physical Health & Lifestyle,"Constructs related to physical health status and health-related behaviors (e.g., activity, diet, cardiometabolic health)."
+constructDomain,Developmental & Functional,"Constructs related to development, adaptive functioning, and daily living skills."
+constructDomain,Environmental & Contextual,"Constructs related to environmental exposures and contextual factors (e.g., SES, life events, seasonality)."
+constructDomain,Administrative & Study Design,"Constructs related to administrative descriptors or study design variables (e.g., demographics, medication use)."
+constructDomain,Other,Construct domain not captured by the listed categories.
+constructDomain,Unknown,Construct domain is not known or not recorded.
+derivedVariableType,Raw Score,Direct output from a measure without aggregation or transformation.
+derivedVariableType,Sum Score,"Derived variable computed as the sum of item, trial, or component values."
+derivedVariableType,Mean Score,Derived variable computed as the arithmetic mean (average) of values.
+derivedVariableType,Composite Score,"Derived variable combining multiple items, trials, subscales, or measures into a single value."
+derivedVariableType,Subscale Score,Derived variable representing a defined subscale or domain within an instrument.
+derivedVariableType,Standardized Score,"Derived variable transformed to a standardized metric (e.g., z-score, T-score, percentile) relative to a reference distribution."
+derivedVariableType,Change Score,"Derived variable representing change between timepoints (e.g., follow-up minus baseline)."
+derivedVariableType,Slope / Trajectory,"Derived variable summarizing longitudinal change over time (e.g., slope or growth parameter)."
+derivedVariableType,Threshold / Screening Flag,"Derived variable indicating whether a value meets a defined cutoff or screening threshold (e.g., positive/negative)."
+derivedVariableType,Severity Category,"Derived variable categorizing severity levels based on a score (e.g., mild/moderate/severe)."
+derivedVariableType,Risk Score,Derived variable estimating risk level using a rule-based or model-based approach.
+derivedVariableType,Clinician-Rated Summary,Derived variable assigned by a clinician or trained assessor as a summary rating.
+derivedVariableType,Compliance Metric,"Derived variable summarizing adherence or completion (e.g., percent prompts completed)."
+derivedVariableType,Missingness Metric,"Derived variable summarizing missing data patterns (e.g., proportion missing)."
+derivedVariableType,Response Time Metric,"Derived variable summarizing timing of responses (e.g., latency, completion duration)."
+derivedVariableType,Aggregated Sensor Feature,"Derived variable computed by aggregating sensor data (e.g., daily mean steps, activity counts)."
+derivedVariableType,Contextual Feature,"Derived variable capturing contextual patterns (e.g., mobility radius, time at home) derived from data streams."
+derivedVariableType,Other Derived Variable,Derived variable type not captured by the listed categories.
+derivedVariableType,Unknown,Derived variable type is not known or not recorded.
+unit,years,Values are measured in years.
+unit,months,Values are measured in months.
+unit,days,Values are measured in days.
+unit,hours,Values are measured in hours.
+unit,minutes,Values are measured in minutes.
+unit,seconds,Values are measured in seconds.
+unit,count,"Values represent a simple count of events, items, or observations."
+unit,percent,Values are expressed as a percentage (0–100).
+unit,score,Values represent an instrument- or study-defined score without a physical unit.
+unit,milliseconds,Values are measured in milliseconds.
+unit,kg,Values are measured in kilograms.
+unit,cm,Values are measured in centimeters.
+unit,m,Values are measured in meters.
+unit,kg/m^2,"Values are measured as kilograms per square meter (e.g., BMI)."
+unit,mmHg,"Values are measured in millimeters of mercury (e.g., blood pressure)."
+unit,bpm,"Values are measured in beats per minute (e.g., heart rate)."
+unit,Unknown,Unit of measurement is not known or not recorded.
+timepoint,baseline,Measurement pertains to the baseline timepoint (initial assessment reference point).
+timepoint,screening,Measurement pertains to the screening phase prior to enrollment.
+timepoint,enrollment,Measurement pertains to the enrollment timepoint (study entry).
+timepoint,visit_1,Measurement pertains to the first scheduled study visit.
+timepoint,visit_2,Measurement pertains to the second scheduled study visit.
+timepoint,followup,Measurement pertains to a follow-up assessment (time unspecified).
+timepoint,followup_1,Measurement pertains to the first follow-up assessment.
+timepoint,followup_2,Measurement pertains to the second follow-up assessment.
+timepoint,end_of_study,Measurement pertains to the end-of-study assessment or final timepoint.
+timepoint,unspecified,Timepoint is not specified or not tied to a discrete phase/visit.
+timepoint,multiple,Measurement summary aggregates across multiple timepoints.
+timepoint,Unknown,Timepoint is not known or not recorded.
+inclusionTags,Age-based eligibility,"Inclusion required meeting specified age criteria (e.g., age range or minimum/maximum age)."
+inclusionTags,Sex-based eligibility,"Inclusion required meeting specified sex eligibility criteria (e.g., female-only or male-only enrollment)."
+inclusionTags,Diagnosis required,Inclusion required a documented diagnosis or meeting diagnostic criteria for a condition.
+inclusionTags,Symptom threshold required,Inclusion required meeting a specified symptom level or screening threshold.
+inclusionTags,At-risk/enriched (family history/genetic risk/exposure),"Inclusion required elevated risk indicators such as family history, genetic risk, or relevant exposure."
+inclusionTags,Treatment/medication status required,Inclusion required a specified treatment status or medication use/non-use.
+inclusionTags,Language/communication requirement,Inclusion required ability to communicate in a specified language or meet communication criteria.
+inclusionTags,Geographic/catchment requirement,Inclusion required residing in or being served by a defined geographic area or recruitment catchment.
+inclusionTags,Device/smartphone required,"Inclusion required access to or use of a device (e.g., smartphone) needed for participation."
+inclusionTags,Capacity/consent requirement,Inclusion required capacity to consent or meeting consent/assent requirements.
+inclusionTags,Other,Inclusion characteristics not captured by the listed categories.
+inclusionTags,Unknown,Inclusion characteristics are not known or not recorded.
+exclusionTags,Major comorbidity excluded,Exclusion criteria removed participants with significant comorbid medical conditions.
+exclusionTags,Psychiatric comorbidity excluded,Exclusion criteria removed participants with specified psychiatric comorbidities.
+exclusionTags,Neurological comorbidity excluded,Exclusion criteria removed participants with specified neurological comorbidities.
+exclusionTags,Substance use excluded,Exclusion criteria removed participants with current or past substance use conditions as defined by the study.
+exclusionTags,Cognitive impairment excluded,Exclusion criteria removed participants with cognitive impairment beyond a specified threshold.
+exclusionTags,Pregnancy excluded,Exclusion criteria removed participants who were pregnant (as defined by the study protocol).
+exclusionTags,Sensory/motor limitation excluded,Exclusion criteria removed participants with sensory or motor limitations that would interfere with participation or measurement.
+exclusionTags,Contraindicated medication excluded,Exclusion criteria removed participants using medications that were contraindicated or would confound measurement.
+exclusionTags,Inability to consent excluded,Exclusion criteria removed participants unable to provide informed consent (or meet assent/consent requirements).
+exclusionTags,Noncompliance risk excluded,"Exclusion criteria removed participants at elevated risk of noncompliance (e.g., inability to follow procedures or complete assessments)."
+exclusionTags,Other,Exclusion characteristics not captured by the listed categories.
+exclusionTags,Unknown,Exclusion characteristics are not known or not recorded.
+selectionIntensity,Broad,Eligibility criteria are broadly inclusive with minimal restrictions beyond basic requirements.
+selectionIntensity,Moderate,Eligibility criteria include multiple restrictions but remain relatively general and not highly specialized.
+selectionIntensity,Highly Selective,"Eligibility criteria are stringent or specialized, substantially narrowing eligible participants."
+selectionIntensity,Unknown,Overall restrictiveness of eligibility criteria is not known or not recorded.
