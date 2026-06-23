@@ -1,4 +1,4 @@
-﻿Metadata Field Name,Value,Definition
+Metadata Field Name,Value,Definition
 administrationContext,Lab,A controlled research environment specifically designed for standardized data collection or experimentation.
 administrationContext,Clinic,A healthcare setting where data are collected as part of clinical care or clinical research activities.
 administrationContext,Field,"A real-world setting outside controlled laboratory or clinical environments (e.g., community, workplace, school)."
@@ -6,19 +6,19 @@ administrationContext,Home,A participant’s personal residence where data colle
 administrationContext,Remote,"A setting in which data collection occurs without in-person contact, mediated by digital or communication technologies."
 administrationContext,Mixed,Data collection occurs across multiple administration contexts.
 administrationContext,Unknown,The administration context is not known or not recorded.
-irbStatus,Approved ,Study reviewed and approved by an IRB
-irbStatus,Exempt ,Study determined to be exempt from IRB review
-irbStatus,Waived ,IRB review or consent requirements waived
+irbStatus,Expedited,Minimal-risk research reviewed through the expedited IRB review process.
+irbStatus,Exempt ,Research determined to qualify for an exemption category under applicable regulations.
+irbStatus,Full Board,Research reviewed and approved by the convened IRB committee.
 irbStatus,Not Required ,IRB review not required under applicable regulations
 irbStatus,Pending ,IRB determination not yet finalized
 irbStatus,Unknown ,IRB status not known or not recorded
-irbExemptionType,Exemption Category 1 ,Educational practices
-irbExemptionType,Exemption Category 2 ,"Educational tests, surveys, interviews, public behavior"
-irbExemptionType,Exemption Category 3 ,Benign behavioral interventions
-irbExemptionType,Exemption Category 4 ,Secondary research using identifiable data or biospecimens
-irbExemptionType,Exemption Category 5 ,Public benefit or service programs
-irbExemptionType,Exemption Category 6 ,Taste and food quality studies
-irbExemptionType,Other Exemption ,Exempt under non–Common Rule framework
+irbExemptionType,Category 1 ,Educational practices
+irbExemptionType,Category 2 ,"Educational tests, surveys, interviews, public behavior"
+irbExemptionType,Category 3 ,Benign behavioral interventions
+irbExemptionType,Category 4 ,Secondary research using identifiable data or biospecimens
+irbExemptionType,Category 5 ,Public benefit or service programs
+irbExemptionType,Category 6 ,Taste and food quality studies
+irbExemptionType,Other ,Exempt under non–Common Rule framework
 irbExemptionType,Unknown ,Exemption type not known or not recorded
 metadataCoverageScope,Exhaustive (Collected) ,"Metadata aims to cover all data types collected for the study, including those not available for external sharing."
 metadataCoverageScope,Shareable-only ,Metadata includes only data types that are available for external access requests.
@@ -62,12 +62,12 @@ deidentificationMethod,Pseudonymized,Direct identifiers were replaced with codes
 deidentificationMethod,Anonymized,Identifiers were removed or transformed such that re-identification is not reasonably possible.
 deidentificationMethod,Limited Dataset,Data were shared as a HIPAA limited dataset (some indirect identifiers such as dates may be retained under agreement).
 deidentificationMethod,Unknown,De-identification method is not known or not recorded.
-accesRestrictions,Open,Data are publicly available without registration or approval.
-accesRestrictions,Registered,"Access requires account registration and acceptance of basic terms, but not a formal review process."
-accesRestrictions,Controlled,"Access requires review and approval (e.g., DAC review and/or a DUA) prior to obtaining the data."
-accesRestrictions,Embargoed,Access is restricted until a specified date or condition is met.
-accesRestrictions,Restricted,Access is limited to a specific set of approved users or groups beyond standard controlled access processes.
-accesRestrictions,Unknown,Access restriction level is not known or not recorded.
+accessRestrictions,Open,Data are publicly available without registration or approval.
+accessRestrictions,Registered,"Access requires account registration and acceptance of basic terms, but not a formal review process."
+accessRestrictions,Controlled,"Access requires review and approval (e.g., DAC review and/or a DUA) prior to obtaining the data."
+accessRestrictions,Embargoed,Access is restricted until a specified date or condition is met.
+accessRestrictions,Restricted,Access is limited to a specific set of approved users or groups beyond standard controlled access processes.
+accessRestrictions,Unknown,Access restriction level is not known or not recorded.
 dataUseConditions,General Research Use,Use is permitted for any research purpose.
 dataUseConditions,Disease-Specific Research,Use is permitted only for research on a specified disease or condition.
 dataUseConditions,Health/Medical/Biomedical Research,Use is permitted only for health-related or biomedical research purposes.
@@ -162,10 +162,10 @@ ethnicity,Hispanic or Latino,Participant self-identifies as Hispanic or Latino o
 ethnicity,Not Hispanic or Latino,Participant self-identifies as not Hispanic or Latino origin.
 ethnicity,Did not disclose,Participant chose not to disclose ethnicity.
 ethnicity,Unknown,Ethnicity is not known or not recorded.
-collectionModailty,Digital,"Data were collected using a digital system (e.g., web/app, electronic form, device, sensor)."
-collectionModailty,Paper-based,Data were collected on paper forms intended for later entry or scoring.
-collectionModailty,In-person (non-digital),"Data were collected in person without a digital capture system (e.g., clinical observation or interview scored offline)."
-collectionModailty,Mixed,"Data were collected using a combination of modes (e.g., some paper-based and some digital)."
+collectionModality,Digital,"Data were collected using a digital system (e.g., web/app, electronic form, device, sensor)."
+collectionModality,Paper-based,Data were collected on paper forms intended for later entry or scoring.
+collectionModality,In-person (non-digital),"Data were collected in person without a digital capture system (e.g., clinical observation or interview scored offline)."
+collectionModality,Mixed,"Data were collected using a combination of modes (e.g., some paper-based and some digital)."
 generation,F0,Original enrolled participant(s) forming the initial cohort generation.
 generation,F1,First generation descendants of the original participant(s).
 generation,F2,Second generation descendants of the original participant(s).
@@ -409,3 +409,650 @@ selectionIntensity,Broad,Eligibility criteria are broadly inclusive with minimal
 selectionIntensity,Moderate,Eligibility criteria include multiple restrictions but remain relatively general and not highly specialized.
 selectionIntensity,Highly Selective,"Eligibility criteria are stringent or specialized, substantially narrowing eligible participants."
 selectionIntensity,Unknown,Overall restrictiveness of eligibility criteria is not known or not recorded.
+appPlatform,Multiple,Multiple platforms or apps were used.
+appPlatform,Varies,The platform/app used varied across participants or sessions.
+appPlatform,Unknown,The platform/app used is not known or not recorded.
+burstFrequency,One-time,A single burst is administered (no recurring bursts).
+burstFrequency,Weekly,Bursts are scheduled approximately every week.
+burstFrequency,Monthly,Bursts are scheduled approximately every month.
+burstFrequency,Quarterly,Bursts are scheduled approximately every three months.
+burstFrequency,Semiannual,Bursts are scheduled approximately every six months.
+burstFrequency,Annual,Bursts are scheduled approximately every year.
+burstFrequency,Irregular,Bursts occur on an irregular or event-driven schedule.
+burstFrequency,Unknown,The frequency of bursts is not known or not recorded.
+burstLength,days,Burst duration is expressed in days.
+burstLength,weeks,Burst duration is expressed in weeks.
+burstLength,months,Burst duration is expressed in months.
+burstLength,Unknown,The unit/length of the burst period is not known or not recorded.
+externallyRequestable,Yes,The data are available for external request.
+externallyRequestable,No,The data are not available for external request.
+externallyRequestable,Restricted (subset only),Only a subset of the data is available for external request.
+externallyRequestable,Unknown,External requestability is not known or not recorded.
+followUpInterval,days,Follow-up interval is expressed in days.
+followUpInterval,weeks,Follow-up interval is expressed in weeks.
+followUpInterval,months,Follow-up interval is expressed in months.
+followUpInterval,years,Follow-up interval is expressed in years.
+followUpInterval,Unknown,The follow-up interval unit is not known or not recorded.
+followUpYear,minYears,Minimum number of years since original cohort enrollment for which data are available.
+followUpYear,maxYears,Maximum number of years since original cohort enrollment for which data are available.
+followUpYear,years,Specific years (or list of years) since original cohort enrollment for which data are available.
+hasObservationTimestamp,Yes,Individual observations include a date or timestamp of data collection.
+hasObservationTimestamp,No,Individual observations do not include a date or timestamp.
+hasObservationTimestamp,Partial,Some observations include a date/timestamp; others do not.
+hasObservationTimestamp,Unknown,Whether observations include a timestamp is not known or not recorded.
+isValidatedMeasure,Yes,The measure or instrument has been previously validated.
+isValidatedMeasure,No,The measure or instrument has not been validated.
+isValidatedMeasure,Partially validated,Some aspects of the measure have been validated; full validation is incomplete.
+isValidatedMeasure,Unknown,Validation status is not known or not recorded.
+manufacturerModel,Multiple,Multiple device makes/models were used.
+manufacturerModel,Varies,The device make/model varied across participants or sessions.
+manufacturerModel,Unknown,The device make/model is not known or not recorded.
+operatingSystem,Multiple,Multiple operating systems / versions were used.
+operatingSystem,Varies,The operating system / version varied across participants or sessions.
+operatingSystem,Unknown,The operating system / version is not known or not recorded.
+promptFrequency,Multiple,Multiple prompt-frequency schedules were used.
+promptFrequency,Varies,Prompt frequency varied across participants or sessions.
+promptFrequency,Unknown,Prompt frequency is not known or not recorded.
+promptingScheduleType,Multiple,Multiple prompting-schedule types were used.
+promptingScheduleType,Varies,Prompting-schedule type varied across participants or sessions.
+promptingScheduleType,Unknown,Prompting-schedule type is not known or not recorded.
+responseWindowMinutes,Multiple,Multiple response-window lengths were used.
+responseWindowMinutes,Varies,Response-window length varied across participants or sessions.
+responseWindowMinutes,Unknown,Response-window length is not known or not recorded.
+rollingEnrollment,Yes,Participant enrollment occurs continuously over time.
+rollingEnrollment,No,Participant enrollment occurs within a fixed recruitment window.
+rollingEnrollment,Mixed,Some cohorts/arms used rolling enrollment; others did not.
+rollingEnrollment,Unknown,Whether enrollment was rolling is not known or not recorded.
+sensors,Multiple,"Multiple sensors (e.g., GPS + accelerometer) were enabled."
+sensors,Varies,The set of sensors enabled varied across participants or sessions.
+sensors,Unknown,The set of sensors enabled is not known or not recorded.
+variableLevel,Item,A single survey/instrument item or question.
+variableLevel,Subscale,A subscale that aggregates multiple related items.
+variableLevel,Scale,A scale spanning the full instrument or set of subscales.
+variableLevel,Total Score,A total score derived across the entire instrument.
+variableLevel,Instrument,A variable that represents the instrument as a whole.
+variableLevel,Derived Variable,A variable computed/derived from underlying items or scores.
+measureType,Physiological data,"A measure derived from physiological signals (e.g., heart rate, blood pressure, ECG, EEG)."
+measureType,Self-report,"A measure based on participant self-report (e.g., diaries, brief checklists), distinct from formal questionnaires."
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+appPlatform,Multiple,Multiple platforms or apps were used.
+appPlatform,Varies,The platform/app used varied across participants or sessions.
+appPlatform,Unknown,The platform/app used is not known or not recorded.
+burstFrequency,One-time,A single burst is administered (no recurring bursts).
+burstFrequency,Weekly,Bursts are scheduled approximately every week.
+burstFrequency,Monthly,Bursts are scheduled approximately every month.
+burstFrequency,Quarterly,Bursts are scheduled approximately every three months.
+burstFrequency,Semiannual,Bursts are scheduled approximately every six months.
+burstFrequency,Annual,Bursts are scheduled approximately every year.
+burstFrequency,Irregular,Bursts occur on an irregular or event-driven schedule.
+burstFrequency,Unknown,The frequency of bursts is not known or not recorded.
+burstLength,days,Burst duration is expressed in days.
+burstLength,weeks,Burst duration is expressed in weeks.
+burstLength,months,Burst duration is expressed in months.
+burstLength,Unknown,The unit/length of the burst period is not known or not recorded.
+externallyRequestable,Yes,The data are available for external request.
+externallyRequestable,No,The data are not available for external request.
+externallyRequestable,Restricted (subset only),Only a subset of the data is available for external request.
+externallyRequestable,Unknown,External requestability is not known or not recorded.
+followUpInterval,days,Follow-up interval is expressed in days.
+followUpInterval,weeks,Follow-up interval is expressed in weeks.
+followUpInterval,months,Follow-up interval is expressed in months.
+followUpInterval,years,Follow-up interval is expressed in years.
+followUpInterval,Unknown,The follow-up interval unit is not known or not recorded.
+followUpYear,minYears,Minimum number of years since original cohort enrollment for which data are available.
+followUpYear,maxYears,Maximum number of years since original cohort enrollment for which data are available.
+followUpYear,years,Specific years (or list of years) since original cohort enrollment for which data are available.
+hasObservationTimestamp,Yes,Individual observations include a date or timestamp of data collection.
+hasObservationTimestamp,No,Individual observations do not include a date or timestamp.
+hasObservationTimestamp,Partial,Some observations include a date/timestamp; others do not.
+hasObservationTimestamp,Unknown,Whether observations include a timestamp is not known or not recorded.
+isValidatedMeasure,Yes,The measure or instrument has been previously validated.
+isValidatedMeasure,No,The measure or instrument has not been validated.
+isValidatedMeasure,Partially validated,Some aspects of the measure have been validated; full validation is incomplete.
+isValidatedMeasure,Unknown,Validation status is not known or not recorded.
+manufacturerModel,Multiple,Multiple device makes/models were used.
+manufacturerModel,Varies,The device make/model varied across participants or sessions.
+manufacturerModel,Unknown,The device make/model is not known or not recorded.
+operatingSystem,Multiple,Multiple operating systems / versions were used.
+operatingSystem,Varies,The operating system / version varied across participants or sessions.
+operatingSystem,Unknown,The operating system / version is not known or not recorded.
+promptFrequency,Multiple,Multiple prompt-frequency schedules were used.
+promptFrequency,Varies,Prompt frequency varied across participants or sessions.
+promptFrequency,Unknown,Prompt frequency is not known or not recorded.
+promptingScheduleType,Multiple,Multiple prompting-schedule types were used.
+promptingScheduleType,Varies,Prompting-schedule type varied across participants or sessions.
+promptingScheduleType,Unknown,Prompting-schedule type is not known or not recorded.
+responseWindowMinutes,Multiple,Multiple response-window lengths were used.
+responseWindowMinutes,Varies,Response-window length varied across participants or sessions.
+responseWindowMinutes,Unknown,Response-window length is not known or not recorded.
+rollingEnrollment,Yes,Participant enrollment occurs continuously over time.
+rollingEnrollment,No,Participant enrollment occurs within a fixed recruitment window.
+rollingEnrollment,Mixed,Some cohorts/arms used rolling enrollment; others did not.
+rollingEnrollment,Unknown,Whether enrollment was rolling is not known or not recorded.
+sensors,Multiple,"Multiple sensors (e.g., GPS + accelerometer) were enabled."
+sensors,Varies,The set of sensors enabled varied across participants or sessions.
+sensors,Unknown,The set of sensors enabled is not known or not recorded.
+variableLevel,Item,A single survey/instrument item or question.
+variableLevel,Subscale,A subscale that aggregates multiple related items.
+variableLevel,Scale,A scale spanning the full instrument or set of subscales.
+variableLevel,Total Score,A total score derived across the entire instrument.
+variableLevel,Instrument,A variable that represents the instrument as a whole.
+variableLevel,Derived Variable,A variable computed/derived from underlying items or scores.
+measureType,Physiological data,"A measure derived from physiological signals (e.g., heart rate, blood pressure, ECG, EEG)."
+measureType,Self-report,"A measure based on participant self-report (e.g., diaries, brief checklists), distinct from formal questionnaires."
