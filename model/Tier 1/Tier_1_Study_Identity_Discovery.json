@@ -1,0 +1,223 @@
+{
+  "tier": 1,
+  "id": "tier_1",
+  "name": "Study Identity & Discovery",
+  "required": true,
+  "purpose": "Make the study discoverable and uniquely identifiable; provide the minimum context needed to understand “what this is” and relate it to other studies/collections.",
+  "effort": "Low (usually already known; low sensitivity)",
+  "field_count": 21,
+  "fields": [
+    {
+      "name": "studyID",
+      "column": "A",
+      "description": "The stable, unique identifier for a study that never changes, even if other study metadata changes (like the study name, short name, owner, or project). Example: STUDY_SCA",
+      "example": "STUDY001",
+      "data_type": "text",
+      "has_dropdown": false
+    },
+    {
+      "name": "studyName",
+      "column": "B",
+      "description": "Name of the study",
+      "example": "Healthy Aging Longitudinal Study",
+      "data_type": "text",
+      "has_dropdown": false
+    },
+    {
+      "name": "studyProjectIdentifier",
+      "column": "C",
+      "description": "The Synapse Project identifier (synID) with which this Study is related.",
+      "example": "syn6543210",
+      "data_type": "text",
+      "has_dropdown": false
+    },
+    {
+      "name": "studyKey",
+      "column": "D",
+      "description": "The short acronym for a project the study is associated with.",
+      "example": "HALS",
+      "data_type": "text",
+      "has_dropdown": false
+    },
+    {
+      "name": "studyDescription",
+      "column": "E",
+      "description": "The synID of the wiki that contains the study description.Description of the study, including the types of experimental assays, model systems, types of analysis, description of cohort, associated vulnerable populations, special categories of data, rare diseases, etc. Maps to DUOplus2.",
+      "example": "Longitudinal observational study of aging, cognition, and cardiovascular health among U.S. adults aged 50 and older.",
+      "data_type": "text",
+      "has_dropdown": false
+    },
+    {
+      "name": "studyAbstract",
+      "column": "F",
+      "description": "The short study description/abstract used to describe the study that is visible on the Portal study card.",
+      "example": "A multi-site longitudinal cohort study following adults over 10 years to evaluate trajectories of healthy aging and chronic disease risk.",
+      "data_type": "text",
+      "has_dropdown": false
+    },
+    {
+      "name": "studyMetadata",
+      "column": "G",
+      "description": "The wiki from the CLASSIC Portal - backend that describes study metadata files",
+      "example": "syn6543211",
+      "data_type": "text",
+      "has_dropdown": false
+    },
+    {
+      "name": "grantNumber",
+      "column": "H",
+      "description": "Grant number including activity code, institute code, and serial number (e.g. U01MH103392)",
+      "example": "U01AG012345",
+      "data_type": "text",
+      "has_dropdown": false
+    },
+    {
+      "name": "principalInvestigator",
+      "column": "I",
+      "description": "Name(s) of PI",
+      "example": "Jane Smith, MD, PhD",
+      "data_type": "text",
+      "has_dropdown": false
+    },
+    {
+      "name": "principalInvestigatorRoles",
+      "column": "J",
+      "description": "Distinguishes original vs current vs co-PI",
+      "example": "Current PI",
+      "data_type": "enum",
+      "has_dropdown": true,
+      "valid_values": [
+        {
+          "value": "Original PI",
+          "definition": "The principal investigator who initially established or led the study at its start."
+        },
+        {
+          "value": "Current PI",
+          "definition": "The principal investigator currently responsible for the study’s scientific leadership."
+        },
+        {
+          "value": "Co-PI",
+          "definition": "An individual who shares principal investigator responsibilities with another PI."
+        },
+        {
+          "value": "Acting PI",
+          "definition": "A temporary or interim principal investigator responsible during a transition period."
+        },
+        {
+          "value": "Multiple",
+          "definition": "More than one PI role applies or multiple PI roles are represented but not specified."
+        },
+        {
+          "value": "Unknown",
+          "definition": "The PI role is not known or not recorded."
+        }
+      ]
+    },
+    {
+      "name": "principalInvestigatorContact",
+      "column": "K",
+      "description": "Email of (each) PI",
+      "example": "jane.smith@example.edu",
+      "data_type": "text",
+      "has_dropdown": false
+    },
+    {
+      "name": "institution",
+      "column": "L",
+      "description": "Institution conducting study",
+      "example": "Example University Medical Center",
+      "data_type": "text",
+      "has_dropdown": false
+    },
+    {
+      "name": "dataType",
+      "column": "M",
+      "description": "Types of input/output data in bioinformatics pipelines",
+      "example": "Clinical",
+      "data_type": "text",
+      "has_dropdown": false
+    },
+    {
+      "name": "dataSubtype",
+      "column": "N",
+      "description": "Further qualification of dataType, which may be used to indicate the state of processing of the data, aggregation of the data, or presence of metadata.",
+      "example": "Longitudinal Cohort",
+      "data_type": "text",
+      "has_dropdown": false
+    },
+    {
+      "name": "metadataType",
+      "column": "O",
+      "description": "For files of dataSubtype: metadata, a description of the type of metadata in the file.",
+      "example": "Study Metadata",
+      "data_type": "text",
+      "has_dropdown": false
+    },
+    {
+      "name": "metadataFileID",
+      "column": "P",
+      "description": "Identifies a specific metadata artifact or file (i.e, a particular \"measures.tsv\" version, etc. If the file is uploaded to Synapse, this will be the Synapse file entity ID. Examples: syn99887766 (or FILE_STUDY_SCA_measures_v2)",
+      "example": "syn6543222",
+      "data_type": "text",
+      "has_dropdown": false
+    },
+    {
+      "name": "metadataCoverageScope",
+      "column": "Q",
+      "description": "Indicates whether the archived metadata describes all data collected in the study or only the data types made available for external access.",
+      "example": "Exhaustive (Collected)",
+      "data_type": "enum",
+      "has_dropdown": true,
+      "valid_values": [
+        {
+          "value": "Exhaustive (Collected)",
+          "definition": "Metadata aims to cover all data types collected for the study, including those not available for external sharing."
+        },
+        {
+          "value": "Shareable-only",
+          "definition": "Metadata includes only data types that are available for external access requests."
+        },
+        {
+          "value": "Mixed/Partial",
+          "definition": "Metadata covers some collected data types beyond those shareable, but is not intended to be exhaustive."
+        },
+        {
+          "value": "Unknown Scope",
+          "definition": "Scope is not known or not specified."
+        }
+      ]
+    },
+    {
+      "name": "metadataCoverageNotes",
+      "column": "R",
+      "description": "Free-text clarification of what is included/excluded in the metadata record and why (e.g., “some measures collected but not shareable due to licensing”).",
+      "example": "Metadata applies to the full study",
+      "data_type": "text",
+      "has_dropdown": false
+    },
+    {
+      "name": "cohortID",
+      "column": "S",
+      "description": "Unique identifier for the cohort",
+      "example": "COH-001",
+      "data_type": "text",
+      "has_dropdown": false
+    },
+    {
+      "name": "cohortName",
+      "column": "T",
+      "description": "Name of cohort",
+      "example": "Full Sample",
+      "data_type": "text",
+      "has_dropdown": false
+    },
+    {
+      "name": "longitudinalStudyID",
+      "column": "U",
+      "description": "Linked longitudinal study identifier",
+      "example": "LS-001",
+      "data_type": "text",
+      "has_dropdown": false
+    }
+  ]
+}
