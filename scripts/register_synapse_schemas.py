@@ -42,8 +42,8 @@ SEMVER_RE = re.compile(r"^\s*v?(\d+)\.(\d+)\.(\d+)\s*$")
 def schema_name_from_id(schema_id: str) -> str:
     """Extract the Synapse schema name from a registered ``$id``.
 
-    e.g. ".../registered/org.synapse.classic-tier1-study-identity-discovery"
-         -> "tier1-study-identity-discovery"
+    e.g. ".../registered/org.synapse.classic-tier1.studyIdentityDiscovery"
+         -> "tier1.studyIdentityDiscovery"
     """
     marker = f"registered/{ORG}-"
     idx = schema_id.find(marker)
