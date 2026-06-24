@@ -50,6 +50,51 @@ def parse_semver(value):
     return tuple(int(p) for p in m.groups()) if m else None
 
 
+def extract_enum(prop: dict):
+    """Collect allowed values for a property, including any nested in
+    anyOf/oneOf combiners. Returns a de-duplicated list or None."""
+    values = list(prop.get("enum", []) or [])
+    for combiner in ("anyOf", "oneOf", "allOf"):
+        for sub in prop.get(combiner, []) or []:
+            if isinstance(sub, dict):
+                values.extend(sub.get("enum", []) or [])
+    seen, deduped = set(), []
+    for v in values:
+        if v not in seen:
+            seen.add(v)
+            deduped.append(v)
+    return deduped or None
+
+
+def type_label(prop: dict) -> str:
+    """Human-readable type, e.g. 'string' or 'array<string>'."""
+    t = prop.get("type")
+    if t == "array":
+        item_t = (prop.get("items") or {}).get("type", "string")
+        return f"array<{item_t}>"
+    if isinstance(t, list):
+        return " | ".join(t)
+    return t or "string"
+
+
+def build_fields(body: dict):
+    """Flatten a schema's properties into a list the UI can render."""
+    required = set(body.get("required", []))
+    fields = []
+    for pname, prop in (body.get("properties") or {}).items():
+        prop = prop if isinstance(prop, dict) else {}
+        fields.append({
+            "name": pname,
+            "type": type_label(prop),
+            "required": pname in required,
+            "description": prop.get("description", "") or "",
+            "enum": extract_enum(prop),
+        })
+    # Required fields first, then alphabetical, so the important ones lead.
+    fields.sort(key=lambda f: (not f["required"], f["name"].lower()))
+    return fields
+
+
 def read_local_schemas():
     """Return {schema_name: {...}} from the local .schema.json files."""
     out = {}
@@ -68,6 +113,7 @@ def read_local_schemas():
             "uri": f"{ORG}-{name}",
             "properties": len(body.get("properties", {})),
             "required": body.get("required", []),
+            "fields": build_fields(body),
             "source": rel,
             "source_url": f"https://github.com/{REPO}/blob/{BRANCH}/{rel_url}",
             "raw_url": f"https://raw.githubusercontent.com/{REPO}/{BRANCH}/{rel_url}",
