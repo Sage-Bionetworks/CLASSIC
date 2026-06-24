@@ -6,7 +6,7 @@
 <title>CLASSIC · Index of Data Models</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
   :root {
     --bg: #f6f8fb;
@@ -24,13 +24,13 @@
   * { box-sizing: border-box; }
   body {
     margin: 0;
-    font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    font-family: "DM Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
     background: var(--bg);
     color: var(--ink);
     line-height: 1.45;
   }
   .wrap { max-width: 1120px; margin: 0 auto; padding: 40px 24px 80px; }
-  header h1 { font-size: 1.9rem; font-weight: 800; margin: 0 0 6px; letter-spacing: -0.02em; }
+  header h1 { font-size: 1.9rem; font-weight: 700; margin: 0 0 6px; letter-spacing: -0.02em; }
   header p { margin: 0; color: var(--muted); max-width: 70ch; }
   .badges { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 28px; }
   .badge {
@@ -85,9 +85,44 @@
   .state.err { color: #b42318; }
   footer { margin-top: 22px; color: var(--muted); font-size: 0.8rem; }
   footer .mono { font-size: 0.78rem; }
+  tbody tr.row { cursor: pointer; }
+  tbody tr.row:hover .title { color: var(--accent); }
+  /* Detail modal */
+  .overlay {
+    position: fixed; inset: 0; background: rgba(15,27,45,0.45);
+    display: none; align-items: flex-start; justify-content: center;
+    padding: 40px 16px; overflow-y: auto; z-index: 50;
+  }
+  .overlay.open { display: flex; }
+  .modal {
+    background: var(--card); border-radius: 14px; width: min(920px, 100%);
+    box-shadow: 0 24px 60px rgba(15,27,45,0.28); overflow: hidden;
+  }
+  .modal-head { padding: 20px 24px; border-bottom: 1px solid var(--line); display: flex; align-items: flex-start; gap: 16px; }
+  .modal-head h2 { margin: 0 0 4px; font-size: 1.25rem; letter-spacing: -0.01em; }
+  .modal-sub { color: var(--muted); font-size: 0.85rem; }
+  .modal-meta { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+  .close { margin-left: auto; border: none; background: #f0f2f5; color: var(--ink);
+    width: 32px; height: 32px; border-radius: 8px; cursor: pointer; font-size: 1rem; line-height: 1; flex: none; }
+  .close:hover { background: #e3e9f1; }
+  .modal-body { max-height: 64vh; overflow-y: auto; }
+  .fields { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .fields th { position: sticky; top: 0; background: #fbfcfe; z-index: 1;
+    text-align: left; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); font-weight: 700; }
+  .fields td, .fields th { padding: 11px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .fields tr:last-child td { border-bottom: none; }
+  .fields td.fname { font-family: var(--mono); font-weight: 500; white-space: nowrap; }
+  .req-badge { font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+  .req-badge.yes { background: #fde8e8; color: #b42318; }
+  .req-badge.no { background: #eef1f6; color: var(--muted); }
+  .vals { display: flex; flex-wrap: wrap; gap: 4px; max-width: 42ch; }
+  .chip { font-family: var(--mono); font-size: 0.72rem; background: var(--accent-soft); color: var(--accent); padding: 1px 7px; border-radius: 5px; }
+  .vals .free { color: var(--muted); font-style: italic; }
+  .fdesc { color: var(--muted); max-width: 40ch; }
   @media (max-width: 720px) {
     .desc { display: none; }
     .col-props { display: none; }
+    .fields td.fdesc { display: none; }
   }
 </style>
 </head>
@@ -129,6 +164,33 @@
   <footer id="footer"></footer>
 </div>
 
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <h2 id="modalTitle"></h2>
+        <div class="modal-sub" id="modalSub"></div>
+        <div class="modal-meta" id="modalMeta"></div>
+      </div>
+      <button class="close" id="modalClose" aria-label="Close details">✕</button>
+    </div>
+    <div class="modal-body">
+      <table class="fields">
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Type</th>
+            <th>Required</th>
+            <th>Allowed values</th>
+            <th>Definition</th>
+          </tr>
+        </thead>
+        <tbody id="modalFields"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
 <script>
 (function () {
   var state = document.getElementById("state");
@@ -138,6 +200,8 @@
   var countEl = document.getElementById("count");
   var badges = document.getElementById("badges");
   var footer = document.getElementById("footer");
+  var overlay = document.getElementById("overlay");
+  var modalClose = document.getElementById("modalClose");
 
   var data = null;
   var rows = [];
@@ -196,7 +260,7 @@
         '<a href="' + esc(r.source_url) + '" target="_blank" rel="noopener">source</a>' +
         '<a href="' + esc(r.raw_url) + '" target="_blank" rel="noopener">raw JSON</a>';
       return (
-        "<tr>" +
+        '<tr class="row" tabindex="0" data-name="' + esc(r.name) + '">' +
         '<td><span class="pill">Tier ' + esc(r.tier) + "</span></td>" +
         '<td><div class="title">' + esc(r.title) + "</div>" +
             '<div class="desc">' + esc(r.description) + "</div></td>" +
@@ -236,6 +300,68 @@
       });
     });
   }
+
+  function valsCell(f) {
+    if (f.enum && f.enum.length) {
+      return '<div class="vals">' +
+        f.enum.map(function (v) { return '<span class="chip">' + esc(v) + "</span>"; }).join("") +
+        "</div>";
+    }
+    return '<span class="vals"><span class="free">free text</span></span>';
+  }
+
+  function openModal(schema) {
+    var fields = schema.fields || [];
+    var reqCount = fields.filter(function (f) { return f.required; }).length;
+
+    document.getElementById("modalTitle").textContent = schema.title;
+    document.getElementById("modalSub").innerHTML = '<span class="mono">' + esc(schema.uri) + "</span>";
+    document.getElementById("modalMeta").innerHTML =
+      '<span class="pill">Tier ' + esc(schema.tier) + "</span>" +
+      (schema.version ? '<span class="pill ver">v' + esc(schema.version) + "</span>" : "") +
+      '<span class="pill">' + fields.length + " properties</span>" +
+      '<span class="pill">' + reqCount + " required</span>";
+
+    document.getElementById("modalFields").innerHTML = fields.map(function (f) {
+      return (
+        "<tr>" +
+        '<td class="fname">' + esc(f.name) + "</td>" +
+        '<td class="mono">' + esc(f.type) + "</td>" +
+        "<td><span class=\"req-badge " + (f.required ? "yes" : "no") + "\">" +
+          (f.required ? "required" : "optional") + "</span></td>" +
+        "<td>" + valsCell(f) + "</td>" +
+        '<td class="fdesc">' + esc(f.description || "") + "</td>" +
+        "</tr>"
+      );
+    }).join("");
+
+    overlay.classList.add("open");
+    document.body.style.overflow = "hidden";
+    modalClose.focus();
+  }
+
+  function closeModal() {
+    overlay.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+
+  function schemaByName(name) {
+    return rows.filter(function (r) { return r.name === name; })[0];
+  }
+
+  tbody.addEventListener("click", function (e) {
+    if (e.target.closest("a")) return; // let source / raw-JSON links work
+    var tr = e.target.closest("tr.row");
+    if (tr) { var s = schemaByName(tr.getAttribute("data-name")); if (s) openModal(s); }
+  });
+  tbody.addEventListener("keydown", function (e) {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    var tr = e.target.closest("tr.row");
+    if (tr) { e.preventDefault(); var s = schemaByName(tr.getAttribute("data-name")); if (s) openModal(s); }
+  });
+  modalClose.addEventListener("click", closeModal);
+  overlay.addEventListener("click", function (e) { if (e.target === overlay) closeModal(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeModal(); });
 
   fetch("./data.json", { cache: "no-store" })
     .then(function (r) {
