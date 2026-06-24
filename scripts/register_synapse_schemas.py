@@ -107,10 +107,7 @@ async def latest_published(schema: JSONSchema, syn: Synapse):
     if latest_version is None:
         return None, None
 
-    try:
-        body = await schema.get_body_async(synapse_client=syn)
-    except Exception:
-        body = None
+    body = await schema.get_body_async(synapse_client=syn)
     return latest_version, body
 
 
