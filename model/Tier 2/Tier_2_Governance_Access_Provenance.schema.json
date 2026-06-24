@@ -1,0 +1,239 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://repo-prod.prod.sagebase.org/repo/v1/schema/type/registered/org.synapse.classic-tier2.governanceAccessProvenance",
+  "type": "object",
+  "title": "Governance, Access & Provenance",
+  "description": "Let users understand whether and how the dataset can be accessed and reused (policy + operational access steps), without needing back-and-forth.",
+  "properties": {
+    "studyID": {
+      "type": "string",
+      "title": "studyID",
+      "description": "The stable, unique identifier for a study that never changes, even if other study metadata changes (like the study name, short name, owner, or project). Example: STUDY_SCA"
+    },
+    "optional persistent row identifier": {
+      "type": "string",
+      "title": "optional persistent row identifier",
+      "description": "Use studyID as the anchor, plus a persistent row identifier to identify a specific file/version, etc.",
+      "enum": [
+        "measureID",
+        "metadataFileID",
+        "cohortID",
+        "longitudinalStudyID",
+        "participantID",
+        "studyWaveID",
+        "studyPeriodID",
+        "studyArmID",
+        "studyComponentID"
+      ]
+    },
+    "optional persistent row identifier  - value": {
+      "type": "string",
+      "title": "optional persistent row identifier  - value",
+      "description": "Enter a unique identifier for the selection made."
+    },
+    "appliesTo": {
+      "type": "string",
+      "title": "appliesTo",
+      "description": "Indicates the level of entity to which a metadata value applies (e.g., individual participant or population summary).",
+      "enum": [
+        "participant",
+        "cohort"
+      ]
+    },
+    "aggregationLevel": {
+      "type": "string",
+      "title": "aggregationLevel",
+      "description": "Specifies whether a metadata value represents individual-level data or an aggregate summary",
+      "enum": [
+        "individual",
+        "summary"
+      ]
+    },
+    "populationScope": {
+      "type": "string",
+      "title": "populationScope",
+      "description": "Identifies the population described by the metadata (e.g., study-wide, cohort, or study arm).",
+      "enum": [
+        "study",
+        "arm",
+        "cohort"
+      ]
+    },
+    "externallyRequestable": {
+      "type": "string",
+      "title": "externallyRequestable",
+      "description": "Availability indicator to request the data.",
+      "enum": [
+        "Yes",
+        "No",
+        "Restricted (subset only)",
+        "Unknown"
+      ]
+    },
+    "irbApprovalNumber": {
+      "type": "string",
+      "title": "irbApprovalNumber",
+      "description": "The identifier assigned by the IRB for an approved or reviewed study, if applicable."
+    },
+    "irbStatus": {
+      "type": "string",
+      "title": "irbStatus",
+      "description": "The regulatory determination of IRB oversight for the study.",
+      "enum": [
+        "Approved",
+        "Exempt",
+        "Waived",
+        "Not Required",
+        "Pending",
+        "Unknown"
+      ]
+    },
+    "irbInstitution": {
+      "type": "string",
+      "title": "irbInstitution",
+      "description": "The institution or ethics committee responsible for IRB review or determination."
+    },
+    "irbExemptionType": {
+      "type": "string",
+      "title": "irbExemptionType",
+      "description": "The regulatory exemption category under which the study was determined to be exempt from IRB review.",
+      "enum": [
+        "Exemption Category 1",
+        "Exemption Category 2",
+        "Exemption Category 3",
+        "Exemption Category 4",
+        "Exemption Category 5",
+        "Exemption Category 6",
+        "Other Exemption",
+        "Unknown"
+      ]
+    },
+    "irbApprovalDescription": {
+      "type": "string",
+      "title": "irbApprovalDescription",
+      "description": "Free-text description providing additional context about IRB approval, exemption, or oversight."
+    },
+    "irbScope": {
+      "type": "string",
+      "title": "irbScope",
+      "description": "Scope of IRB in relation to the study.",
+      "enum": [
+        "Primary study",
+        "Secondary analysis",
+        "Site-specific",
+        "Data reuse",
+        "Other",
+        "Unknown"
+      ]
+    },
+    "consentType": {
+      "type": "string",
+      "title": "consentType",
+      "description": "Consent type (broad, tiered, etc.)",
+      "enum": [
+        "Broad",
+        "Tiered",
+        "Specific",
+        "No Consent for Sharing",
+        "Unknown"
+      ]
+    },
+    "deidentificationMethod": {
+      "type": "string",
+      "title": "deidentificationMethod",
+      "description": "De-ID method applied",
+      "enum": [
+        "HIPAA Safe Harbor",
+        "Expert Determination",
+        "Pseudonymized",
+        "Anonymized",
+        "Limited Dataset",
+        "Unknown"
+      ]
+    },
+    "accessRestrictions": {
+      "type": "string",
+      "title": "accessRestrictions",
+      "description": "Access level (ex., open, controlled, embargoed)",
+      "enum": [
+        "General Research Use",
+        "Disease-Specific Research",
+        "Health/Medical/Biomedical Research",
+        "Population Origins/Ancestry",
+        "Research Prohibited",
+        "No Commercial Use",
+        "No Methods Development",
+        "No Secondary Use",
+        "Ethics Approval Required",
+        "Other"
+      ]
+    },
+    "dataUseConditions": {
+      "type": "string",
+      "title": "dataUseConditions",
+      "description": "Data use conditions"
+    },
+    "accessProcedure": {
+      "type": "string",
+      "title": "accessProcedure",
+      "description": "Brief description of the steps required to request and obtain access to the dataset."
+    },
+    "accessRequestURL": {
+      "type": "string",
+      "title": "accessRequestURL",
+      "description": "URL to the access request page/portal or repository instructions for obtaining access."
+    },
+    "dataLocation": {
+      "type": "string",
+      "title": "dataLocation",
+      "description": "Where the dataset is hosted or distributed (e.g., Synapse project, NIMH/NDAR collection, dbGaP).",
+      "enum": [
+        "Synapse",
+        "NIMH Data Archive (NDA)",
+        "dbGaP",
+        "Zenodo",
+        "OSF",
+        "Institutional Repository",
+        "Other",
+        "Unknown"
+      ]
+    },
+    "accessContact": {
+      "type": "string",
+      "title": "accessContact",
+      "description": "Point of contact (team, email alias, or role) for access questions."
+    },
+    "accessReviewBody": {
+      "type": "string",
+      "title": "accessReviewBody",
+      "description": "The entity that reviews/approves access requests (e.g., DAC, IRB, sponsor).",
+      "enum": [
+        "Data Access Committee (DAC)",
+        "IRB/Ethics Committee",
+        "Repository-controlled",
+        "PI approval",
+        "Other",
+        "Unknown"
+      ]
+    },
+    "accessRequirements": {
+      "type": "string",
+      "title": "accessRequirements",
+      "description": "Checklist of materials required for access (e.g., DUA, IRB letter, training).",
+      "enum": [
+        "DUA required",
+        "IRB approval required",
+        "Ethics exemption accepted",
+        "Data security plan required",
+        "Institutional signature training",
+        "Human subjects training required",
+        "Account/ID required",
+        "Other",
+        "Unknown"
+      ]
+    }
+  },
+  "required": [
+    "studyID"
+  ]
+}

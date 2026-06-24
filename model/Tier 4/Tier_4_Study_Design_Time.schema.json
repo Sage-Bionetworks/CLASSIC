@@ -1,0 +1,321 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://repo-prod.prod.sagebase.org/repo/v1/schema/type/registered/org.synapse.classic-tier4.studyDesignTime",
+  "type": "object",
+  "title": "Study Design & Time",
+  "description": "Describe when and how often data were collected (longitudinal structure, bursts, waves, follow-up intervals, timestamp availability). This is key for interpretation and longitudinal/APC use cases.",
+  "properties": {
+    "studyID": {
+      "type": "string",
+      "title": "studyID",
+      "description": "The stable, unique identifier for a study that never changes, even if other study metadata changes (like the study name, short name, owner, or project). Example: STUDY_SCA"
+    },
+    "optional persistent row identifier": {
+      "type": "string",
+      "title": "optional persistent row identifier",
+      "description": "Use studyID as the anchor, plus a persistent row identifier to identify a specific file/version, etc.",
+      "enum": [
+        "measureID",
+        "metadataFileID",
+        "cohortID",
+        "longitudinalStudyID",
+        "participantID",
+        "studyWaveID",
+        "studyPeriodID",
+        "studyArmID",
+        "studyComponentID"
+      ]
+    },
+    "optional persistent row identifier  - value": {
+      "type": "string",
+      "title": "optional persistent row identifier  - value",
+      "description": "Enter a unique identifier for the selection made."
+    },
+    "appliesTo": {
+      "type": "string",
+      "title": "appliesTo",
+      "description": "Indicates the level of entity to which a metadata value applies (e.g., individual participant or population summary).",
+      "enum": [
+        "participant",
+        "cohort"
+      ]
+    },
+    "aggregationLevel": {
+      "type": "string",
+      "title": "aggregationLevel",
+      "description": "Specifies whether a metadata value represents individual-level data or an aggregate summary",
+      "enum": [
+        "individual",
+        "summary"
+      ]
+    },
+    "populationScope": {
+      "type": "string",
+      "title": "populationScope",
+      "description": "Identifies the population described by the metadata (e.g., study-wide, cohort, or study arm).",
+      "enum": [
+        "study",
+        "arm",
+        "cohort"
+      ]
+    },
+    "temporalCoverage": {
+      "type": "string",
+      "title": "temporalCoverage",
+      "description": "The time period or periods during which data were collected for a study, cohort, or variable, summarized at an aggregate level."
+    },
+    "startYear": {
+      "type": "string",
+      "title": "startYear",
+      "description": "Earliest calendar year of data collection"
+    },
+    "endYear": {
+      "type": "string",
+      "title": "endYear",
+      "description": "Latest calendar year of data collection"
+    },
+    "years": {
+      "type": "string",
+      "title": "years",
+      "description": "Explicit list of years, if non-continuous. Four-digit integers (e.g., 2019)"
+    },
+    "seasons": {
+      "type": "string",
+      "title": "seasons",
+      "description": "Seasons during which data were collected",
+      "enum": [
+        "Winter",
+        "Spring",
+        "Summer",
+        "Fall",
+        "Unknown"
+      ]
+    },
+    "temporalCoverageDescription": {
+      "type": "string",
+      "title": "temporalCoverageDescription",
+      "description": "Free-text clarification (optional)"
+    },
+    "enrollmentAge": {
+      "type": "string",
+      "title": "enrollmentAge",
+      "description": "The age or ages of a participant at the time of enrollment or at defined enrollment-related timepoints in a study, including single ages, age ranges, or multiple ages associated with longitudinal or staged enrollment."
+    },
+    "enrollmentTimepoint": {
+      "type": "string",
+      "title": "enrollmentTimepoint",
+      "description": "A named study milestone at which enrollment occurs (e.g., baseline, re-enrollment, extension phase)."
+    },
+    "administrationContext": {
+      "type": "string",
+      "title": "administrationContext",
+      "description": "The physical or situational setting in which a data collection activity or assessment is administered. Describes where data collection occurs, not how, who, or what. Intended for general or summary-level reporting, not per-participant metadata."
+    },
+    "collectionModality": {
+      "type": "string",
+      "title": "collectionModality",
+      "description": "The primary mode by which data were collected for a variable or assessment.",
+      "enum": [
+        "Digital",
+        "Paper-based",
+        "In-person (non-digital)",
+        "Mixed",
+        "Other"
+      ]
+    },
+    "recruitmentWave": {
+      "type": "string",
+      "title": "recruitmentWave",
+      "description": "Enrollment wave (baseline, follow-up, etc.). Identifies the recruitment phase or wave during which participants were enrolled in a study, reflecting distinct enrollment periods defined by study design or operational milestones.",
+      "enum": [
+        "Wave 1",
+        "Wave 2",
+        "Wave 3",
+        "Wave 4+",
+        "Pilot",
+        "Extension",
+        "Multiple",
+        "Unknown"
+      ]
+    },
+    "studyWaves": {
+      "type": "string",
+      "title": "studyWaves",
+      "description": "The recruitment or enrollment wave(s) represented in the study population.",
+      "enum": [
+        "Wave 1",
+        "Wave 2",
+        "Wave 3",
+        "Wave 4+",
+        "Pilot",
+        "Extension",
+        "Multiple",
+        "Unknown"
+      ]
+    },
+    "studyWaveID": {
+      "type": "string",
+      "title": "studyWaveID",
+      "description": "A stable identifier for a defined recruitment wave or enrollment phase within a study. Examples: WAVE:1, WAVE:2, WAVE:PILOT, WAVE:EXTENSION"
+    },
+    "studyPeriodID": {
+      "type": "string",
+      "title": "studyPeriodID",
+      "description": "A stable identifier for a defined time period during which data collection occurred under consistent procedures or conditions. Examples: PERIOD:BASELINE, PERIOD:FOLLOWUP_6MO, PERIOD:COVID_ERA, PERIOD:2020_2021"
+    },
+    "studyArmID": {
+      "type": "string",
+      "title": "studyArmID",
+      "description": "A stable identifier for a defined study arm, group, or condition assignment used to structure participant enrollment, intervention, or comparison. Examples: ARM:CONTROL, ARM:TREATMENT_A, ARM:HIGH_RISK, ARM:CASE, ARM:COMPARATOR"
+    },
+    "studyComponentID": {
+      "type": "string",
+      "title": "studyComponentID",
+      "description": "A stable identifier for a defined component of a study (e.g., wave, arm, period) used to scope metadata summaries."
+    },
+    "studyComponentType": {
+      "type": "string",
+      "title": "studyComponentType",
+      "description": "The category of study subcomponent identified by studyComponentID (e.g., wave, arm, period), used to indicate what kind of study structure the component represents for scoping metadata summaries.",
+      "enum": [
+        "Wave",
+        "Arm",
+        "Period",
+        "Cohort",
+        "Site",
+        "Phase",
+        "Other",
+        "Unknown",
+        "Repeated"
+      ]
+    },
+    "followUpYear": {
+      "type": "string",
+      "title": "followUpYear",
+      "description": "Years since original cohort enrollment. Summarizes the amount of time elapsed since original cohort enrollment for which participant data are available. Values can be in: minYears, maxYears, years."
+    },
+    "followUpYearDescription": {
+      "type": "string",
+      "title": "followUpYearDescription",
+      "description": "Free-text clarification (optional)"
+    },
+    "administrationMode": {
+      "type": "string",
+      "title": "administrationMode",
+      "description": "The manner in which a digital assessment or data collection activity is administered to participants.",
+      "enum": [
+        "Self-administered",
+        "Interviewer-administered",
+        "Clinician-administered",
+        "Assisted",
+        "Mixed Administration",
+        "Other",
+        "Unknown"
+      ]
+    },
+    "promptingScheduleType": {
+      "type": "string",
+      "title": "promptingScheduleType",
+      "description": "EMA schedule type. Valid values: free text, OR Multiple, Varies, Unknown"
+    },
+    "promptFrequency": {
+      "type": "string",
+      "title": "promptFrequency",
+      "description": "Frequency of prompts. Valid values: free text, OR Multiple, Varies, Unknown"
+    },
+    "responseWindowMinutes": {
+      "type": "string",
+      "title": "responseWindowMinutes",
+      "description": "Response window (minutes). Valid values: free text, OR Multiple, Varies, Unknown."
+    },
+    "rollingEnrollment": {
+      "type": "string",
+      "title": "rollingEnrollment",
+      "description": "Indicates whether participant enrollment occurs continuously over time rather than within a fixed recruitment window.",
+      "enum": [
+        "Yes",
+        "No",
+        "Mixed",
+        "Unknown"
+      ]
+    },
+    "studyStartYear": {
+      "type": "string",
+      "title": "studyStartYear",
+      "description": "The calendar year in which study recruitment or data collection began. Use \"Unknown\" if not available."
+    },
+    "burstDesign": {
+      "type": "string",
+      "title": "burstDesign",
+      "description": "A summary description of the study’s burst-based sampling structure (bursts, timing, follow-up cadence, and recruitment waves)."
+    },
+    "numberOfBursts": {
+      "type": "string",
+      "title": "numberOfBursts",
+      "description": "The number of distinct burst periods of intensive measurement scheduled per participant."
+    },
+    "burstLengthValue": {
+      "type": "string",
+      "title": "burstLengthValue",
+      "description": ""
+    },
+    "burstLength": {
+      "type": "string",
+      "title": "burstLength",
+      "description": "The planned duration of each burst period of intensive measurement.",
+      "enum": [
+        "days",
+        "weeks",
+        "months",
+        "Unknown",
+        "probability sampling"
+      ]
+    },
+    "burstFrequency": {
+      "type": "string",
+      "title": "burstFrequency",
+      "description": "The planned frequency at which bursts occur across the study timeline.",
+      "enum": [
+        "One-time",
+        "Weekly",
+        "Monthly",
+        "Quarterly",
+        "Semiannual",
+        "Annual",
+        "Irregular",
+        "Unknown"
+      ]
+    },
+    "followUpIntervalValue": {
+      "type": "string",
+      "title": "followUpIntervalValue",
+      "description": ""
+    },
+    "followUpInterval": {
+      "type": "string",
+      "title": "followUpInterval",
+      "description": "The planned amount of time between participant follow-up assessments, visits, or measurement periods.",
+      "enum": [
+        "days",
+        "weeks",
+        "months",
+        "years",
+        "Unknown"
+      ]
+    },
+    "hasObservationTimestamp": {
+      "type": "string",
+      "title": "hasObservationTimestamp",
+      "description": "Indicates whether individual observations/records include a date or timestamp of data collection.",
+      "enum": [
+        "Yes",
+        "No",
+        "Partial",
+        "Unknown"
+      ]
+    }
+  },
+  "required": [
+    "studyID"
+  ]
+}

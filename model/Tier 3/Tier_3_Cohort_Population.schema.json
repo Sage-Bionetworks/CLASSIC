@@ -1,0 +1,366 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://repo-prod.prod.sagebase.org/repo/v1/schema/type/registered/org.synapse.classic-tier3.cohortPopulation",
+  "type": "object",
+  "title": "Cohort & Population",
+  "description": "Describe who is in the study and how the cohort was defined/ascertained, enough for a user to judge relevance before requesting access.",
+  "properties": {
+    "studyID": {
+      "type": "string",
+      "title": "studyID",
+      "description": "The stable, unique identifier for a study that never changes, even if other study metadata changes (like the study name, short name, owner, or project). Example: STUDY_SCA"
+    },
+    "optional persistent row identifier": {
+      "type": "string",
+      "title": "optional persistent row identifier",
+      "description": "Use studyID as the anchor, plus a persistent row identifier to identify a specific file/version, etc.",
+      "enum": [
+        "measureID",
+        "metadataFileID",
+        "cohortID",
+        "longitudinalStudyID",
+        "participantID",
+        "studyWaveID",
+        "studyPeriodID",
+        "studyArmID",
+        "studyComponentID",
+        "rowID"
+      ]
+    },
+    "optional persistent row identifier  - value": {
+      "type": "string",
+      "title": "optional persistent row identifier  - value",
+      "description": "Enter a unique identifier for the selection made."
+    },
+    "appliesTo": {
+      "type": "string",
+      "title": "appliesTo",
+      "description": "Indicates the level of entity to which a metadata value applies (e.g., individual participant or population summary).",
+      "enum": [
+        "participant",
+        "cohort",
+        "study"
+      ]
+    },
+    "aggregationLevel": {
+      "type": "string",
+      "title": "aggregationLevel",
+      "description": "Specifies whether a metadata value represents individual-level data or an aggregate summary",
+      "enum": [
+        "individual",
+        "summary"
+      ]
+    },
+    "populationScope": {
+      "type": "string",
+      "title": "populationScope",
+      "description": "Identifies the population described by the metadata (e.g., study-wide, cohort, or study arm).",
+      "enum": [
+        "study",
+        "arm",
+        "cohort"
+      ]
+    },
+    "externalParticipantID": {
+      "type": "string",
+      "title": "externalParticipantID",
+      "description": "Other external identifier, if no GUID exists"
+    },
+    "GUID": {
+      "type": "string",
+      "title": "GUID",
+      "description": "Global Unique Identifier: unique across studies and repositories. If a participant has been assigned a global identifier (e.g., NDAR GUID), include it here to support linkage across studies and repositories. Otherwise, leave this field blank."
+    },
+    "diseaseFocus": {
+      "type": "string",
+      "title": "diseaseFocus",
+      "description": "Primary disease or condition focus of the study. A categorical descriptor summarizing participant health status selection and ascertainment context for a study cohort, intended to support discovery and comparison across studies.",
+      "enum": [
+        "Normative/General Population",
+        "At-Risk/Enriched Populations",
+        "Condition-Focused Populations",
+        "Mixed/Comparative Designs",
+        "Registry/Administrative Cohorts",
+        "Other"
+      ]
+    },
+    "primaryHealthFocus": {
+      "type": "string",
+      "title": "primaryHealthFocus",
+      "description": "Why participants were included: these categories describe participant health status at enrollment, not outcomes.",
+      "enum": [
+        "Normative/General Health",
+        "Condition-Focused",
+        "At-Risk/Enriched",
+        "Mixed Comparative",
+        "Other"
+      ]
+    },
+    "ascertainmentContext": {
+      "type": "string",
+      "title": "ascertainmentContext",
+      "description": "Where participants came from: the categories describe sampling context, independent of disease focus",
+      "enum": [
+        "Community-ascertained",
+        "Clinic-ascertained",
+        "Administrative/Registry-Based",
+        "Hybrid",
+        "Other"
+      ]
+    },
+    "selectionIntensity": {
+      "type": "string",
+      "title": "selectionIntensity",
+      "description": "How restrictive enrollment was: the categories describe selection methodology",
+      "enum": [
+        "Broad/Minimally Selective",
+        "Moderately Selective",
+        "Highly Selective",
+        "Other"
+      ]
+    },
+    "populationType": {
+      "type": "string",
+      "title": "populationType",
+      "description": "Broad classification of the population sampled in the study/cohort.",
+      "enum": [
+        "General Population",
+        "Healthy Volunteers",
+        "Patient",
+        "Clinical Population",
+        "At-Risk Population",
+        "Enriched Population",
+        "Caregivers",
+        "Family Members",
+        "Occupational",
+        "Workforce Population",
+        "Military",
+        "Veteran Population",
+        "School-based Population",
+        "Student",
+        "Community Sample",
+        "Other",
+        "Unknown"
+      ]
+    },
+    "populationDescriptor": {
+      "type": "string",
+      "title": "populationDescriptor",
+      "description": "Free-text descriptor capturing key population characteristics not covered by controlled terms (e.g., “male veterans”, “older adults with caregiver support”)."
+    },
+    "ageGroup": {
+      "type": "string",
+      "title": "ageGroup",
+      "description": "Broad age-based population grouping represented in the cohort.",
+      "enum": [
+        "Children (0-12)",
+        "Adolescents (13-17)",
+        "Adults (18-64)",
+        "Older Adults (65+)",
+        "Mixed",
+        "Unknown"
+      ]
+    },
+    "sex": {
+      "type": "string",
+      "title": "sex",
+      "description": "The biological classification of a participant, typically assigned at birth based on physical and genetic characteristics.",
+      "enum": [
+        "Female",
+        "Male",
+        "Intersex",
+        "Unknown",
+        "Not reported"
+      ]
+    },
+    "sexDistribution": {
+      "type": "string",
+      "title": "sexDistribution",
+      "description": "A summary of the proportion or count of participants in a population by sex category."
+    },
+    "sexEligible": {
+      "type": "string",
+      "title": "sexEligible",
+      "description": "Sex eligibility criteria for cohort inclusion (if the study restricts enrollment).",
+      "enum": [
+        "Female only",
+        "Male only",
+        "All sexes eligible",
+        "Not specified",
+        "Unknown"
+      ]
+    },
+    "gender": {
+      "type": "string",
+      "title": "gender",
+      "description": "The socially and culturally constructed identity that describes a person’s self-identified gender, which may or may not correspond to sex assigned at birth and may change over time.",
+      "enum": [
+        "Woman",
+        "Man",
+        "Non-binary",
+        "Another gender identity",
+        "Did not disclose",
+        "Unknown"
+      ]
+    },
+    "genderDistribution": {
+      "type": "string",
+      "title": "genderDistribution",
+      "description": "A summary of the proportion or count of participants in a population by self-identified gender."
+    },
+    "race": {
+      "type": "string",
+      "title": "race",
+      "description": "Self-reported race/ethnicity. A socially defined classification that reflects a participant’s self-identified racial group(s), based on shared social, historical, or cultural experiences, and not biological or genetic differences.",
+      "enum": [
+        "American Indian or Alaska Native",
+        "Asian",
+        "Black or African American",
+        "Native Hawaiian or Other Pacific Islander",
+        "White",
+        "Other race",
+        "Did not disclose",
+        "Unknown"
+      ]
+    },
+    "raceDistribution": {
+      "type": "string",
+      "title": "raceDistribution",
+      "description": "A summary of the proportion or count of participants in a population by self-identified race category or categories."
+    },
+    "ethnicity": {
+      "type": "string",
+      "title": "ethnicity",
+      "description": "Self-reported race/ethnicity. A self-identified cultural classification that reflects whether a participant identifies as being of Hispanic or Latino origin, independent of race.",
+      "enum": [
+        "Hispanic or Latino",
+        "Not Hispanic or Latino",
+        "Did not disclose",
+        "Other"
+      ]
+    },
+    "ethnicityDistribution": {
+      "type": "string",
+      "title": "ethnicityDistribution",
+      "description": "A summary of the proportion or count of participants in a population by self-identified ethnicity."
+    },
+    "generation": {
+      "type": "string",
+      "title": "generation",
+      "description": "Generation within family cohort (ex., F0=original, F1=child, F2=grandchild). Indicates the generational position of participants within a family-based cohort, relative to the originally enrolled participant(s).",
+      "enum": [
+        "F0",
+        "F1",
+        "F2",
+        "F3+",
+        "Multiple",
+        "Unknown"
+      ]
+    },
+    "relationToOriginal": {
+      "type": "string",
+      "title": "relationToOriginal",
+      "description": "Relationship to original participant (ex., self, child, grandchild, spouse). Describes the familial relationship(s) of participants to the initially enrolled participant(s) in a family-based cohort.",
+      "enum": [
+        "Self",
+        "Child",
+        "Grandchild",
+        "Parent",
+        "Sibling",
+        "Spouse or Partner",
+        "Other Relative",
+        "Multiple",
+        "Unknown"
+      ]
+    },
+    "constructDomain": {
+      "type": "string",
+      "title": "constructDomain",
+      "description": "Domain of measured construct",
+      "enum": [
+        "Depression",
+        "Cognitive",
+        "Neurological & Neurobehavioral",
+        "Neuroimaging",
+        "Physical Health & Lifestyle",
+        "Developmental & Functional",
+        "Environmental & Contextual",
+        "Administrative & Study Design",
+        "Psychiatric Disorder - Mood",
+        "Psychiatric Disorder - Substance Abuse",
+        "Psychiatric Disorder - Anxiety",
+        "Psychiatric Disorder - Hypochondriasis",
+        "Psychiatric Disorder - Anorexia Nervosa",
+        "Psychiatric Disorder - Eating Disorder",
+        "Psychiatric Disorder - Bulimia Nervosa",
+        "Psychiatric Disorder - ADHD",
+        "Psychiatric Disorder - Bereavement",
+        "Psychiatric Disorder",
+        "Other",
+        "Unknown"
+      ]
+    },
+    "eligibilityCriteriaSummary": {
+      "type": "string",
+      "title": "eligibilityCriteriaSummary",
+      "description": "A brief summary of the major inclusion and exclusion criteria that determined who could enroll in the study/cohort."
+    },
+    "eligibilityCriteriaURL": {
+      "type": "string",
+      "title": "eligibilityCriteriaURL",
+      "description": "Link to the protocol, registry record, or document containing full inclusion/exclusion criteria."
+    },
+    "inclusionTags": {
+      "type": "string",
+      "title": "inclusionTags",
+      "description": "High-level inclusion characteristics used to define the enrolled population.",
+      "enum": [
+        "Age-based eligibility",
+        "Sex-based eligibility",
+        "Diagnosis required",
+        "Symptom threshold required",
+        "At-risk/enriched (family history/genetic risk/exposure)",
+        "Treatment/medication status required",
+        "Language/communication requirement",
+        "Geographic/catchment requirement",
+        "Device/smartphone required",
+        "Capacity/consent requirement",
+        "Other",
+        "Unknown"
+      ]
+    },
+    "exclusionTags": {
+      "type": "string",
+      "title": "exclusionTags",
+      "description": "High-level exclusion characteristics used to restrict enrollment.",
+      "enum": [
+        "Major comorbidity excluded",
+        "Psychiatric comorbidity excluded",
+        "Neurological comorbidity excluded",
+        "Substance use excluded",
+        "Cognitive impairment excluded",
+        "Pregnancy excluded",
+        "Sensory/motor limitation excluded",
+        "Contraindicated medication excluded",
+        "Inability to consent excluded",
+        "Noncompliance risk excluded",
+        "Other",
+        "Unknown"
+      ]
+    },
+    "criteriaSelectionIntensity": {
+      "type": "string",
+      "title": "criteriaSelectionIntensity",
+      "description": "Overall restrictiveness of inclusion/exclusion criteria.",
+      "enum": [
+        "Broad",
+        "Moderate",
+        "Highly-Selective",
+        "Unknown"
+      ]
+    }
+  },
+  "required": [
+    "studyID"
+  ]
+}
