@@ -14,6 +14,8 @@ on:
     paths:
       - 'model/**/*.schema.json'
       - 'scripts/register_synapse_schemas.py'
+      - 'scripts/build_pages_index.py'
+      - 'scripts/convert_tiers_to_synapse_schema.py'
       - '.github/workflows/register-synapse-schemas.yml'
   # Allow manual runs from the Actions tab, choosing the bump and/or a dry-run.
   workflow_dispatch:
