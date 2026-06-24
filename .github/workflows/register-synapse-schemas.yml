@@ -35,12 +35,15 @@ jobs:
     name: register-schemas
     runs-on: ubuntu-latest
     permissions:
-      contents: write   # allow committing the refreshed docs/data.json
+      contents: write        # push the index update to a branch
+      pull-requests: write   # open the PR (main is protected, no direct pushes)
     env:
       SYNAPSE_AUTH_TOKEN: ${{ secrets.SYNAPSE_AUTH_TOKEN }}
       # Pushes to main always bump the patch; manual runs can pick major/minor.
       VERSION_BUMP: ${{ github.event_name == 'workflow_dispatch' && inputs.version_bump || 'patch' }}
       DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || '' }}
+      # Branch the refreshed index lands on before being PR'd into main.
+      UPDATE_BRANCH: automated/data-index-${{ github.run_id }}
 
     steps:
       - uses: actions/checkout@v4
@@ -61,15 +64,28 @@ jobs:
         if: ${{ env.DRY_RUN == '' }}
         run: python scripts/build_pages_index.py
 
-      - name: Commit updated index
+      # Branch protection forbids pushing to main directly, so the refreshed
+      # index is committed to a branch and submitted as a pull request.
+      - name: Open PR for updated index
         if: ${{ env.DRY_RUN == '' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+
           git add docs/data.json
           if git diff --cached --quiet; then
             echo "No index changes to commit"
-          else
-            git commit -m "chore: refresh data-model index [skip ci]"
-            git push
+            exit 0
           fi
+
+          git checkout -b "$UPDATE_BRANCH"
+          git commit -m "chore: refresh data-model index"
+          git push origin "$UPDATE_BRANCH"
+
+          gh pr create \
+            --base main \
+            --head "$UPDATE_BRANCH" \
+            --title "chore: refresh data-model index" \
+            --body "Automated refresh of \`docs/data.json\` from the latest Synapse schema registration."
