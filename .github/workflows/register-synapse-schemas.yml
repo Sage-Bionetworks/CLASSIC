@@ -1,0 +1,75 @@
+# Registers the CLASSIC tier JSON Schemas to Synapse and publishes a new
+# version whenever schema changes land on `main` (i.e. when a branch is merged).
+#
+# Requires a repository secret `SYNAPSE_AUTH_TOKEN` containing a Synapse personal
+# access token with permission to create schemas in the `org.synapse.classic`
+# organization.
+
+name: Register Synapse Schemas
+
+on:
+  push:
+    branches: [main]
+    # Only run when a registrable schema actually changes.
+    paths:
+      - 'model/**/*.schema.json'
+      - 'scripts/register_synapse_schemas.py'
+      - 'scripts/build_pages_index.py'
+      - 'scripts/convert_tiers_to_synapse_schema.py'
+      - '.github/workflows/register-synapse-schemas.yml'
+  # Allow manual runs from the Actions tab, choosing the bump and/or a dry-run.
+  workflow_dispatch:
+    inputs:
+      version_bump:
+        description: 'Semantic version part to increment'
+        type: choice
+        options: [patch, minor, major]
+        default: patch
+      dry_run:
+        description: 'Validate without publishing (dry run)'
+        type: boolean
+        default: false
+
+jobs:
+  register:
+    name: register-schemas
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # allow committing the refreshed docs/data.json
+    env:
+      SYNAPSE_AUTH_TOKEN: ${{ secrets.SYNAPSE_AUTH_TOKEN }}
+      # Pushes to main always bump the patch; manual runs can pick major/minor.
+      VERSION_BUMP: ${{ github.event_name == 'workflow_dispatch' && inputs.version_bump || 'patch' }}
+      DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || '' }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install synapseclient
+        run: pip install 'synapseclient>=4.13.0'
+
+      - name: Register schemas to Synapse
+        run: python scripts/register_synapse_schemas.py
+
+      # Refresh the GitHub Pages index from live Synapse metadata. Skipped on a
+      # dry run so we never commit unpublished version numbers.
+      - name: Rebuild Pages index (docs/data.json)
+        if: ${{ env.DRY_RUN == '' }}
+        run: python scripts/build_pages_index.py
+
+      - name: Commit updated index
+        if: ${{ env.DRY_RUN == '' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/data.json
+          if git diff --cached --quiet; then
+            echo "No index changes to commit"
+          else
+            git commit -m "chore: refresh data-model index [skip ci]"
+            git push
+          fi

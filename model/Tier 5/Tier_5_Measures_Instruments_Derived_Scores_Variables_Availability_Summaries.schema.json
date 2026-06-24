@@ -1,0 +1,479 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://repo-prod.prod.sagebase.org/repo/v1/schema/type/registered/org.synapse.classic-tier5.measuresInstruments",
+  "type": "object",
+  "title": "Measures, Instruments, Derived Scores, Variables & Availability Summaries",
+  "description": "Describe what was measured (constructs, instrument identity, administration modality/technology) at a level that supports discovery and basic interpretability. Make derived outputs interpretable (what a score/variable represents, and its general derivation form), especially when item/trial-level data aren’t shared. Help users answer “is there enough data for my question?” without accessing participant-level files, counts, ranges, units, or timepoint-scoped summaries.",
+  "properties": {
+    "studyID": {
+      "type": "string",
+      "title": "studyID",
+      "description": "The stable, unique identifier for a study that never changes, even if other study metadata changes (like the study name, short name, owner, or project). Example: STUDY_SCA"
+    },
+    "optional persistent row identifier": {
+      "type": "string",
+      "title": "optional persistent row identifier",
+      "description": "Use studyID as the anchor, plus a persistent row identifier to identify a specific file/version, etc.",
+      "enum": [
+        "measureID",
+        "metadataFileID",
+        "cohortID",
+        "longitudinalStudyID",
+        "participantID",
+        "studyWaveID",
+        "studyPeriodID",
+        "studyArmID",
+        "studyComponentID"
+      ]
+    },
+    "optional persistent row identifier  - value": {
+      "type": "string",
+      "title": "optional persistent row identifier  - value",
+      "description": "Enter a unique identifier for the selection made."
+    },
+    "appliesTo": {
+      "type": "string",
+      "title": "appliesTo",
+      "description": "Indicates the level of entity to which a metadata value applies (e.g., individual participant or population summary).",
+      "enum": [
+        "participant",
+        "cohort"
+      ]
+    },
+    "aggregationLevel": {
+      "type": "string",
+      "title": "aggregationLevel",
+      "description": "Specifies whether a metadata value represents individual-level data or an aggregate summary",
+      "enum": [
+        "individual",
+        "summary"
+      ]
+    },
+    "populationScope": {
+      "type": "string",
+      "title": "populationScope",
+      "description": "Identifies the population described by the metadata (e.g., study-wide, cohort, or study arm).",
+      "enum": [
+        "study",
+        "arm",
+        "cohort"
+      ]
+    },
+    "deviceType": {
+      "type": "string",
+      "title": "deviceType",
+      "description": "The type of digital device used for data collection, applicable only when data are collected digitally.",
+      "enum": [
+        "Smartphone",
+        "Tablet",
+        "Wearable",
+        "Desktop or Laptop Computer",
+        "Dedicated Research Device",
+        "Multiple Digital Devices",
+        "Other",
+        "Unknown"
+      ]
+    },
+    "softwarePlatform": {
+      "type": "string",
+      "title": "softwarePlatform",
+      "description": "The software environment or application used to deliver, collect, or manage digitally collected data.",
+      "enum": [
+        "REDCap",
+        "Custom Application",
+        "Commercial Platform",
+        "Open-source Platform",
+        "Web-based Application",
+        "Multiple Platforms",
+        "Other",
+        "Unknown"
+      ]
+    },
+    "inputMethod": {
+      "type": "string",
+      "title": "inputMethod",
+      "description": "The primary method by which participant input or data capture occurs during digital data collection.",
+      "enum": [
+        "Touch",
+        "Keyboard",
+        "Mouse or Trackpad",
+        "Sensor",
+        "Voice",
+        "Multiple Input Methods",
+        "Other",
+        "Unknown"
+      ]
+    },
+    "administrationMode": {
+      "type": "string",
+      "title": "administrationMode",
+      "description": "The manner in which a digital assessment or data collection activity is administered to participants.",
+      "enum": [
+        "Self-administered",
+        "Interviewer-administered",
+        "Clinician-administered",
+        "Assisted",
+        "Mixed Administration",
+        "Other",
+        "Unknown"
+      ]
+    },
+    "manufacturerModel": {
+      "type": "string",
+      "title": "manufacturerModel",
+      "description": "Device make/model. Valid values: free text OR Multiple, Varies, Unknown."
+    },
+    "operatingSystem": {
+      "type": "string",
+      "title": "operatingSystem",
+      "description": "OS and version. Valid values: free text OR Multiple, Varies, Unknown."
+    },
+    "appPlatform": {
+      "type": "string",
+      "title": "appPlatform",
+      "description": "App or platform used. Valid values: free text OR Multiple, Varies, Unknown."
+    },
+    "sensors": {
+      "type": "string",
+      "title": "sensors",
+      "description": "Sensors enabled (GPS, accelerometer, etc.). Valid values: free text OR Multiple, Varies, Unknown."
+    },
+    "measureID": {
+      "type": "string",
+      "title": "measureID",
+      "description": "Persistent per-measure row identifier. (ex., \"MEAS_SCA_STROOP_v1\")"
+    },
+    "measuredConstruct": {
+      "type": "string",
+      "title": "measuredConstruct",
+      "description": "A conceptual domain or construct that a study collected data on (e.g., depression, working memory, physical activity).",
+      "enum": [
+        "Anxiety",
+        "Stress",
+        "Affect / Mood",
+        "Emotional Regulation",
+        "Psychological Well-being",
+        "Social Functioning",
+        "Quality of Life",
+        "Behavioral Symptoms",
+        "Attention",
+        "Working Memory",
+        "Executive Function",
+        "Cognitive Flexibility",
+        "Inhibitory Control",
+        "Processing Speed",
+        "Learning",
+        "Memory",
+        "Language",
+        "Visuospatial Ability",
+        "Decision Making",
+        "Motor Function",
+        "Balance and Gait",
+        "Sensory Processing",
+        "Sleep",
+        "Fatigue",
+        "Pain",
+        "Cognitive Impairment",
+        "Physical Activity",
+        "Sedentary Behavior",
+        "Dietary Intake",
+        "Body Composition",
+        "Cardiometabolic Health",
+        "Respiratory Function",
+        "General Health Status",
+        "Developmental Milestones",
+        "Adaptive Functioning",
+        "Daily Living Skills",
+        "Educational Attainment",
+        "Occupational Functioning",
+        "Environmental Exposure",
+        "Socioeconomic Status",
+        "Life Events",
+        "Seasonality",
+        "Demographics",
+        "Clinical History",
+        "Medication Use",
+        "Health Behaviors",
+        "Other",
+        "Unknown"
+      ]
+    },
+    "constructDescription": {
+      "type": "string",
+      "title": "constructDescription",
+      "description": "One-sentence description of how the construct was operationalized in the study."
+    },
+    "measureType": {
+      "type": "string",
+      "title": "measureType",
+      "description": "The general type of measure used to assess a construct.",
+      "enum": [
+        "Questionnaire / Survey",
+        "Cognitive task",
+        "Clinical assessment",
+        "Behavioral observation",
+        "Sensor-derived measure",
+        "Interview",
+        "Composite index",
+        "Other"
+      ]
+    },
+    "isValidatedMeasure": {
+      "type": "string",
+      "title": "isValidatedMeasure",
+      "description": "Indicates whether a measure or instrument used to assess a construct has been previously validated.",
+      "enum": [
+        "Yes",
+        "No",
+        "Partially validated",
+        "Unknown"
+      ]
+    },
+    "measureDescription": {
+      "type": "string",
+      "title": "measureDescription",
+      "description": "A brief description of how a measure was administered and what it was designed to assess."
+    },
+    "instrumentID": {
+      "type": "string",
+      "title": "instrumentID",
+      "description": "a stable identifier used to reference a specific instrument, measure, or assessment used in a study (e.g., a validated questionnaire, cognitive task, interview protocol, or sensor-based assessment)."
+    },
+    "instrumentName": {
+      "type": "string",
+      "title": "instrumentName",
+      "description": "Name of the instrument or scale used (e.g., PHQ-9, NIH Toolbox)."
+    },
+    "instrumentSource": {
+      "type": "string",
+      "title": "instrumentSource",
+      "description": "Where the instrument originated"
+    },
+    "instrumentCitation": {
+      "type": "string",
+      "title": "instrumentCitation",
+      "description": "The primary citation(s) describing the instrument/task implementation used in the study (e.g., published paper, manual, DOI)."
+    },
+    "instrumentVersion": {
+      "type": "string",
+      "title": "instrumentVersion",
+      "description": "Version identifier for the instrument implementation used (e.g., vendor version, protocol revision, “v2”, “2016 revision”)."
+    },
+    "stimulusResponseMode": {
+      "type": "string",
+      "title": "stimulusResponseMode",
+      "description": "How participants interacted with the instrument during administration.",
+      "enum": [
+        "Keyboard",
+        "Touchscreen",
+        "Mouse/Trackpad",
+        "Voice",
+        "Clinician-administered",
+        "Paper-and-pencil",
+        "Other",
+        "Unknown"
+      ]
+    },
+    "administrationInstructions": {
+      "type": "string",
+      "title": "administrationInstructions",
+      "description": "The instructions provided to participants describing exactly how to perform the instrument/task (verbatim or summarized)."
+    },
+    "administrationProcedure": {
+      "type": "string",
+      "title": "administrationProcedure",
+      "description": "The source of the implementation (e.g., NIH Toolbox, PEBL, PsychoPy script, custom app).",
+      "enum": [
+        "Published manual/protocol",
+        "NIH Toolbox",
+        "PEBL",
+        "PsychoPy",
+        "E-Prime",
+        "REDCap",
+        "Qualtrics",
+        "Custom implementation",
+        "Other",
+        "Unknown"
+      ]
+    },
+    "protocolDescription": {
+      "type": "string",
+      "title": "protocolDescription",
+      "description": "The synID of the wiki that contains the protocol, study design and goals"
+    },
+    "protocolURL": {
+      "type": "string",
+      "title": "protocolURL",
+      "description": "Link to the protocol, manual, script, or documentation describing the instrument implementation."
+    },
+    "derivedVariableName": {
+      "type": "string",
+      "title": "derivedVariableName",
+      "description": "The name of a derived variable or score as it appears in the dataset or metadata record."
+    },
+    "derivedVariableType": {
+      "type": "string",
+      "title": "derivedVariableType",
+      "description": "A controlled category describing the general method or type of derivation used to compute a derived variable or score (e.g., sum score, composite score, standardized score).",
+      "enum": [
+        "Raw Score",
+        "Sum Score",
+        "Mean Score",
+        "Composite Score",
+        "Subscale Score",
+        "Standardized Score",
+        "Change Score",
+        "Slope / Trajectory",
+        "Threshold / Screening Flag",
+        "Severity Category",
+        "Risk Score",
+        "Clinician-Rated Summary",
+        "Compliance Metric",
+        "Missingness Metric",
+        "Response Time Metric",
+        "Aggregated Sensor Feature",
+        "Contextual Feature",
+        "Other Derived Variable",
+        "Unknown"
+      ]
+    },
+    "variableSummary": {
+      "type": "string",
+      "title": "variableSummary",
+      "description": "Aggregate summary statistics describing the observed distribution and availability of a variable in a dataset, without exposing participant-level values."
+    },
+    "scoreName": {
+      "type": "string",
+      "title": "scoreName",
+      "description": "Is the human-readable name of a score derived from a measure, as used or labeled by the study."
+    },
+    "scoreType": {
+      "type": "string",
+      "title": "scoreType",
+      "description": "Describes the general method or form by which a score was derived from a measure or assessment.",
+      "enum": [
+        "raw score",
+        "sum score",
+        "mean score",
+        "composite score",
+        "standardized score",
+        "algorithmic score",
+        "clinician-rated score",
+        "derived index",
+        "Other",
+        "Unknown"
+      ]
+    },
+    "derivedScore": {
+      "type": "string",
+      "title": "derivedScore",
+      "description": "A summary description of a score derived from a measure, including how it was calculated."
+    },
+    "derivationMethod": {
+      "type": "string",
+      "title": "derivationMethod",
+      "description": "A high-level description of how a score was derived from raw or intermediate data.",
+      "enum": [
+        "Sum or Total Score",
+        "Mean or Average",
+        "Composite Score",
+        "Standardized Score",
+        "Algorithmic / Model-derived",
+        "Clinician-rated",
+        "Other",
+        "Unknown"
+      ]
+    },
+    "valueRange": {
+      "type": "string",
+      "title": "valueRange",
+      "description": "The observed minimum and maximum values of a continuous variable within the reported population scope."
+    },
+    "totalParticipants": {
+      "type": "string",
+      "title": "totalParticipants",
+      "description": "The total number of unique participants for whom data are available within the specified study, cohort, or scope."
+    },
+    "proportion": {
+      "type": "string",
+      "title": "proportion",
+      "description": "A numeric value representing the fraction of a population associated with a given category, typically expressed as a percentage or decimal."
+    },
+    "dataAvailabilitySummary": {
+      "type": "string",
+      "title": "dataAvailabilitySummary",
+      "description": "An aggregate description of the amount and demographic composition of available data for a study, cohort, or variable, provided without individual-level records."
+    },
+    "valueRangeMinValue": {
+      "type": "string",
+      "title": "valueRangeMinValue",
+      "description": "The minimum observed value of a continuous variable within the specified population scope."
+    },
+    "valueRangeMaxValue": {
+      "type": "string",
+      "title": "valueRangeMaxValue",
+      "description": "The maximum observed value of a continuous variable within the specified population scope."
+    },
+    "unit": {
+      "type": "string",
+      "title": "unit",
+      "description": "The unit of measurement associated with a variable’s values or summary statistics (e.g., years, kg/m²).",
+      "enum": [
+        "years",
+        "months",
+        "days",
+        "hours",
+        "minutes",
+        "seconds",
+        "percent",
+        "score",
+        "milliseconds",
+        "kg",
+        "cm",
+        "m",
+        "kg/m^2",
+        "mmHg",
+        "bpm",
+        "Other",
+        "Unknown"
+      ]
+    },
+    "timepoint": {
+      "type": "string",
+      "title": "timepoint",
+      "description": "A label identifying the study timepoint or phase at which the variable value or summary applies (e.g., baseline, follow-up).",
+      "enum": [
+        "baseline",
+        "screening",
+        "enrollment",
+        "visit_1",
+        "visit_2",
+        "visit_3",
+        "visit_4+",
+        "followup",
+        "followup_1",
+        "followup_2",
+        "followup_3",
+        "followup_4+",
+        "end_of_study",
+        "unspecified",
+        "multiple",
+        "Other",
+        "Unknown"
+      ]
+    },
+    "rawOrDerived": {
+      "type": "string",
+      "title": "rawOrDerived",
+      "description": "Raw vs derived data flag"
+    },
+    "preprocessingSteps": {
+      "type": "string",
+      "title": "preprocessingSteps",
+      "description": "Preprocessing/cleaning applied"
+    }
+  },
+  "required": [
+    "studyID"
+  ]
+}

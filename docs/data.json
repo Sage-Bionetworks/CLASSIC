@@ -1,0 +1,100 @@
+{
+  "generated_on": "2026-06-24T19:32:39+00:00",
+  "organization": "org.synapse.classic",
+  "repo": "Sage-Bionetworks/CLASSIC",
+  "branch": "main",
+  "source": "synapse+local",
+  "schema_endpoint": "https://repo-prod.prod.sagebase.org/repo/v1/schema/type/registered/",
+  "schemas": [
+    {
+      "tier": 1,
+      "title": "Study Identity & Discovery",
+      "description": "Make the study discoverable and uniquely identifiable; provide the minimum context needed to understand “what this is” and relate it to other studies/collections.",
+      "name": "tier1.studyIdentityDiscovery",
+      "uri": "org.synapse.classic-tier1.studyIdentityDiscovery",
+      "properties": 21,
+      "required": [
+        "studyID"
+      ],
+      "source": "model/Tier 1/Tier_1_Study_Identity_Discovery.schema.json",
+      "source_url": "https://github.com/Sage-Bionetworks/CLASSIC/blob/main/model/Tier%201/Tier_1_Study_Identity_Discovery.schema.json",
+      "raw_url": "https://raw.githubusercontent.com/Sage-Bionetworks/CLASSIC/main/model/Tier%201/Tier_1_Study_Identity_Discovery.schema.json",
+      "version": "1.0.0",
+      "schema_id": "10607",
+      "created_on": "2026-06-24T19:23:49.111Z",
+      "created_by": "3459953"
+    },
+    {
+      "tier": 2,
+      "title": "Governance, Access & Provenance",
+      "description": "Let users understand whether and how the dataset can be accessed and reused (policy + operational access steps), without needing back-and-forth.",
+      "name": "tier2.governanceAccessProvenance",
+      "uri": "org.synapse.classic-tier2.governanceAccessProvenance",
+      "properties": 23,
+      "required": [
+        "studyID"
+      ],
+      "source": "model/Tier 2/Tier_2_Governance_Access_Provenance.schema.json",
+      "source_url": "https://github.com/Sage-Bionetworks/CLASSIC/blob/main/model/Tier%202/Tier_2_Governance_Access_Provenance.schema.json",
+      "raw_url": "https://raw.githubusercontent.com/Sage-Bionetworks/CLASSIC/main/model/Tier%202/Tier_2_Governance_Access_Provenance.schema.json",
+      "version": "1.0.0",
+      "schema_id": "10608",
+      "created_on": "2026-06-24T19:23:50.594Z",
+      "created_by": "3459953"
+    },
+    {
+      "tier": 3,
+      "title": "Cohort & Population",
+      "description": "Describe who is in the study and how the cohort was defined/ascertained, enough for a user to judge relevance before requesting access.",
+      "name": "tier3.cohortPopulation",
+      "uri": "org.synapse.classic-tier3.cohortPopulation",
+      "properties": 32,
+      "required": [
+        "studyID"
+      ],
+      "source": "model/Tier 3/Tier_3_Cohort_Population.schema.json",
+      "source_url": "https://github.com/Sage-Bionetworks/CLASSIC/blob/main/model/Tier%203/Tier_3_Cohort_Population.schema.json",
+      "raw_url": "https://raw.githubusercontent.com/Sage-Bionetworks/CLASSIC/main/model/Tier%203/Tier_3_Cohort_Population.schema.json",
+      "version": "1.0.0",
+      "schema_id": "10609",
+      "created_on": "2026-06-24T19:23:51.737Z",
+      "created_by": "3459953"
+    },
+    {
+      "tier": 4,
+      "title": "Study Design & Time",
+      "description": "Describe when and how often data were collected (longitudinal structure, bursts, waves, follow-up intervals, timestamp availability). This is key for interpretation and longitudinal/APC use cases.",
+      "name": "tier4.studyDesignTime",
+      "uri": "org.synapse.classic-tier4.studyDesignTime",
+      "properties": 39,
+      "required": [
+        "studyID"
+      ],
+      "source": "model/Tier 4/Tier_4_Study_Design_Time.schema.json",
+      "source_url": "https://github.com/Sage-Bionetworks/CLASSIC/blob/main/model/Tier%204/Tier_4_Study_Design_Time.schema.json",
+      "raw_url": "https://raw.githubusercontent.com/Sage-Bionetworks/CLASSIC/main/model/Tier%204/Tier_4_Study_Design_Time.schema.json",
+      "version": "1.0.0",
+      "schema_id": "10610",
+      "created_on": "2026-06-24T19:23:52.919Z",
+      "created_by": "3459953"
+    },
+    {
+      "tier": 5,
+      "title": "Measures, Instruments, Derived Scores, Variables & Availability Summaries",
+      "description": "Describe what was measured (constructs, instrument identity, administration modality/technology) at a level that supports discovery and basic interpretability. Make derived outputs interpretable (what a score/variable represents, and its general derivation form), especially when item/trial-level data aren’t shared. Help users answer “is there enough data for my question?” without accessing participant-level files, counts, ranges, units, or timepoint-scoped summaries.",
+      "name": "tier5.measuresInstruments",
+      "uri": "org.synapse.classic-tier5.measuresInstruments",
+      "properties": 47,
+      "required": [
+        "studyID"
+      ],
+      "source": "model/Tier 5/Tier_5_Measures_Instruments_Derived_Scores_Variables_Availability_Summaries.schema.json",
+      "source_url": "https://github.com/Sage-Bionetworks/CLASSIC/blob/main/model/Tier%205/Tier_5_Measures_Instruments_Derived_Scores_Variables_Availability_Summaries.schema.json",
+      "raw_url": "https://raw.githubusercontent.com/Sage-Bionetworks/CLASSIC/main/model/Tier%205/Tier_5_Measures_Instruments_Derived_Scores_Variables_Availability_Summaries.schema.json",
+      "version": "1.0.0",
+      "schema_id": "10611",
+      "created_on": "2026-06-24T19:23:54.391Z",
+      "created_by": "3459953"
+    }
+  ]
+}

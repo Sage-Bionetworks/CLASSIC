@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CLASSIC · Index of Data Models</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #f6f8fb;
+    --card: #ffffff;
+    --ink: #0f1b2d;
+    --muted: #5b6b80;
+    --line: #e3e9f1;
+    --accent: #1f6feb;
+    --accent-soft: #e8f0fe;
+    --ok: #1a7f37;
+    --ok-soft: #e6f4ea;
+    --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --radius: 12px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.45;
+  }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 40px 24px 80px; }
+  header h1 { font-size: 1.9rem; font-weight: 800; margin: 0 0 6px; letter-spacing: -0.02em; }
+  header p { margin: 0; color: var(--muted); max-width: 70ch; }
+  .badges { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 28px; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 0.78rem; font-weight: 600;
+    padding: 5px 11px; border-radius: 999px;
+    background: var(--accent-soft); color: var(--accent);
+    border: 1px solid #d4e2fb;
+  }
+  .badge.muted { background: #eef1f6; color: var(--muted); border-color: var(--line); }
+  .badge .mono { font-family: var(--mono); font-weight: 500; }
+  .toolbar { display: flex; gap: 12px; align-items: center; margin-bottom: 14px; flex-wrap: wrap; }
+  .search {
+    flex: 1 1 280px; min-width: 220px;
+    padding: 10px 14px; font-size: 0.95rem;
+    border: 1px solid var(--line); border-radius: 10px; background: var(--card);
+    font-family: inherit; color: var(--ink);
+  }
+  .search:focus { outline: 2px solid var(--accent-soft); border-color: var(--accent); }
+  .count { font-size: 0.85rem; color: var(--muted); font-weight: 600; white-space: nowrap; }
+  .card {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: var(--radius); overflow: hidden;
+    box-shadow: 0 1px 2px rgba(15,27,45,0.04);
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  thead th {
+    text-align: left; font-weight: 700; font-size: 0.72rem;
+    text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted);
+    padding: 13px 16px; border-bottom: 1px solid var(--line);
+    background: #fbfcfe; cursor: pointer; user-select: none; white-space: nowrap;
+  }
+  thead th .arrow { opacity: 0.35; font-size: 0.7rem; }
+  thead th[aria-sort="ascending"] .arrow,
+  thead th[aria-sort="descending"] .arrow { opacity: 1; color: var(--accent); }
+  tbody td { padding: 13px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: #fafcff; }
+  .title { font-weight: 700; }
+  .desc { color: var(--muted); font-size: 0.82rem; margin-top: 2px; max-width: 46ch; }
+  .mono { font-family: var(--mono); font-size: 0.83rem; }
+  .pill {
+    display: inline-block; font-family: var(--mono); font-size: 0.78rem; font-weight: 500;
+    padding: 2px 8px; border-radius: 6px; background: var(--accent-soft); color: var(--accent);
+  }
+  .pill.ver { background: var(--ok-soft); color: var(--ok); }
+  .pill.na { background: #f0f2f5; color: var(--muted); }
+  .links a { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.85rem; }
+  .links a:hover { text-decoration: underline; }
+  .links { display: flex; gap: 12px; flex-wrap: wrap; }
+  .state { padding: 48px 16px; text-align: center; color: var(--muted); }
+  .state.err { color: #b42318; }
+  footer { margin-top: 22px; color: var(--muted); font-size: 0.8rem; }
+  footer .mono { font-size: 0.78rem; }
+  @media (max-width: 720px) {
+    .desc { display: none; }
+    .col-props { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Index of Data Models</h1>
+    <p>Registered JSON Schemas for the CLASSIC tiered metadata model, published to
+       Synapse under the <span class="mono">org.synapse.classic</span> organization.</p>
+  </header>
+
+  <div class="badges" id="badges">
+    <span class="badge muted">GitHub Pages · /docs</span>
+  </div>
+
+  <div class="toolbar">
+    <input id="search" class="search" type="search" aria-label="Search data models" placeholder="Search schemas by name, title, tier…" />
+    <span class="count" id="count"></span>
+  </div>
+
+  <div class="card">
+    <table id="table" hidden>
+      <thead>
+        <tr>
+          <th data-key="tier">Tier <span class="arrow">↕</span></th>
+          <th data-key="title">Data model <span class="arrow">↕</span></th>
+          <th data-key="name">Schema name <span class="arrow">↕</span></th>
+          <th data-key="version">Version <span class="arrow">↕</span></th>
+          <th data-key="properties" class="col-props">Fields <span class="arrow">↕</span></th>
+          <th data-key="created_on">Created <span class="arrow">↕</span></th>
+          <th>Links</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <div class="state" id="state">Loading data models…</div>
+  </div>
+
+  <footer id="footer"></footer>
+</div>
+
+<script>
+(function () {
+  var state = document.getElementById("state");
+  var table = document.getElementById("table");
+  var tbody = document.getElementById("tbody");
+  var search = document.getElementById("search");
+  var countEl = document.getElementById("count");
+  var badges = document.getElementById("badges");
+  var footer = document.getElementById("footer");
+
+  var data = null;
+  var rows = [];
+  var sortKey = "tier";
+  var sortDir = 1; // 1 asc, -1 desc
+
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  function relDate(iso) {
+    if (!iso) return "—";
+    var d = new Date(iso);
+    if (isNaN(d)) return esc(iso);
+    var days = Math.floor((Date.now() - d.getTime()) / 86400000);
+    var rel = days <= 0 ? "today" : days === 1 ? "yesterday" : days + " days ago";
+    return '<span title="' + esc(iso) + '">' + rel + "</span>";
+  }
+
+  function badge(text, cls) {
+    return '<span class="badge ' + (cls || "") + '">' + text + "</span>";
+  }
+
+  function renderBadges() {
+    var b = [];
+    b.push(badge("org · <span class='mono'>" + esc(data.organization) + "</span>", ""));
+    b.push(badge('<span class="mono">' + esc(data.repo) + " · " + esc(data.branch) + "</span>", "muted"));
+    b.push(badge(data.source === "synapse+local" ? "live from Synapse" : "local snapshot",
+                 data.source === "synapse+local" ? "" : "muted"));
+    badges.innerHTML = b.join("");
+  }
+
+  function cmp(a, b) {
+    var x = a[sortKey], y = b[sortKey];
+    if (x == null) x = "";
+    if (y == null) y = "";
+    if (typeof x === "number" && typeof y === "number") return (x - y) * sortDir;
+    return String(x).localeCompare(String(y), undefined, { numeric: true }) * sortDir;
+  }
+
+  function render() {
+    var q = search.value.trim().toLowerCase();
+    var filtered = rows.filter(function (r) {
+      if (!q) return true;
+      return [r.title, r.name, r.uri, r.tier, r.description].join(" ").toLowerCase().indexOf(q) !== -1;
+    });
+    filtered.sort(cmp);
+
+    tbody.innerHTML = filtered.map(function (r) {
+      var ver = r.version
+        ? '<span class="pill ver">' + esc(r.version) + "</span>"
+        : '<span class="pill na">unpublished</span>';
+      var links =
+        '<a href="' + esc(r.source_url) + '" target="_blank" rel="noopener">source</a>' +
+        '<a href="' + esc(r.raw_url) + '" target="_blank" rel="noopener">raw JSON</a>';
+      return (
+        "<tr>" +
+        '<td><span class="pill">Tier ' + esc(r.tier) + "</span></td>" +
+        '<td><div class="title">' + esc(r.title) + "</div>" +
+            '<div class="desc">' + esc(r.description) + "</div></td>" +
+        '<td><span class="mono">' + esc(r.uri) + "</span></td>" +
+        "<td>" + ver + "</td>" +
+        '<td class="col-props">' + esc(r.properties) + "</td>" +
+        "<td>" + relDate(r.created_on) + "</td>" +
+        '<td class="links">' + links + "</td>" +
+        "</tr>"
+      );
+    }).join("");
+
+    countEl.textContent = filtered.length + " of " + rows.length + " data models";
+  }
+
+  function wireSort() {
+    var ths = document.querySelectorAll("thead th[data-key]");
+    ths.forEach(function (th) {
+      th.setAttribute("role", "button");
+      th.tabIndex = 0;
+
+      function onActivate() {
+        var key = th.getAttribute("data-key");
+        if (sortKey === key) sortDir *= -1;
+        else { sortKey = key; sortDir = 1; }
+        ths.forEach(function (t) { t.removeAttribute("aria-sort"); });
+        th.setAttribute("aria-sort", sortDir === 1 ? "ascending" : "descending");
+        render();
+      }
+
+      th.addEventListener("click", onActivate);
+      th.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onActivate();
+        }
+      });
+    });
+  }
+
+  fetch("./data.json", { cache: "no-store" })
+    .then(function (r) {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    })
+    .then(function (json) {
+      data = json;
+      rows = json.schemas || [];
+      renderBadges();
+      wireSort();
+      table.hidden = false;
+      state.hidden = true;
+      render();
+      var gen = json.generated_on ? new Date(json.generated_on).toLocaleString() : "unknown";
+      footer.innerHTML =
+        "Generated " + esc(gen) +
+        ' · <span class="mono">' + esc(data.schema_endpoint) + "</span>";
+    })
+    .catch(function (err) {
+      state.className = "state err";
+      state.textContent = "Could not load data.json — " + err.message;
+    });
+
+  search.addEventListener("input", render);
+})();
+</script>
+</body>
+</html>
