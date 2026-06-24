@@ -215,13 +215,24 @@
   function wireSort() {
     var ths = document.querySelectorAll("thead th[data-key]");
     ths.forEach(function (th) {
-      th.addEventListener("click", function () {
+      th.setAttribute("role", "button");
+      th.tabIndex = 0;
+
+      function onActivate() {
         var key = th.getAttribute("data-key");
         if (sortKey === key) sortDir *= -1;
         else { sortKey = key; sortDir = 1; }
         ths.forEach(function (t) { t.removeAttribute("aria-sort"); });
         th.setAttribute("aria-sort", sortDir === 1 ? "ascending" : "descending");
         render();
+      }
+
+      th.addEventListener("click", onActivate);
+      th.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onActivate();
+        }
       });
     });
   }
