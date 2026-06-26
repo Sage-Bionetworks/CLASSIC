@@ -10,6 +10,11 @@
       "title": "studyID",
       "description": "The stable, unique identifier for a study that never changes, even if other study metadata changes (like the study name, short name, owner, or project). Example: STUDY_SCA"
     },
+    "cohortID": {
+      "type": "string",
+      "title": "cohortID",
+      "description": "Unique identifier for the cohort"
+    },
     "optional persistent row identifier": {
       "type": "string",
       "title": "optional persistent row identifier",
