@@ -1,5 +1,5 @@
 {
-  "generated_on": "2026-06-24T20:31:50+00:00",
+  "generated_on": "2026-06-26T18:27:08+00:00",
   "organization": "org.synapse.classic",
   "repo": "Sage-Bionetworks/CLASSIC",
   "branch": "main",
@@ -191,7 +191,7 @@
       "description": "Let users understand whether and how the dataset can be accessed and reused (policy + operational access steps), without needing back-and-forth.",
       "name": "tier2.governanceAccessProvenance",
       "uri": "org.synapse.classic-tier2.governanceAccessProvenance",
-      "properties": 23,
+      "properties": 24,
       "required": [
         "studyID"
       ],
@@ -292,6 +292,13 @@
             "participant",
             "cohort"
           ]
+        },
+        {
+          "name": "cohortID",
+          "type": "string",
+          "required": false,
+          "description": "Unique identifier for the cohort",
+          "enum": null
         },
         {
           "name": "consentType",
@@ -459,7 +466,7 @@
       "source": "model/Tier 2/Tier_2_Governance_Access_Provenance.schema.json",
       "source_url": "https://github.com/Sage-Bionetworks/CLASSIC/blob/main/model/Tier%202/Tier_2_Governance_Access_Provenance.schema.json",
       "raw_url": "https://raw.githubusercontent.com/Sage-Bionetworks/CLASSIC/main/model/Tier%202/Tier_2_Governance_Access_Provenance.schema.json",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "schema_id": "10608",
       "created_on": "2026-06-24T19:23:50.594Z",
       "created_by": "3459953"
