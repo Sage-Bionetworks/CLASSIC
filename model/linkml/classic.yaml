@@ -1,0 +1,21 @@
+id: https://sagebionetworks.org/classic
+name: classic
+title: CLASSIC Tiered Metadata Model
+description: >-
+  Umbrella schema for the CLASSIC tiered metadata model. Imports the shared core
+  and all five tier schemas so the full model can be browsed, documented, or
+  validated as a unit. Each tier can also be generated independently into its own
+  JSON Schema for Synapse registration.
+
+prefixes:
+  classic: https://sagebionetworks.org/classic/
+default_prefix: classic
+default_range: string
+
+imports:
+  - classic_core
+  - tier1_study_identity
+  - tier2_governance_access
+  - tier3_cohort_population
+  - tier4_study_design_time
+  - tier5_measures_instruments

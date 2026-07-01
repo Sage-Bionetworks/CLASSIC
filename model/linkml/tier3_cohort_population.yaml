@@ -1,0 +1,185 @@
+id: https://sagebionetworks.org/classic/tier3
+name: classic_tier3_cohort_population
+title: Cohort & Population
+description: >-
+  Tier 3 — Describe who is in the study and how the cohort was defined/ascertained,
+  enough for a user to judge relevance before requesting access.
+
+prefixes:
+  classic: https://sagebionetworks.org/classic/
+default_prefix: classic
+default_range: string
+
+imports:
+  - classic_core   # all enums are defined here and may be reused by any tier
+
+classes:
+  CohortPopulation:
+    title: Cohort & Population
+    description: Tier 3 record — cohort definition, demographics, and eligibility.
+    todos:
+      - add validation rules (uncomment the `rules:` template below)
+    # --- VALIDATION RULES placeholder (class-level conditional logic) ---
+    # rules:
+    #   - preconditions:
+    #       slot_conditions:
+    #         <slot>: {equals_string: <value>}
+    #     postconditions:
+    #       slot_conditions:
+    #         <slot>: {required: true}
+    #     description: <why this rule exists>
+    mixins:
+      - StudyAnchored
+      - ScopedRecord
+    slots:
+      - externalParticipantID
+      - GUID
+      - diseaseFocus
+      - primaryHealthFocus
+      - ascertainmentContext
+      - selectionIntensity
+      - populationType
+      - populationDescriptor
+      - ageGroup
+      - sex
+      - sexDistribution
+      - sexEligible
+      - gender
+      - genderDistribution
+      - race
+      - raceDistribution
+      - ethnicity
+      - ethnicityDistribution
+      - generation
+      - relationToOriginal
+      - constructDomain
+      - eligibilityCriteriaSummary
+      - eligibilityCriteriaURL
+      - inclusionTags
+      - exclusionTags
+      - criteriaSelectionIntensity
+
+slots:
+  externalParticipantID:
+    title: externalParticipantID
+    description: Other external identifier, if no GUID exists.
+  GUID:
+    title: GUID
+    description: >-
+      Global Unique Identifier: unique across studies and repositories. If a
+      participant has been assigned a global identifier (e.g., NDAR GUID), include
+      it here to support linkage across studies and repositories. Otherwise, leave
+      this field blank.
+  diseaseFocus:
+    title: diseaseFocus
+    description: >-
+      Primary disease or condition focus of the study. A categorical descriptor
+      summarizing participant health status selection and ascertainment context for
+      a study cohort, intended to support discovery and comparison across studies.
+    range: disease_focus_enum
+  primaryHealthFocus:
+    title: primaryHealthFocus
+    description: "Why participants were included: these categories describe participant health status at enrollment, not outcomes."
+    range: primary_health_focus_enum
+  ascertainmentContext:
+    title: ascertainmentContext
+    description: "Where participants came from: the categories describe sampling context, independent of disease focus."
+    range: ascertainment_context_enum
+  selectionIntensity:
+    title: selectionIntensity
+    description: "How restrictive enrollment was: the categories describe selection methodology."
+    range: selection_intensity_enum
+  populationType:
+    title: populationType
+    description: Broad classification of the population sampled in the study/cohort.
+    range: population_type_enum
+  populationDescriptor:
+    title: populationDescriptor
+    description: >-
+      Free-text descriptor capturing key population characteristics not covered by
+      controlled terms (e.g., "male veterans", "older adults with caregiver support").
+  ageGroup:
+    title: ageGroup
+    description: Broad age-based population grouping represented in the cohort.
+    range: age_group_enum
+  sex:
+    title: sex
+    description: >-
+      The biological classification of a participant, typically assigned at birth
+      based on physical and genetic characteristics.
+    range: sex_enum
+  sexDistribution:
+    title: sexDistribution
+    description: A summary of the proportion or count of participants in a population by sex category.
+  sexEligible:
+    title: sexEligible
+    description: Sex eligibility criteria for cohort inclusion (if the study restricts enrollment).
+    range: sex_eligible_enum
+  gender:
+    title: gender
+    description: >-
+      The socially and culturally constructed identity that describes a person's
+      self-identified gender, which may or may not correspond to sex assigned at
+      birth and may change over time.
+    range: gender_enum
+  genderDistribution:
+    title: genderDistribution
+    description: A summary of the proportion or count of participants in a population by self-identified gender.
+  race:
+    title: race
+    description: >-
+      Self-reported race/ethnicity. A socially defined classification that reflects
+      a participant's self-identified racial group(s), based on shared social,
+      historical, or cultural experiences, and not biological or genetic differences.
+    range: race_enum
+  raceDistribution:
+    title: raceDistribution
+    description: A summary of the proportion or count of participants in a population by self-identified race category or categories.
+  ethnicity:
+    title: ethnicity
+    description: >-
+      Self-reported race/ethnicity. A self-identified cultural classification that
+      reflects whether a participant identifies as being of Hispanic or Latino
+      origin, independent of race.
+    range: ethnicity_enum
+  ethnicityDistribution:
+    title: ethnicityDistribution
+    description: A summary of the proportion or count of participants in a population by self-identified ethnicity.
+  generation:
+    title: generation
+    description: >-
+      Generation within family cohort (ex., F0=original, F1=child, F2=grandchild).
+      Indicates the generational position of participants within a family-based
+      cohort, relative to the originally enrolled participant(s).
+    range: generation_enum
+  relationToOriginal:
+    title: relationToOriginal
+    description: >-
+      Relationship to original participant (ex., self, child, grandchild, spouse).
+      Describes the familial relationship(s) of participants to the initially
+      enrolled participant(s) in a family-based cohort.
+    range: relation_to_original_enum
+  constructDomain:
+    title: constructDomain
+    description: Domain of measured construct.
+    range: construct_domain_enum
+  eligibilityCriteriaSummary:
+    title: eligibilityCriteriaSummary
+    description: >-
+      A brief summary of the major inclusion and exclusion criteria that determined
+      who could enroll in the study/cohort.
+  eligibilityCriteriaURL:
+    title: eligibilityCriteriaURL
+    description: Link to the protocol, registry record, or document containing full inclusion/exclusion criteria.
+  inclusionTags:
+    title: inclusionTags
+    description: High-level inclusion characteristics used to define the enrolled population.
+    range: inclusion_tags_enum
+  exclusionTags:
+    title: exclusionTags
+    description: High-level exclusion characteristics used to restrict enrollment.
+    range: exclusion_tags_enum
+  criteriaSelectionIntensity:
+    title: criteriaSelectionIntensity
+    description: Overall restrictiveness of inclusion/exclusion criteria.
+    range: criteria_selection_intensity_enum
