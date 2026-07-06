@@ -1,0 +1,1025 @@
+{
+    "$defs": {
+        "AccessRequirementsEnum": {
+            "description": "",
+            "enum": [
+                "DUA required",
+                "IRB approval required",
+                "Ethics exemption accepted",
+                "Data security plan required",
+                "Institutional signature training",
+                "Human subjects training required",
+                "Account/ID required",
+                "Other",
+                "Unknown"
+            ],
+            "title": "AccessRequirementsEnum",
+            "type": "string"
+        },
+        "AccessRestrictionsEnum": {
+            "description": "",
+            "enum": [
+                "General Research Use",
+                "Disease-Specific Research",
+                "Health/Medical/Biomedical Research",
+                "Population Origins/Ancestry",
+                "Research Prohibited",
+                "No Commercial Use",
+                "No Methods Development",
+                "No Secondary Use",
+                "Ethics Approval Required",
+                "Other"
+            ],
+            "title": "AccessRestrictionsEnum",
+            "type": "string"
+        },
+        "AccessReviewBodyEnum": {
+            "description": "",
+            "enum": [
+                "Data Access Committee (DAC)",
+                "IRB/Ethics Committee",
+                "Repository-controlled",
+                "PI approval",
+                "Other",
+                "Unknown"
+            ],
+            "title": "AccessReviewBodyEnum",
+            "type": "string"
+        },
+        "AdministrationModeEnum": {
+            "description": "The manner in which a data collection activity is administered to participants.",
+            "enum": [
+                "Self-administered",
+                "Interviewer-administered",
+                "Clinician-administered",
+                "Assisted",
+                "Mixed Administration",
+                "Other",
+                "Unknown"
+            ],
+            "title": "AdministrationModeEnum",
+            "type": "string"
+        },
+        "AdministrationProcedureEnum": {
+            "description": "",
+            "enum": [
+                "Published manual/protocol",
+                "NIH Toolbox",
+                "PEBL",
+                "PsychoPy",
+                "E-Prime",
+                "REDCap",
+                "Qualtrics",
+                "Custom implementation",
+                "Other",
+                "Unknown"
+            ],
+            "title": "AdministrationProcedureEnum",
+            "type": "string"
+        },
+        "AgeGroupEnum": {
+            "description": "",
+            "enum": [
+                "Children (0-12)",
+                "Adolescents (13-17)",
+                "Adults (18-64)",
+                "Older Adults (65+)",
+                "Mixed",
+                "Unknown"
+            ],
+            "title": "AgeGroupEnum",
+            "type": "string"
+        },
+        "AggregationLevelEnum": {
+            "description": "",
+            "enum": [
+                "individual",
+                "summary"
+            ],
+            "title": "AggregationLevelEnum",
+            "type": "string"
+        },
+        "AppliesToEnum": {
+            "description": "Entity level to which a metadata value applies.",
+            "enum": [
+                "participant",
+                "cohort",
+                "study"
+            ],
+            "title": "AppliesToEnum",
+            "type": "string"
+        },
+        "AscertainmentContextEnum": {
+            "description": "",
+            "enum": [
+                "Community-ascertained",
+                "Clinic-ascertained",
+                "Administrative/Registry-Based",
+                "Hybrid",
+                "Other"
+            ],
+            "title": "AscertainmentContextEnum",
+            "type": "string"
+        },
+        "BurstFrequencyEnum": {
+            "description": "",
+            "enum": [
+                "One-time",
+                "Weekly",
+                "Monthly",
+                "Quarterly",
+                "Semiannual",
+                "Annual",
+                "Irregular",
+                "Unknown"
+            ],
+            "title": "BurstFrequencyEnum",
+            "type": "string"
+        },
+        "BurstLengthEnum": {
+            "description": "",
+            "enum": [
+                "days",
+                "weeks",
+                "months",
+                "Unknown",
+                "probability sampling"
+            ],
+            "title": "BurstLengthEnum",
+            "type": "string"
+        },
+        "CollectionModalityEnum": {
+            "description": "",
+            "enum": [
+                "Digital",
+                "Paper-based",
+                "In-person (non-digital)",
+                "Mixed",
+                "Other"
+            ],
+            "title": "CollectionModalityEnum",
+            "type": "string"
+        },
+        "ConsentTypeEnum": {
+            "description": "",
+            "enum": [
+                "Broad",
+                "Tiered",
+                "Specific",
+                "No Consent for Sharing",
+                "Unknown"
+            ],
+            "title": "ConsentTypeEnum",
+            "type": "string"
+        },
+        "ConstructDomainEnum": {
+            "description": "",
+            "enum": [
+                "Depression",
+                "Cognitive",
+                "Neurological & Neurobehavioral",
+                "Neuroimaging",
+                "Physical Health & Lifestyle",
+                "Developmental & Functional",
+                "Environmental & Contextual",
+                "Administrative & Study Design",
+                "Psychiatric Disorder - Mood",
+                "Psychiatric Disorder - Substance Abuse",
+                "Psychiatric Disorder - Anxiety",
+                "Psychiatric Disorder - Hypochondriasis",
+                "Psychiatric Disorder - Anorexia Nervosa",
+                "Psychiatric Disorder - Eating Disorder",
+                "Psychiatric Disorder - Bulimia Nervosa",
+                "Psychiatric Disorder - ADHD",
+                "Psychiatric Disorder - Bereavement",
+                "Psychiatric Disorder",
+                "Other",
+                "Unknown"
+            ],
+            "title": "ConstructDomainEnum",
+            "type": "string"
+        },
+        "CriteriaSelectionIntensityEnum": {
+            "description": "",
+            "enum": [
+                "Broad",
+                "Moderate",
+                "Highly-Selective",
+                "Unknown"
+            ],
+            "title": "CriteriaSelectionIntensityEnum",
+            "type": "string"
+        },
+        "DataLocationEnum": {
+            "description": "",
+            "enum": [
+                "Synapse",
+                "NIMH Data Archive (NDA)",
+                "dbGaP",
+                "Zenodo",
+                "OSF",
+                "Institutional Repository",
+                "Other",
+                "Unknown"
+            ],
+            "title": "DataLocationEnum",
+            "type": "string"
+        },
+        "DeidentificationMethodEnum": {
+            "description": "",
+            "enum": [
+                "HIPAA Safe Harbor",
+                "Expert Determination",
+                "Pseudonymized",
+                "Anonymized",
+                "Limited Dataset",
+                "Unknown"
+            ],
+            "title": "DeidentificationMethodEnum",
+            "type": "string"
+        },
+        "DerivationMethodEnum": {
+            "description": "",
+            "enum": [
+                "Sum or Total Score",
+                "Mean or Average",
+                "Composite Score",
+                "Standardized Score",
+                "Algorithmic / Model-derived",
+                "Clinician-rated",
+                "Other",
+                "Unknown"
+            ],
+            "title": "DerivationMethodEnum",
+            "type": "string"
+        },
+        "DerivedVariableTypeEnum": {
+            "description": "",
+            "enum": [
+                "Raw Score",
+                "Sum Score",
+                "Mean Score",
+                "Composite Score",
+                "Subscale Score",
+                "Standardized Score",
+                "Change Score",
+                "Slope / Trajectory",
+                "Threshold / Screening Flag",
+                "Severity Category",
+                "Risk Score",
+                "Clinician-Rated Summary",
+                "Compliance Metric",
+                "Missingness Metric",
+                "Response Time Metric",
+                "Aggregated Sensor Feature",
+                "Contextual Feature",
+                "Other Derived Variable",
+                "Unknown"
+            ],
+            "title": "DerivedVariableTypeEnum",
+            "type": "string"
+        },
+        "DeviceTypeEnum": {
+            "description": "",
+            "enum": [
+                "Smartphone",
+                "Tablet",
+                "Wearable",
+                "Desktop or Laptop Computer",
+                "Dedicated Research Device",
+                "Multiple Digital Devices",
+                "Other",
+                "Unknown"
+            ],
+            "title": "DeviceTypeEnum",
+            "type": "string"
+        },
+        "DiseaseFocusEnum": {
+            "description": "",
+            "enum": [
+                "Normative/General Population",
+                "At-Risk/Enriched Populations",
+                "Condition-Focused Populations",
+                "Mixed/Comparative Designs",
+                "Registry/Administrative Cohorts",
+                "Other"
+            ],
+            "title": "DiseaseFocusEnum",
+            "type": "string"
+        },
+        "EthnicityEnum": {
+            "description": "",
+            "enum": [
+                "Hispanic or Latino",
+                "Not Hispanic or Latino",
+                "Did not disclose",
+                "Other"
+            ],
+            "title": "EthnicityEnum",
+            "type": "string"
+        },
+        "ExclusionTagsEnum": {
+            "description": "",
+            "enum": [
+                "Major comorbidity excluded",
+                "Psychiatric comorbidity excluded",
+                "Neurological comorbidity excluded",
+                "Substance use excluded",
+                "Cognitive impairment excluded",
+                "Pregnancy excluded",
+                "Sensory/motor limitation excluded",
+                "Contraindicated medication excluded",
+                "Inability to consent excluded",
+                "Noncompliance risk excluded",
+                "Other",
+                "Unknown"
+            ],
+            "title": "ExclusionTagsEnum",
+            "type": "string"
+        },
+        "ExternallyRequestableEnum": {
+            "description": "",
+            "enum": [
+                "True",
+                "False",
+                "Restricted (subset only)",
+                "Unknown"
+            ],
+            "title": "ExternallyRequestableEnum",
+            "type": "string"
+        },
+        "FollowUpIntervalEnum": {
+            "description": "",
+            "enum": [
+                "days",
+                "weeks",
+                "months",
+                "years",
+                "Unknown"
+            ],
+            "title": "FollowUpIntervalEnum",
+            "type": "string"
+        },
+        "GenderEnum": {
+            "description": "",
+            "enum": [
+                "Woman",
+                "Man",
+                "Non-binary",
+                "Another gender identity",
+                "Did not disclose",
+                "Unknown"
+            ],
+            "title": "GenderEnum",
+            "type": "string"
+        },
+        "GenerationEnum": {
+            "description": "",
+            "enum": [
+                "F0",
+                "F1",
+                "F2",
+                "F3+",
+                "Multiple",
+                "Unknown"
+            ],
+            "title": "GenerationEnum",
+            "type": "string"
+        },
+        "InclusionTagsEnum": {
+            "description": "",
+            "enum": [
+                "Age-based eligibility",
+                "Sex-based eligibility",
+                "Diagnosis required",
+                "Symptom threshold required",
+                "At-risk/enriched (family history/genetic risk/exposure)",
+                "Treatment/medication status required",
+                "Language/communication requirement",
+                "Geographic/catchment requirement",
+                "Device/smartphone required",
+                "Capacity/consent requirement",
+                "Other",
+                "Unknown"
+            ],
+            "title": "InclusionTagsEnum",
+            "type": "string"
+        },
+        "InputMethodEnum": {
+            "description": "",
+            "enum": [
+                "Touch",
+                "Keyboard",
+                "Mouse or Trackpad",
+                "Sensor",
+                "Voice",
+                "Multiple Input Methods",
+                "Other",
+                "Unknown"
+            ],
+            "title": "InputMethodEnum",
+            "type": "string"
+        },
+        "IrbExemptionTypeEnum": {
+            "description": "",
+            "enum": [
+                "Exemption Category 1",
+                "Exemption Category 2",
+                "Exemption Category 3",
+                "Exemption Category 4",
+                "Exemption Category 5",
+                "Exemption Category 6",
+                "Other Exemption",
+                "Unknown"
+            ],
+            "title": "IrbExemptionTypeEnum",
+            "type": "string"
+        },
+        "IrbScopeEnum": {
+            "description": "",
+            "enum": [
+                "Primary study",
+                "Secondary analysis",
+                "Site-specific",
+                "Data reuse",
+                "Other",
+                "Unknown"
+            ],
+            "title": "IrbScopeEnum",
+            "type": "string"
+        },
+        "IrbStatusEnum": {
+            "description": "",
+            "enum": [
+                "Approved",
+                "Exempt",
+                "Waived",
+                "Not Required",
+                "Pending",
+                "Unknown"
+            ],
+            "title": "IrbStatusEnum",
+            "type": "string"
+        },
+        "IsValidatedMeasureEnum": {
+            "description": "",
+            "enum": [
+                "True",
+                "False",
+                "Partially validated",
+                "Unknown"
+            ],
+            "title": "IsValidatedMeasureEnum",
+            "type": "string"
+        },
+        "MeasureTypeEnum": {
+            "description": "",
+            "enum": [
+                "Questionnaire / Survey",
+                "Cognitive task",
+                "Clinical assessment",
+                "Behavioral observation",
+                "Sensor-derived measure",
+                "Interview",
+                "Composite index",
+                "Other"
+            ],
+            "title": "MeasureTypeEnum",
+            "type": "string"
+        },
+        "MeasuredConstructEnum": {
+            "description": "",
+            "enum": [
+                "Anxiety",
+                "Stress",
+                "Affect / Mood",
+                "Emotional Regulation",
+                "Psychological Well-being",
+                "Social Functioning",
+                "Quality of Life",
+                "Behavioral Symptoms",
+                "Attention",
+                "Working Memory",
+                "Executive Function",
+                "Cognitive Flexibility",
+                "Inhibitory Control",
+                "Processing Speed",
+                "Learning",
+                "Memory",
+                "Language",
+                "Visuospatial Ability",
+                "Decision Making",
+                "Motor Function",
+                "Balance and Gait",
+                "Sensory Processing",
+                "Sleep",
+                "Fatigue",
+                "Pain",
+                "Cognitive Impairment",
+                "Physical Activity",
+                "Sedentary Behavior",
+                "Dietary Intake",
+                "Body Composition",
+                "Cardiometabolic Health",
+                "Respiratory Function",
+                "General Health Status",
+                "Developmental Milestones",
+                "Adaptive Functioning",
+                "Daily Living Skills",
+                "Educational Attainment",
+                "Occupational Functioning",
+                "Environmental Exposure",
+                "Socioeconomic Status",
+                "Life Events",
+                "Seasonality",
+                "Demographics",
+                "Clinical History",
+                "Medication Use",
+                "Health Behaviors",
+                "Other",
+                "Unknown"
+            ],
+            "title": "MeasuredConstructEnum",
+            "type": "string"
+        },
+        "MetadataCoverageScopeEnum": {
+            "description": "",
+            "enum": [
+                "Exhaustive (Collected)",
+                "Shareable-only",
+                "Mixed/Partial",
+                "Unknown Scope"
+            ],
+            "title": "MetadataCoverageScopeEnum",
+            "type": "string"
+        },
+        "PersistentRowIdentifierEnum": {
+            "description": "Allowed persistent row identifier types used to scope a record.",
+            "enum": [
+                "measureID",
+                "metadataFileID",
+                "cohortID",
+                "longitudinalStudyID",
+                "participantID",
+                "studyWaveID",
+                "studyPeriodID",
+                "studyArmID",
+                "studyComponentID",
+                "rowID"
+            ],
+            "title": "PersistentRowIdentifierEnum",
+            "type": "string"
+        },
+        "PopulationScopeEnum": {
+            "description": "",
+            "enum": [
+                "study",
+                "arm",
+                "cohort"
+            ],
+            "title": "PopulationScopeEnum",
+            "type": "string"
+        },
+        "PopulationTypeEnum": {
+            "description": "",
+            "enum": [
+                "General Population",
+                "Healthy Volunteers",
+                "Patient",
+                "Clinical Population",
+                "At-Risk Population",
+                "Enriched Population",
+                "Caregivers",
+                "Family Members",
+                "Occupational",
+                "Workforce Population",
+                "Military",
+                "Veteran Population",
+                "School-based Population",
+                "Student",
+                "Community Sample",
+                "Other",
+                "Unknown"
+            ],
+            "title": "PopulationTypeEnum",
+            "type": "string"
+        },
+        "PrimaryHealthFocusEnum": {
+            "description": "",
+            "enum": [
+                "Normative/General Health",
+                "Condition-Focused",
+                "At-Risk/Enriched",
+                "Mixed Comparative",
+                "Other"
+            ],
+            "title": "PrimaryHealthFocusEnum",
+            "type": "string"
+        },
+        "PrincipalInvestigatorRolesEnum": {
+            "description": "",
+            "enum": [
+                "Original PI",
+                "Current PI",
+                "Co-PI",
+                "Acting PI",
+                "Multiple",
+                "Unknown"
+            ],
+            "title": "PrincipalInvestigatorRolesEnum",
+            "type": "string"
+        },
+        "RaceEnum": {
+            "description": "",
+            "enum": [
+                "American Indian or Alaska Native",
+                "Asian",
+                "Black or African American",
+                "Native Hawaiian or Other Pacific Islander",
+                "White",
+                "Other race",
+                "Did not disclose",
+                "Unknown"
+            ],
+            "title": "RaceEnum",
+            "type": "string"
+        },
+        "RelationToOriginalEnum": {
+            "description": "",
+            "enum": [
+                "Self",
+                "Child",
+                "Grandchild",
+                "Parent",
+                "Sibling",
+                "Spouse or Partner",
+                "Other Relative",
+                "Multiple",
+                "Unknown"
+            ],
+            "title": "RelationToOriginalEnum",
+            "type": "string"
+        },
+        "RollingEnrollmentEnum": {
+            "description": "",
+            "enum": [
+                "True",
+                "False",
+                "Mixed",
+                "Unknown"
+            ],
+            "title": "RollingEnrollmentEnum",
+            "type": "string"
+        },
+        "ScoreTypeEnum": {
+            "description": "",
+            "enum": [
+                "raw score",
+                "sum score",
+                "mean score",
+                "composite score",
+                "standardized score",
+                "algorithmic score",
+                "clinician-rated score",
+                "derived index",
+                "Other",
+                "Unknown"
+            ],
+            "title": "ScoreTypeEnum",
+            "type": "string"
+        },
+        "SeasonsEnum": {
+            "description": "",
+            "enum": [
+                "Winter",
+                "Spring",
+                "Summer",
+                "Fall",
+                "Unknown"
+            ],
+            "title": "SeasonsEnum",
+            "type": "string"
+        },
+        "SelectionIntensityEnum": {
+            "description": "",
+            "enum": [
+                "Broad/Minimally Selective",
+                "Moderately Selective",
+                "Highly Selective",
+                "Other"
+            ],
+            "title": "SelectionIntensityEnum",
+            "type": "string"
+        },
+        "SexEligibleEnum": {
+            "description": "",
+            "enum": [
+                "Female only",
+                "Male only",
+                "All sexes eligible",
+                "Not specified",
+                "Unknown"
+            ],
+            "title": "SexEligibleEnum",
+            "type": "string"
+        },
+        "SexEnum": {
+            "description": "",
+            "enum": [
+                "Female",
+                "Male",
+                "Intersex",
+                "Unknown",
+                "Not reported"
+            ],
+            "title": "SexEnum",
+            "type": "string"
+        },
+        "SoftwarePlatformEnum": {
+            "description": "",
+            "enum": [
+                "REDCap",
+                "Custom Application",
+                "Commercial Platform",
+                "Open-source Platform",
+                "Web-based Application",
+                "Multiple Platforms",
+                "Other",
+                "Unknown"
+            ],
+            "title": "SoftwarePlatformEnum",
+            "type": "string"
+        },
+        "StimulusResponseModeEnum": {
+            "description": "",
+            "enum": [
+                "Keyboard",
+                "Touchscreen",
+                "Mouse/Trackpad",
+                "Voice",
+                "Clinician-administered",
+                "Paper-and-pencil",
+                "Other",
+                "Unknown"
+            ],
+            "title": "StimulusResponseModeEnum",
+            "type": "string"
+        },
+        "StudyComponentTypeEnum": {
+            "description": "",
+            "enum": [
+                "Wave",
+                "Arm",
+                "Period",
+                "Cohort",
+                "Site",
+                "Phase",
+                "Other",
+                "Unknown",
+                "Repeated"
+            ],
+            "title": "StudyComponentTypeEnum",
+            "type": "string"
+        },
+        "StudyIdentityDiscovery": {
+            "additionalProperties": false,
+            "description": "Tier 1 record \u2014 study-level identity and discovery metadata. Study-scoped, so it carries only the StudyAnchored mixin (no per-row scoping block).",
+            "properties": {
+                "cohortID": {
+                    "description": "Unique identifier for the cohort.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "cohortName": {
+                    "description": "Name of cohort.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "dataSubtype": {
+                    "description": "Further qualification of dataType, which may be used to indicate the state of processing of the data, aggregation of the data, or presence of metadata.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "dataType": {
+                    "description": "Types of input/output data in bioinformatics pipelines.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "grantNumber": {
+                    "description": "Grant number including activity code, institute code, and serial number (e.g. U01MH103392).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "institution": {
+                    "description": "Institution conducting study.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "longitudinalStudyID": {
+                    "description": "Linked longitudinal study identifier.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "metadataCoverageNotes": {
+                    "description": "Free-text clarification of what is included/excluded in the metadata record and why (e.g., \"some measures collected but not shareable due to licensing\").",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "metadataCoverageScope": {
+                    "$ref": "#/$defs/MetadataCoverageScopeEnum",
+                    "description": "Indicates whether the archived metadata describes all data collected in the study or only the data types made available for external access."
+                },
+                "metadataFileID": {
+                    "description": "Identifies a specific metadata artifact or file (i.e, a particular \"measures.tsv\" version, etc. If the file is uploaded to Synapse, this will be the Synapse file entity ID. Examples: syn99887766 (or FILE_STUDY_SCA_measures_v2)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "metadataType": {
+                    "description": "For files of dataSubtype: metadata, a description of the type of metadata in the file.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "principalInvestigator": {
+                    "description": "Name(s) of PI.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "principalInvestigatorContact": {
+                    "description": "Email of (each) PI.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "principalInvestigatorRoles": {
+                    "$ref": "#/$defs/PrincipalInvestigatorRolesEnum",
+                    "description": "Distinguishes original vs current vs co-PI."
+                },
+                "studyAbstract": {
+                    "description": "The short study description/abstract used to describe the study that is visible on the Portal study card.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "studyDescription": {
+                    "description": "The synID of the wiki that contains the study description. Description of the study, including the types of experimental assays, model systems, types of analysis, description of cohort, associated vulnerable populations, special categories of data, rare diseases, etc. Maps to DUOplus2.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "studyID": {
+                    "description": "The stable, unique identifier for a study that never changes, even if other study metadata changes (like the study name, short name, owner, or project). Example: STUDY_SCA",
+                    "type": "string"
+                },
+                "studyKey": {
+                    "description": "The short acronym for a project the study is associated with.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "studyMetadata": {
+                    "description": "The wiki from the CLASSIC Portal backend that describes study metadata files.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "studyName": {
+                    "description": "Name of the study.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "studyProjectIdentifier": {
+                    "description": "The Synapse Project identifier (synID) with which this Study is related.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "studyID"
+            ],
+            "title": "StudyIdentityDiscovery",
+            "type": "object"
+        },
+        "StudyWaveEnum": {
+            "description": "",
+            "enum": [
+                "Wave 1",
+                "Wave 2",
+                "Wave 3",
+                "Wave 4+",
+                "Pilot",
+                "Extension",
+                "Multiple",
+                "Unknown"
+            ],
+            "title": "StudyWaveEnum",
+            "type": "string"
+        },
+        "TimepointEnum": {
+            "description": "",
+            "enum": [
+                "baseline",
+                "screening",
+                "enrollment",
+                "visit_1",
+                "visit_2",
+                "visit_3",
+                "visit_4+",
+                "followup",
+                "followup_1",
+                "followup_2",
+                "followup_3",
+                "followup_4+",
+                "end_of_study",
+                "unspecified",
+                "multiple",
+                "Other",
+                "Unknown"
+            ],
+            "title": "TimepointEnum",
+            "type": "string"
+        },
+        "UnitEnum": {
+            "description": "",
+            "enum": [
+                "years",
+                "months",
+                "days",
+                "hours",
+                "minutes",
+                "seconds",
+                "percent",
+                "score",
+                "milliseconds",
+                "kg",
+                "cm",
+                "m",
+                "kg/m^2",
+                "mmHg",
+                "bpm",
+                "Other",
+                "Unknown"
+            ],
+            "title": "UnitEnum",
+            "type": "string"
+        },
+        "YesNoPartialUnknownEnum": {
+            "description": "",
+            "enum": [
+                "True",
+                "False",
+                "Partial",
+                "Unknown"
+            ],
+            "title": "YesNoPartialUnknownEnum",
+            "type": "string"
+        },
+        "YesNoUnknownEnum": {
+            "description": "",
+            "enum": [
+                "True",
+                "False",
+                "Unknown"
+            ],
+            "title": "YesNoUnknownEnum",
+            "type": "string"
+        }
+    },
+    "$id": "https://sagebionetworks.org/classic/tier1",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": true,
+    "metamodel_version": "1.7.0",
+    "title": "classic_tier1_study_identity",
+    "type": "object",
+    "version": null
+}

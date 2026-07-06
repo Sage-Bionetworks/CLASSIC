@@ -1,0 +1,1214 @@
+id: https://sagebionetworks.org/classic/core
+name: classic_core
+title: CLASSIC Core
+description: >-
+  Shared building blocks for the CLASSIC tiered metadata model: prefixes, types,
+  cross-tier slots, mixins, and ALL controlled-vocabulary enums. Enums live here
+  (not in the tier files) so any enum can be reused by any tier and new enums can
+  be added in one place. Each tier schema imports this file.
+license: https://creativecommons.org/publicdomain/zero/1.0/
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  classic: https://sagebionetworks.org/classic/
+  schema: http://schema.org/
+  # --- Ontology / vocabulary prefixes (declared and ready for term mapping) ---
+  PATO: http://purl.obolibrary.org/obo/PATO_
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+  OBI: http://purl.obolibrary.org/obo/OBI_
+  MONDO: http://purl.obolibrary.org/obo/MONDO_
+  HP: http://purl.obolibrary.org/obo/HP_
+  DUO: http://purl.obolibrary.org/obo/DUO_
+  UO: http://purl.obolibrary.org/obo/UO_
+  EDAM: http://edamontology.org/
+  SNOMEDCT: http://purl.bioontology.org/ontology/SNOMEDCT/
+  SIO: http://semanticscience.org/resource/SIO_
+default_prefix: classic
+default_range: string
+
+imports:
+  - linkml:types
+
+# ===================================================================== #
+# ONTOLOGY MAPPING & VALIDATION CONVENTIONS  (read before curating)
+# ---------------------------------------------------------------------
+# Ontology mappings use NATIVE LinkML constructs. On each enum
+# permissible value, replace the `todos:` placeholder with `meaning:`
+# (and a `description:`) once a term is chosen — following the LinkML
+# docs pattern:
+#
+#   enums:
+#     PersonStatus:
+#       permissible_values:
+#         ALIVE:
+#           description: the person is living
+#           meaning: PATO:0001421
+#         DEAD:
+#           description: the person is deceased
+#           meaning: PATO:0001422
+#         UNKNOWN:
+#           description: the vital status is not known
+#           todos:
+#             - map this to an ontology
+#
+# Slots/classes may also carry `todos:` (free-text) and mapping slots:
+#   slot_uri: NCIT:C93499
+#   exact_mappings:   [NCIT:C25190]
+#   close_mappings:   [OBI:0001622]
+#   related_mappings: [SIO:000115]
+#
+# VALIDATION RULES (replace the `add validation rule` todos):
+#   required: true | recommended: true
+#   pattern: "^STUDY_[A-Z0-9]+$"
+#   minimum_value: 1900 | maximum_value: 2100
+#   # class-level conditional logic:
+#   # rules:
+#   #   - preconditions: {slot_conditions: {collectionModality: {equals_string: Digital}}}
+#   #     postconditions: {slot_conditions: {deviceType: {required: true}}}
+#   #     description: Digital collection requires a deviceType.
+# ===================================================================== #
+
+#-------------------------------------------------------------------#
+# Mixins — composed into each tier's record class
+#-------------------------------------------------------------------#
+classes:
+  StudyAnchored:
+    mixin: true
+    description: Anchors any record to its parent study via the stable studyID.
+    slots:
+      - studyID
+
+  ScopedRecord:
+    mixin: true
+    description: >-
+      Optional per-row identity plus the scope qualifiers shared by every
+      non-Tier-1 record: what the value applies to and at what aggregation level.
+    slots:
+      - optional_row_identifier
+      - optional_row_identifier_value
+      - appliesTo
+      - aggregationLevel
+      - populationScope
+
+#-------------------------------------------------------------------#
+# Shared slots
+#-------------------------------------------------------------------#
+slots:
+  studyID:
+    title: studyID
+    description: >-
+      The stable, unique identifier for a study that never changes, even if other
+      study metadata changes (like the study name, short name, owner, or project).
+      Example: STUDY_SCA
+    identifier: true
+    required: true
+    todos:
+      - map this to an ontology
+      - add validation rule (e.g. pattern "^STUDY_[A-Z0-9]+$")
+
+  cohortID:
+    title: cohortID
+    description: Unique identifier for the cohort.
+    todos:
+      - map this to an ontology
+
+  optional_row_identifier:
+    title: optional persistent row identifier
+    description: >-
+      Use studyID as the anchor, plus a persistent row identifier to identify a
+      specific file/version, etc.
+    range: persistent_row_identifier_enum
+
+  optional_row_identifier_value:
+    title: optional persistent row identifier - value
+    description: Enter a unique identifier for the selection made.
+
+  appliesTo:
+    title: appliesTo
+    description: >-
+      Indicates the level of entity to which a metadata value applies (e.g.,
+      individual participant or population summary).
+    range: applies_to_enum
+
+  aggregationLevel:
+    title: aggregationLevel
+    description: >-
+      Specifies whether a metadata value represents individual-level data or an
+      aggregate summary.
+    range: aggregation_level_enum
+
+  populationScope:
+    title: populationScope
+    description: >-
+      Identifies the population described by the metadata (e.g., study-wide,
+      cohort, or study arm).
+    range: population_scope_enum
+
+# =================================================================== #
+# ENUMS — all controlled vocabularies for every tier live here.
+# Any tier may set a slot `range:` to any enum below. To map a term,
+# replace a value's `todos:` with `meaning:` + `description:`
+# (see ONTOLOGY MAPPING conventions above).
+# =================================================================== #
+enums:
+
+  #--- Shared / cross-tier --------------------------------------------#
+  persistent_row_identifier_enum:
+    description: Allowed persistent row identifier types used to scope a record.
+    permissible_values:
+      measureID:
+        todos: [map this to an ontology]
+      metadataFileID:
+        todos: [map this to an ontology]
+      cohortID:
+        todos: [map this to an ontology]
+      longitudinalStudyID:
+        todos: [map this to an ontology]
+      participantID:
+        todos: [map this to an ontology]
+      studyWaveID:
+        todos: [map this to an ontology]
+      studyPeriodID:
+        todos: [map this to an ontology]
+      studyArmID:
+        todos: [map this to an ontology]
+      studyComponentID:
+        todos: [map this to an ontology]
+      rowID:
+        todos: [map this to an ontology]
+  applies_to_enum:
+    description: Entity level to which a metadata value applies.
+    permissible_values:
+      participant:
+        todos: [map this to an ontology]
+      cohort:
+        todos: [map this to an ontology]
+      study:
+        todos: [map this to an ontology]
+  aggregation_level_enum:
+    permissible_values:
+      individual:
+        todos: [map this to an ontology]
+      summary:
+        todos: [map this to an ontology]
+  population_scope_enum:
+    permissible_values:
+      study:
+        todos: [map this to an ontology]
+      arm:
+        todos: [map this to an ontology]
+      cohort:
+        todos: [map this to an ontology]
+  administration_mode_enum:
+    description: The manner in which a data collection activity is administered to participants.
+    permissible_values:
+      Self-administered:
+        todos: [map this to an ontology]
+      Interviewer-administered:
+        todos: [map this to an ontology]
+      Clinician-administered:
+        todos: [map this to an ontology]
+      Assisted:
+        todos: [map this to an ontology]
+      Mixed Administration:
+        todos: [map this to an ontology]
+      Other:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  yes_no_unknown_enum:
+    permissible_values:
+      Yes:
+        todos: [map this to an ontology]
+      No:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  yes_no_partial_unknown_enum:
+    permissible_values:
+      Yes:
+        todos: [map this to an ontology]
+      No:
+        todos: [map this to an ontology]
+      Partial:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+
+  #--- Tier 1: Study Identity & Discovery -----------------------------#
+  principal_investigator_roles_enum:
+    permissible_values:
+      Original PI:
+        todos: [map this to an ontology]
+      Current PI:
+        todos: [map this to an ontology]
+      Co-PI:
+        todos: [map this to an ontology]
+      Acting PI:
+        todos: [map this to an ontology]
+      Multiple:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  metadata_coverage_scope_enum:
+    permissible_values:
+      Exhaustive (Collected):
+        todos: [map this to an ontology]
+      Shareable-only:
+        todos: [map this to an ontology]
+      Mixed/Partial:
+        todos: [map this to an ontology]
+      Unknown Scope:
+        todos: [map this to an ontology]
+
+  #--- Tier 2: Governance, Access & Provenance ------------------------#
+  externally_requestable_enum:
+    permissible_values:
+      Yes:
+        todos: [map this to an ontology]
+      No:
+        todos: [map this to an ontology]
+      Restricted (subset only):
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  irb_status_enum:
+    permissible_values:
+      Approved:
+        todos: [map this to an ontology]
+      Exempt:
+        todos: [map this to an ontology]
+      Waived:
+        todos: [map this to an ontology]
+      Not Required:
+        todos: [map this to an ontology]
+      Pending:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  irb_exemption_type_enum:
+    permissible_values:
+      Exemption Category 1:
+        todos: [map this to an ontology]
+      Exemption Category 2:
+        todos: [map this to an ontology]
+      Exemption Category 3:
+        todos: [map this to an ontology]
+      Exemption Category 4:
+        todos: [map this to an ontology]
+      Exemption Category 5:
+        todos: [map this to an ontology]
+      Exemption Category 6:
+        todos: [map this to an ontology]
+      Other Exemption:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  irb_scope_enum:
+    permissible_values:
+      Primary study:
+        todos: [map this to an ontology]
+      Secondary analysis:
+        todos: [map this to an ontology]
+      Site-specific:
+        todos: [map this to an ontology]
+      Data reuse:
+        todos: [map this to an ontology]
+      Other:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  consent_type_enum:
+    permissible_values:
+      Broad:
+        todos: [map this to an ontology (DUO)]
+      Tiered:
+        todos: [map this to an ontology (DUO)]
+      Specific:
+        todos: [map this to an ontology (DUO)]
+      No Consent for Sharing:
+        todos: [map this to an ontology (DUO)]
+      Unknown:
+        todos: [map this to an ontology]
+  deidentification_method_enum:
+    permissible_values:
+      HIPAA Safe Harbor:
+        todos: [map this to an ontology]
+      Expert Determination:
+        todos: [map this to an ontology]
+      Pseudonymized:
+        todos: [map this to an ontology]
+      Anonymized:
+        todos: [map this to an ontology]
+      Limited Dataset:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  access_restrictions_enum:
+    permissible_values:
+      General Research Use:
+        todos: [map this to an ontology (DUO)]
+      Disease-Specific Research:
+        todos: [map this to an ontology (DUO)]
+      Health/Medical/Biomedical Research:
+        todos: [map this to an ontology (DUO)]
+      Population Origins/Ancestry:
+        todos: [map this to an ontology (DUO)]
+      Research Prohibited:
+        todos: [map this to an ontology (DUO)]
+      No Commercial Use:
+        todos: [map this to an ontology (DUO)]
+      No Methods Development:
+        todos: [map this to an ontology (DUO)]
+      No Secondary Use:
+        todos: [map this to an ontology (DUO)]
+      Ethics Approval Required:
+        todos: [map this to an ontology (DUO)]
+      Other:
+        todos: [map this to an ontology]
+  data_location_enum:
+    permissible_values:
+      Synapse:
+        todos: [map this to an ontology]
+      NIMH Data Archive (NDA):
+        todos: [map this to an ontology]
+      dbGaP:
+        todos: [map this to an ontology]
+      Zenodo:
+        todos: [map this to an ontology]
+      OSF:
+        todos: [map this to an ontology]
+      Institutional Repository:
+        todos: [map this to an ontology]
+      Other:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  access_review_body_enum:
+    permissible_values:
+      Data Access Committee (DAC):
+        todos: [map this to an ontology]
+      IRB/Ethics Committee:
+        todos: [map this to an ontology]
+      Repository-controlled:
+        todos: [map this to an ontology]
+      PI approval:
+        todos: [map this to an ontology]
+      Other:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  access_requirements_enum:
+    permissible_values:
+      DUA required:
+        todos: [map this to an ontology]
+      IRB approval required:
+        todos: [map this to an ontology]
+      Ethics exemption accepted:
+        todos: [map this to an ontology]
+      Data security plan required:
+        todos: [map this to an ontology]
+      Institutional signature training:
+        todos: [map this to an ontology]
+      Human subjects training required:
+        todos: [map this to an ontology]
+      Account/ID required:
+        todos: [map this to an ontology]
+      Other:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+
+  #--- Tier 3: Cohort & Population ------------------------------------#
+  disease_focus_enum:
+    permissible_values:
+      Normative/General Population:
+        todos: [map this to an ontology (MONDO/HP)]
+      At-Risk/Enriched Populations:
+        todos: [map this to an ontology (MONDO/HP)]
+      Condition-Focused Populations:
+        todos: [map this to an ontology (MONDO/HP)]
+      Mixed/Comparative Designs:
+        todos: [map this to an ontology]
+      Registry/Administrative Cohorts:
+        todos: [map this to an ontology]
+      Other:
+        todos: [map this to an ontology]
+  primary_health_focus_enum:
+    permissible_values:
+      Normative/General Health:
+        todos: [map this to an ontology]
+      Condition-Focused:
+        todos: [map this to an ontology]
+      At-Risk/Enriched:
+        todos: [map this to an ontology]
+      Mixed Comparative:
+        todos: [map this to an ontology]
+      Other:
+        todos: [map this to an ontology]
+  ascertainment_context_enum:
+    permissible_values:
+      Community-ascertained:
+        todos: [map this to an ontology]
+      Clinic-ascertained:
+        todos: [map this to an ontology]
+      Administrative/Registry-Based:
+        todos: [map this to an ontology]
+      Hybrid:
+        todos: [map this to an ontology]
+      Other:
+        todos: [map this to an ontology]
+  selection_intensity_enum:
+    permissible_values:
+      Broad/Minimally Selective:
+        todos: [map this to an ontology]
+      Moderately Selective:
+        todos: [map this to an ontology]
+      Highly Selective:
+        todos: [map this to an ontology]
+      Other:
+        todos: [map this to an ontology]
+  population_type_enum:
+    permissible_values:
+      General Population:
+        todos: [map this to an ontology]
+      Healthy Volunteers:
+        todos: [map this to an ontology]
+      Patient:
+        todos: [map this to an ontology]
+      Clinical Population:
+        todos: [map this to an ontology]
+      At-Risk Population:
+        todos: [map this to an ontology]
+      Enriched Population:
+        todos: [map this to an ontology]
+      Caregivers:
+        todos: [map this to an ontology]
+      Family Members:
+        todos: [map this to an ontology]
+      Occupational:
+        todos: [map this to an ontology]
+      Workforce Population:
+        todos: [map this to an ontology]
+      Military:
+        todos: [map this to an ontology]
+      Veteran Population:
+        todos: [map this to an ontology]
+      School-based Population:
+        todos: [map this to an ontology]
+      Student:
+        todos: [map this to an ontology]
+      Community Sample:
+        todos: [map this to an ontology]
+      Other:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  age_group_enum:
+    permissible_values:
+      Children (0-12):
+        todos: [map this to an ontology]
+      Adolescents (13-17):
+        todos: [map this to an ontology]
+      Adults (18-64):
+        todos: [map this to an ontology]
+      Older Adults (65+):
+        todos: [map this to an ontology]
+      Mixed:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  sex_enum:
+    permissible_values:
+      Female:
+        todos: [map this to an ontology (NCIT)]
+      Male:
+        todos: [map this to an ontology (NCIT)]
+      Intersex:
+        todos: [map this to an ontology (NCIT)]
+      Unknown:
+        todos: [map this to an ontology]
+      Not reported:
+        todos: [map this to an ontology]
+  sex_eligible_enum:
+    permissible_values:
+      Female only:
+        todos: [map this to an ontology]
+      Male only:
+        todos: [map this to an ontology]
+      All sexes eligible:
+        todos: [map this to an ontology]
+      Not specified:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  gender_enum:
+    permissible_values:
+      Woman:
+        todos: [map this to an ontology (NCIT)]
+      Man:
+        todos: [map this to an ontology (NCIT)]
+      Non-binary:
+        todos: [map this to an ontology (NCIT)]
+      Another gender identity:
+        todos: [map this to an ontology]
+      Did not disclose:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  race_enum:
+    permissible_values:
+      American Indian or Alaska Native:
+        todos: [map this to an ontology (NCIT)]
+      Asian:
+        todos: [map this to an ontology (NCIT)]
+      Black or African American:
+        todos: [map this to an ontology (NCIT)]
+      Native Hawaiian or Other Pacific Islander:
+        todos: [map this to an ontology (NCIT)]
+      White:
+        todos: [map this to an ontology (NCIT)]
+      Other race:
+        todos: [map this to an ontology]
+      Did not disclose:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  ethnicity_enum:
+    permissible_values:
+      Hispanic or Latino:
+        todos: [map this to an ontology (NCIT)]
+      Not Hispanic or Latino:
+        todos: [map this to an ontology (NCIT)]
+      Did not disclose:
+        todos: [map this to an ontology]
+      Other:
+        todos: [map this to an ontology]
+  generation_enum:
+    permissible_values:
+      F0:
+        todos: [map this to an ontology]
+      F1:
+        todos: [map this to an ontology]
+      F2:
+        todos: [map this to an ontology]
+      F3+:
+        todos: [map this to an ontology]
+      Multiple:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  relation_to_original_enum:
+    permissible_values:
+      Self:
+        todos: [map this to an ontology]
+      Child:
+        todos: [map this to an ontology]
+      Grandchild:
+        todos: [map this to an ontology]
+      Parent:
+        todos: [map this to an ontology]
+      Sibling:
+        todos: [map this to an ontology]
+      Spouse or Partner:
+        todos: [map this to an ontology]
+      Other Relative:
+        todos: [map this to an ontology]
+      Multiple:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  construct_domain_enum:
+    permissible_values:
+      Depression:
+        todos: [map this to an ontology (MONDO/HP/NCIT)]
+      Cognitive:
+        todos: [map this to an ontology]
+      Neurological & Neurobehavioral:
+        todos: [map this to an ontology]
+      Neuroimaging:
+        todos: [map this to an ontology]
+      Physical Health & Lifestyle:
+        todos: [map this to an ontology]
+      Developmental & Functional:
+        todos: [map this to an ontology]
+      Environmental & Contextual:
+        todos: [map this to an ontology]
+      Administrative & Study Design:
+        todos: [map this to an ontology]
+      Psychiatric Disorder - Mood:
+        todos: [map this to an ontology (MONDO)]
+      Psychiatric Disorder - Substance Abuse:
+        todos: [map this to an ontology (MONDO)]
+      Psychiatric Disorder - Anxiety:
+        todos: [map this to an ontology (MONDO)]
+      Psychiatric Disorder - Hypochondriasis:
+        todos: [map this to an ontology (MONDO)]
+      Psychiatric Disorder - Anorexia Nervosa:
+        todos: [map this to an ontology (MONDO)]
+      Psychiatric Disorder - Eating Disorder:
+        todos: [map this to an ontology (MONDO)]
+      Psychiatric Disorder - Bulimia Nervosa:
+        todos: [map this to an ontology (MONDO)]
+      Psychiatric Disorder - ADHD:
+        todos: [map this to an ontology (MONDO)]
+      Psychiatric Disorder - Bereavement:
+        todos: [map this to an ontology]
+      Psychiatric Disorder:
+        todos: [map this to an ontology (MONDO)]
+      Other:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  inclusion_tags_enum:
+    permissible_values:
+      Age-based eligibility:
+        todos: [map this to an ontology]
+      Sex-based eligibility:
+        todos: [map this to an ontology]
+      Diagnosis required:
+        todos: [map this to an ontology]
+      Symptom threshold required:
+        todos: [map this to an ontology]
+      At-risk/enriched (family history/genetic risk/exposure):
+        todos: [map this to an ontology]
+      Treatment/medication status required:
+        todos: [map this to an ontology]
+      Language/communication requirement:
+        todos: [map this to an ontology]
+      Geographic/catchment requirement:
+        todos: [map this to an ontology]
+      Device/smartphone required:
+        todos: [map this to an ontology]
+      Capacity/consent requirement:
+        todos: [map this to an ontology]
+      Other:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  exclusion_tags_enum:
+    permissible_values:
+      Major comorbidity excluded:
+        todos: [map this to an ontology]
+      Psychiatric comorbidity excluded:
+        todos: [map this to an ontology]
+      Neurological comorbidity excluded:
+        todos: [map this to an ontology]
+      Substance use excluded:
+        todos: [map this to an ontology]
+      Cognitive impairment excluded:
+        todos: [map this to an ontology]
+      Pregnancy excluded:
+        todos: [map this to an ontology]
+      Sensory/motor limitation excluded:
+        todos: [map this to an ontology]
+      Contraindicated medication excluded:
+        todos: [map this to an ontology]
+      Inability to consent excluded:
+        todos: [map this to an ontology]
+      Noncompliance risk excluded:
+        todos: [map this to an ontology]
+      Other:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  criteria_selection_intensity_enum:
+    permissible_values:
+      Broad:
+        todos: [map this to an ontology]
+      Moderate:
+        todos: [map this to an ontology]
+      Highly-Selective:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+
+  #--- Tier 4: Study Design & Time ------------------------------------#
+  seasons_enum:
+    permissible_values:
+      Winter:
+        todos: [map this to an ontology]
+      Spring:
+        todos: [map this to an ontology]
+      Summer:
+        todos: [map this to an ontology]
+      Fall:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  collection_modality_enum:
+    permissible_values:
+      Digital:
+        todos: [map this to an ontology]
+      Paper-based:
+        todos: [map this to an ontology]
+      In-person (non-digital):
+        todos: [map this to an ontology]
+      Mixed:
+        todos: [map this to an ontology]
+      Other:
+        todos: [map this to an ontology]
+  study_wave_enum:
+    permissible_values:
+      Wave 1:
+        todos: [map this to an ontology]
+      Wave 2:
+        todos: [map this to an ontology]
+      Wave 3:
+        todos: [map this to an ontology]
+      Wave 4+:
+        todos: [map this to an ontology]
+      Pilot:
+        todos: [map this to an ontology]
+      Extension:
+        todos: [map this to an ontology]
+      Multiple:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  study_component_type_enum:
+    permissible_values:
+      Wave:
+        todos: [map this to an ontology]
+      Arm:
+        todos: [map this to an ontology]
+      Period:
+        todos: [map this to an ontology]
+      Cohort:
+        todos: [map this to an ontology]
+      Site:
+        todos: [map this to an ontology]
+      Phase:
+        todos: [map this to an ontology]
+      Other:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+      Repeated:
+        todos: [map this to an ontology]
+  rolling_enrollment_enum:
+    permissible_values:
+      Yes:
+        todos: [map this to an ontology]
+      No:
+        todos: [map this to an ontology]
+      Mixed:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  burst_length_enum:
+    permissible_values:
+      days:
+        todos: [map this to an ontology (UO)]
+      weeks:
+        todos: [map this to an ontology (UO)]
+      months:
+        todos: [map this to an ontology (UO)]
+      Unknown:
+        todos: [map this to an ontology]
+      probability sampling:
+        todos: [map this to an ontology]
+  burst_frequency_enum:
+    permissible_values:
+      One-time:
+        todos: [map this to an ontology]
+      Weekly:
+        todos: [map this to an ontology]
+      Monthly:
+        todos: [map this to an ontology]
+      Quarterly:
+        todos: [map this to an ontology]
+      Semiannual:
+        todos: [map this to an ontology]
+      Annual:
+        todos: [map this to an ontology]
+      Irregular:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  follow_up_interval_enum:
+    permissible_values:
+      days:
+        todos: [map this to an ontology (UO)]
+      weeks:
+        todos: [map this to an ontology (UO)]
+      months:
+        todos: [map this to an ontology (UO)]
+      years:
+        todos: [map this to an ontology (UO)]
+      Unknown:
+        todos: [map this to an ontology]
+
+  #--- Tier 5: Measures, Instruments, Derived Scores & Variables ------#
+  device_type_enum:
+    permissible_values:
+      Smartphone:
+        todos: [map this to an ontology]
+      Tablet:
+        todos: [map this to an ontology]
+      Wearable:
+        todos: [map this to an ontology]
+      Desktop or Laptop Computer:
+        todos: [map this to an ontology]
+      Dedicated Research Device:
+        todos: [map this to an ontology]
+      Multiple Digital Devices:
+        todos: [map this to an ontology]
+      Other:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  software_platform_enum:
+    permissible_values:
+      REDCap:
+        todos: [map this to an ontology]
+      Custom Application:
+        todos: [map this to an ontology]
+      Commercial Platform:
+        todos: [map this to an ontology]
+      Open-source Platform:
+        todos: [map this to an ontology]
+      Web-based Application:
+        todos: [map this to an ontology]
+      Multiple Platforms:
+        todos: [map this to an ontology]
+      Other:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  input_method_enum:
+    permissible_values:
+      Touch:
+        todos: [map this to an ontology]
+      Keyboard:
+        todos: [map this to an ontology]
+      Mouse or Trackpad:
+        todos: [map this to an ontology]
+      Sensor:
+        todos: [map this to an ontology]
+      Voice:
+        todos: [map this to an ontology]
+      Multiple Input Methods:
+        todos: [map this to an ontology]
+      Other:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  measured_construct_enum:
+    permissible_values:
+      Anxiety:
+        todos: [map this to an ontology (NCIT/Cognitive Atlas)]
+      Stress:
+        todos: [map this to an ontology (NCIT/Cognitive Atlas)]
+      Affect / Mood:
+        todos: [map this to an ontology (NCIT/Cognitive Atlas)]
+      Emotional Regulation:
+        todos: [map this to an ontology (Cognitive Atlas)]
+      Psychological Well-being:
+        todos: [map this to an ontology]
+      Social Functioning:
+        todos: [map this to an ontology]
+      Quality of Life:
+        todos: [map this to an ontology]
+      Behavioral Symptoms:
+        todos: [map this to an ontology]
+      Attention:
+        todos: [map this to an ontology (Cognitive Atlas)]
+      Working Memory:
+        todos: [map this to an ontology (Cognitive Atlas)]
+      Executive Function:
+        todos: [map this to an ontology (Cognitive Atlas)]
+      Cognitive Flexibility:
+        todos: [map this to an ontology (Cognitive Atlas)]
+      Inhibitory Control:
+        todos: [map this to an ontology (Cognitive Atlas)]
+      Processing Speed:
+        todos: [map this to an ontology (Cognitive Atlas)]
+      Learning:
+        todos: [map this to an ontology (Cognitive Atlas)]
+      Memory:
+        todos: [map this to an ontology (Cognitive Atlas)]
+      Language:
+        todos: [map this to an ontology (Cognitive Atlas)]
+      Visuospatial Ability:
+        todos: [map this to an ontology]
+      Decision Making:
+        todos: [map this to an ontology (Cognitive Atlas)]
+      Motor Function:
+        todos: [map this to an ontology]
+      Balance and Gait:
+        todos: [map this to an ontology]
+      Sensory Processing:
+        todos: [map this to an ontology]
+      Sleep:
+        todos: [map this to an ontology]
+      Fatigue:
+        todos: [map this to an ontology]
+      Pain:
+        todos: [map this to an ontology]
+      Cognitive Impairment:
+        todos: [map this to an ontology]
+      Physical Activity:
+        todos: [map this to an ontology]
+      Sedentary Behavior:
+        todos: [map this to an ontology]
+      Dietary Intake:
+        todos: [map this to an ontology]
+      Body Composition:
+        todos: [map this to an ontology]
+      Cardiometabolic Health:
+        todos: [map this to an ontology]
+      Respiratory Function:
+        todos: [map this to an ontology]
+      General Health Status:
+        todos: [map this to an ontology]
+      Developmental Milestones:
+        todos: [map this to an ontology]
+      Adaptive Functioning:
+        todos: [map this to an ontology]
+      Daily Living Skills:
+        todos: [map this to an ontology]
+      Educational Attainment:
+        todos: [map this to an ontology]
+      Occupational Functioning:
+        todos: [map this to an ontology]
+      Environmental Exposure:
+        todos: [map this to an ontology]
+      Socioeconomic Status:
+        todos: [map this to an ontology]
+      Life Events:
+        todos: [map this to an ontology]
+      Seasonality:
+        todos: [map this to an ontology]
+      Demographics:
+        todos: [map this to an ontology]
+      Clinical History:
+        todos: [map this to an ontology]
+      Medication Use:
+        todos: [map this to an ontology]
+      Health Behaviors:
+        todos: [map this to an ontology]
+      Other:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  measure_type_enum:
+    permissible_values:
+      Questionnaire / Survey:
+        todos: [map this to an ontology]
+      Cognitive task:
+        todos: [map this to an ontology]
+      Clinical assessment:
+        todos: [map this to an ontology]
+      Behavioral observation:
+        todos: [map this to an ontology]
+      Sensor-derived measure:
+        todos: [map this to an ontology]
+      Interview:
+        todos: [map this to an ontology]
+      Composite index:
+        todos: [map this to an ontology]
+      Other:
+        todos: [map this to an ontology]
+  is_validated_measure_enum:
+    permissible_values:
+      Yes:
+        todos: [map this to an ontology]
+      No:
+        todos: [map this to an ontology]
+      Partially validated:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  stimulus_response_mode_enum:
+    permissible_values:
+      Keyboard:
+        todos: [map this to an ontology]
+      Touchscreen:
+        todos: [map this to an ontology]
+      Mouse/Trackpad:
+        todos: [map this to an ontology]
+      Voice:
+        todos: [map this to an ontology]
+      Clinician-administered:
+        todos: [map this to an ontology]
+      Paper-and-pencil:
+        todos: [map this to an ontology]
+      Other:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  administration_procedure_enum:
+    permissible_values:
+      Published manual/protocol:
+        todos: [map this to an ontology]
+      NIH Toolbox:
+        todos: [map this to an ontology]
+      PEBL:
+        todos: [map this to an ontology]
+      PsychoPy:
+        todos: [map this to an ontology]
+      E-Prime:
+        todos: [map this to an ontology]
+      REDCap:
+        todos: [map this to an ontology]
+      Qualtrics:
+        todos: [map this to an ontology]
+      Custom implementation:
+        todos: [map this to an ontology]
+      Other:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  derived_variable_type_enum:
+    permissible_values:
+      Raw Score:
+        todos: [map this to an ontology]
+      Sum Score:
+        todos: [map this to an ontology]
+      Mean Score:
+        todos: [map this to an ontology]
+      Composite Score:
+        todos: [map this to an ontology]
+      Subscale Score:
+        todos: [map this to an ontology]
+      Standardized Score:
+        todos: [map this to an ontology]
+      Change Score:
+        todos: [map this to an ontology]
+      Slope / Trajectory:
+        todos: [map this to an ontology]
+      Threshold / Screening Flag:
+        todos: [map this to an ontology]
+      Severity Category:
+        todos: [map this to an ontology]
+      Risk Score:
+        todos: [map this to an ontology]
+      Clinician-Rated Summary:
+        todos: [map this to an ontology]
+      Compliance Metric:
+        todos: [map this to an ontology]
+      Missingness Metric:
+        todos: [map this to an ontology]
+      Response Time Metric:
+        todos: [map this to an ontology]
+      Aggregated Sensor Feature:
+        todos: [map this to an ontology]
+      Contextual Feature:
+        todos: [map this to an ontology]
+      Other Derived Variable:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  score_type_enum:
+    permissible_values:
+      raw score:
+        todos: [map this to an ontology]
+      sum score:
+        todos: [map this to an ontology]
+      mean score:
+        todos: [map this to an ontology]
+      composite score:
+        todos: [map this to an ontology]
+      standardized score:
+        todos: [map this to an ontology]
+      algorithmic score:
+        todos: [map this to an ontology]
+      clinician-rated score:
+        todos: [map this to an ontology]
+      derived index:
+        todos: [map this to an ontology]
+      Other:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  derivation_method_enum:
+    permissible_values:
+      Sum or Total Score:
+        todos: [map this to an ontology]
+      Mean or Average:
+        todos: [map this to an ontology]
+      Composite Score:
+        todos: [map this to an ontology]
+      Standardized Score:
+        todos: [map this to an ontology]
+      Algorithmic / Model-derived:
+        todos: [map this to an ontology]
+      Clinician-rated:
+        todos: [map this to an ontology]
+      Other:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  unit_enum:
+    permissible_values:
+      years:
+        todos: [map this to an ontology (UO)]
+      months:
+        todos: [map this to an ontology (UO)]
+      days:
+        todos: [map this to an ontology (UO)]
+      hours:
+        todos: [map this to an ontology (UO)]
+      minutes:
+        todos: [map this to an ontology (UO)]
+      seconds:
+        todos: [map this to an ontology (UO)]
+      percent:
+        todos: [map this to an ontology (UO)]
+      score:
+        todos: [map this to an ontology]
+      milliseconds:
+        todos: [map this to an ontology (UO)]
+      kg:
+        todos: [map this to an ontology (UO)]
+      cm:
+        todos: [map this to an ontology (UO)]
+      m:
+        todos: [map this to an ontology (UO)]
+      kg/m^2:
+        todos: [map this to an ontology (UO)]
+      mmHg:
+        todos: [map this to an ontology (UO)]
+      bpm:
+        todos: [map this to an ontology (UO)]
+      Other:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]
+  timepoint_enum:
+    permissible_values:
+      baseline:
+        todos: [map this to an ontology]
+      screening:
+        todos: [map this to an ontology]
+      enrollment:
+        todos: [map this to an ontology]
+      visit_1:
+        todos: [map this to an ontology]
+      visit_2:
+        todos: [map this to an ontology]
+      visit_3:
+        todos: [map this to an ontology]
+      visit_4+:
+        todos: [map this to an ontology]
+      followup:
+        todos: [map this to an ontology]
+      followup_1:
+        todos: [map this to an ontology]
+      followup_2:
+        todos: [map this to an ontology]
+      followup_3:
+        todos: [map this to an ontology]
+      followup_4+:
+        todos: [map this to an ontology]
+      end_of_study:
+        todos: [map this to an ontology]
+      unspecified:
+        todos: [map this to an ontology]
+      multiple:
+        todos: [map this to an ontology]
+      Other:
+        todos: [map this to an ontology]
+      Unknown:
+        todos: [map this to an ontology]

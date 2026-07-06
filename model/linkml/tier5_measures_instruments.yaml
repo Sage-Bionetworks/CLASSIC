@@ -1,0 +1,246 @@
+id: https://sagebionetworks.org/classic/tier5
+name: classic_tier5_measures_instruments
+title: Measures, Instruments, Derived Scores, Variables & Availability Summaries
+description: >-
+  Tier 5 — Describe what was measured (constructs, instrument identity,
+  administration modality/technology) at a level that supports discovery and basic
+  interpretability. Make derived outputs interpretable (what a score/variable
+  represents, and its general derivation form), especially when item/trial-level
+  data aren't shared. Help users answer "is there enough data for my question?"
+  without accessing participant-level files — counts, ranges, units, or
+  timepoint-scoped summaries.
+
+prefixes:
+  classic: https://sagebionetworks.org/classic/
+default_prefix: classic
+default_range: string
+
+imports:
+  - classic_core   # all enums are defined here and may be reused by any tier
+
+classes:
+  MeasuresInstruments:
+    title: Measures, Instruments, Derived Scores, Variables & Availability Summaries
+    description: >-
+      Tier 5 record — measures, instruments, derived scores/variables, and
+      availability summaries.
+    todos:
+      - add validation rules (uncomment the `rules:` template below)
+    # --- VALIDATION RULES placeholder (class-level conditional logic) ---
+    # rules:
+    #   - preconditions:
+    #       slot_conditions:
+    #         <slot>: {equals_string: <value>}
+    #     postconditions:
+    #       slot_conditions:
+    #         <slot>: {required: true}
+    #     description: <why this rule exists>
+    #   # e.g. valueRangeMinValue present  =>  unit required
+    mixins:
+      - StudyAnchored
+      - ScopedRecord
+    slots:
+      - deviceType
+      - softwarePlatform
+      - inputMethod
+      - administrationMode
+      - manufacturerModel
+      - operatingSystem
+      - appPlatform
+      - sensors
+      - measureID
+      - measuredConstruct
+      - constructDescription
+      - measureType
+      - isValidatedMeasure
+      - measureDescription
+      - instrumentID
+      - instrumentName
+      - instrumentSource
+      - instrumentCitation
+      - instrumentVersion
+      - stimulusResponseMode
+      - administrationInstructions
+      - administrationProcedure
+      - protocolDescription
+      - protocolURL
+      - derivedVariableName
+      - derivedVariableType
+      - variableSummary
+      - scoreName
+      - scoreType
+      - derivedScore
+      - derivationMethod
+      - valueRange
+      - totalParticipants
+      - proportion
+      - dataAvailabilitySummary
+      - valueRangeMinValue
+      - valueRangeMaxValue
+      - unit
+      - timepoint
+      - rawOrDerived
+      - preprocessingSteps
+
+slots:
+  deviceType:
+    title: deviceType
+    description: The type of digital device used for data collection, applicable only when data are collected digitally.
+    range: device_type_enum
+  softwarePlatform:
+    title: softwarePlatform
+    description: The software environment or application used to deliver, collect, or manage digitally collected data.
+    range: software_platform_enum
+  inputMethod:
+    title: inputMethod
+    description: The primary method by which participant input or data capture occurs during digital data collection.
+    range: input_method_enum
+  administrationMode:
+    title: administrationMode
+    description: The manner in which a digital assessment or data collection activity is administered to participants.
+    range: administration_mode_enum
+  manufacturerModel:
+    title: manufacturerModel
+    description: "Device make/model. Valid values: free text OR Multiple, Varies, Unknown."
+  operatingSystem:
+    title: operatingSystem
+    description: "OS and version. Valid values: free text OR Multiple, Varies, Unknown."
+  appPlatform:
+    title: appPlatform
+    description: "App or platform used. Valid values: free text OR Multiple, Varies, Unknown."
+  sensors:
+    title: sensors
+    description: "Sensors enabled (GPS, accelerometer, etc.). Valid values: free text OR Multiple, Varies, Unknown."
+  measureID:
+    title: measureID
+    description: Persistent per-measure row identifier. (ex., "MEAS_SCA_STROOP_v1")
+  measuredConstruct:
+    title: measuredConstruct
+    description: >-
+      A conceptual domain or construct that a study collected data on (e.g.,
+      depression, working memory, physical activity).
+    range: measured_construct_enum
+  constructDescription:
+    title: constructDescription
+    description: One-sentence description of how the construct was operationalized in the study.
+  measureType:
+    title: measureType
+    description: The general type of measure used to assess a construct.
+    range: measure_type_enum
+  isValidatedMeasure:
+    title: isValidatedMeasure
+    description: Indicates whether a measure or instrument used to assess a construct has been previously validated.
+    range: is_validated_measure_enum
+  measureDescription:
+    title: measureDescription
+    description: A brief description of how a measure was administered and what it was designed to assess.
+  instrumentID:
+    title: instrumentID
+    description: >-
+      A stable identifier used to reference a specific instrument, measure, or
+      assessment used in a study (e.g., a validated questionnaire, cognitive task,
+      interview protocol, or sensor-based assessment).
+  instrumentName:
+    title: instrumentName
+    description: Name of the instrument or scale used (e.g., PHQ-9, NIH Toolbox).
+  instrumentSource:
+    title: instrumentSource
+    description: Where the instrument originated.
+  instrumentCitation:
+    title: instrumentCitation
+    description: >-
+      The primary citation(s) describing the instrument/task implementation used in
+      the study (e.g., published paper, manual, DOI).
+  instrumentVersion:
+    title: instrumentVersion
+    description: >-
+      Version identifier for the instrument implementation used (e.g., vendor
+      version, protocol revision, "v2", "2016 revision").
+  stimulusResponseMode:
+    title: stimulusResponseMode
+    description: How participants interacted with the instrument during administration.
+    range: stimulus_response_mode_enum
+  administrationInstructions:
+    title: administrationInstructions
+    description: >-
+      The instructions provided to participants describing exactly how to perform
+      the instrument/task (verbatim or summarized).
+  administrationProcedure:
+    title: administrationProcedure
+    description: The source of the implementation (e.g., NIH Toolbox, PEBL, PsychoPy script, custom app).
+    range: administration_procedure_enum
+  protocolDescription:
+    title: protocolDescription
+    description: The synID of the wiki that contains the protocol, study design and goals.
+  protocolURL:
+    title: protocolURL
+    description: Link to the protocol, manual, script, or documentation describing the instrument implementation.
+  derivedVariableName:
+    title: derivedVariableName
+    description: The name of a derived variable or score as it appears in the dataset or metadata record.
+  derivedVariableType:
+    title: derivedVariableType
+    description: >-
+      A controlled category describing the general method or type of derivation used
+      to compute a derived variable or score (e.g., sum score, composite score,
+      standardized score).
+    range: derived_variable_type_enum
+  variableSummary:
+    title: variableSummary
+    description: >-
+      Aggregate summary statistics describing the observed distribution and
+      availability of a variable in a dataset, without exposing participant-level values.
+  scoreName:
+    title: scoreName
+    description: The human-readable name of a score derived from a measure, as used or labeled by the study.
+  scoreType:
+    title: scoreType
+    description: Describes the general method or form by which a score was derived from a measure or assessment.
+    range: score_type_enum
+  derivedScore:
+    title: derivedScore
+    description: A summary description of a score derived from a measure, including how it was calculated.
+  derivationMethod:
+    title: derivationMethod
+    description: A high-level description of how a score was derived from raw or intermediate data.
+    range: derivation_method_enum
+  valueRange:
+    title: valueRange
+    description: The observed minimum and maximum values of a continuous variable within the reported population scope.
+  totalParticipants:
+    title: totalParticipants
+    description: >-
+      The total number of unique participants for whom data are available within the
+      specified study, cohort, or scope.
+  proportion:
+    title: proportion
+    description: >-
+      A numeric value representing the fraction of a population associated with a
+      given category, typically expressed as a percentage or decimal.
+  dataAvailabilitySummary:
+    title: dataAvailabilitySummary
+    description: >-
+      An aggregate description of the amount and demographic composition of available
+      data for a study, cohort, or variable, provided without individual-level records.
+  valueRangeMinValue:
+    title: valueRangeMinValue
+    description: The minimum observed value of a continuous variable within the specified population scope.
+  valueRangeMaxValue:
+    title: valueRangeMaxValue
+    description: The maximum observed value of a continuous variable within the specified population scope.
+  unit:
+    title: unit
+    description: The unit of measurement associated with a variable's values or summary statistics (e.g., years, kg/m²).
+    range: unit_enum
+  timepoint:
+    title: timepoint
+    description: >-
+      A label identifying the study timepoint or phase at which the variable value
+      or summary applies (e.g., baseline, follow-up).
+    range: timepoint_enum
+  rawOrDerived:
+    title: rawOrDerived
+    description: Raw vs derived data flag.
+  preprocessingSteps:
+    title: preprocessingSteps
+    description: Preprocessing/cleaning applied.

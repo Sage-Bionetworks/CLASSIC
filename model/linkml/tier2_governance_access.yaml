@@ -1,0 +1,123 @@
+id: https://sagebionetworks.org/classic/tier2
+name: classic_tier2_governance_access
+title: Governance, Access & Provenance
+description: >-
+  Tier 2 — Let users understand whether and how the dataset can be accessed and
+  reused (policy + operational access steps), without needing back-and-forth.
+
+prefixes:
+  classic: https://sagebionetworks.org/classic/
+default_prefix: classic
+default_range: string
+
+imports:
+  - classic_core   # all enums are defined here and may be reused by any tier
+
+classes:
+  GovernanceAccessProvenance:
+    title: Governance, Access & Provenance
+    description: Tier 2 record — governance, access policy, and provenance metadata.
+    todos:
+      - add validation rules (uncomment the `rules:` template below)
+    # --- VALIDATION RULES placeholder (class-level conditional logic) ---
+    # rules:
+    #   - preconditions:
+    #       slot_conditions:
+    #         <slot>: {equals_string: <value>}
+    #     postconditions:
+    #       slot_conditions:
+    #         <slot>: {required: true}
+    #     description: <why this rule exists>
+    mixins:
+      - StudyAnchored
+      - ScopedRecord
+    slots:
+      - cohortID
+      - externallyRequestable
+      - irbApprovalNumber
+      - irbStatus
+      - irbInstitution
+      - irbExemptionType
+      - irbApprovalDescription
+      - irbScope
+      - consentType
+      - deidentificationMethod
+      - accessRestrictions
+      - dataUseConditions
+      - accessProcedure
+      - accessRequestURL
+      - dataLocation
+      - accessContact
+      - accessReviewBody
+      - accessRequirements
+
+slots:
+  externallyRequestable:
+    title: externallyRequestable
+    description: Availability indicator to request the data.
+    range: externally_requestable_enum
+  irbApprovalNumber:
+    title: irbApprovalNumber
+    description: The identifier assigned by the IRB for an approved or reviewed study, if applicable.
+  irbStatus:
+    title: irbStatus
+    description: The regulatory determination of IRB oversight for the study.
+    range: irb_status_enum
+  irbInstitution:
+    title: irbInstitution
+    description: The institution or ethics committee responsible for IRB review or determination.
+  irbExemptionType:
+    title: irbExemptionType
+    description: >-
+      The regulatory exemption category under which the study was determined to be
+      exempt from IRB review.
+    range: irb_exemption_type_enum
+  irbApprovalDescription:
+    title: irbApprovalDescription
+    description: >-
+      Free-text description providing additional context about IRB approval,
+      exemption, or oversight.
+  irbScope:
+    title: irbScope
+    description: Scope of IRB in relation to the study.
+    range: irb_scope_enum
+  consentType:
+    title: consentType
+    description: Consent type (broad, tiered, etc.).
+    range: consent_type_enum
+  deidentificationMethod:
+    title: deidentificationMethod
+    description: De-ID method applied.
+    range: deidentification_method_enum
+  accessRestrictions:
+    title: accessRestrictions
+    description: Access level (ex., open, controlled, embargoed).
+    range: access_restrictions_enum
+  dataUseConditions:
+    title: dataUseConditions
+    description: Data use conditions.
+  accessProcedure:
+    title: accessProcedure
+    description: Brief description of the steps required to request and obtain access to the dataset.
+  accessRequestURL:
+    title: accessRequestURL
+    description: >-
+      URL to the access request page/portal or repository instructions for
+      obtaining access.
+  dataLocation:
+    title: dataLocation
+    description: >-
+      Where the dataset is hosted or distributed (e.g., Synapse project, NIMH/NDAR
+      collection, dbGaP).
+    range: data_location_enum
+  accessContact:
+    title: accessContact
+    description: Point of contact (team, email alias, or role) for access questions.
+  accessReviewBody:
+    title: accessReviewBody
+    description: The entity that reviews/approves access requests (e.g., DAC, IRB, sponsor).
+    range: access_review_body_enum
+  accessRequirements:
+    title: accessRequirements
+    description: Checklist of materials required for access (e.g., DUA, IRB letter, training).
+    range: access_requirements_enum

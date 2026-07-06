@@ -1,0 +1,134 @@
+id: https://sagebionetworks.org/classic/tier1
+name: classic_tier1_study_identity
+title: Study Identity & Discovery
+description: >-
+  Tier 1 — Make the study discoverable and uniquely identifiable; provide the
+  minimum context needed to understand "what this is" and relate it to other
+  studies/collections.
+
+prefixes:
+  classic: https://sagebionetworks.org/classic/
+default_prefix: classic
+default_range: string
+
+imports:
+  - classic_core   # all enums are defined here and may be reused by any tier
+
+classes:
+  StudyIdentityDiscovery:
+    title: Study Identity & Discovery
+    description: >-
+      Tier 1 record — study-level identity and discovery metadata. Study-scoped,
+      so it carries only the StudyAnchored mixin (no per-row scoping block).
+    todos:
+      - add validation rules (uncomment the `rules:` template below)
+    # --- VALIDATION RULES placeholder (class-level conditional logic) ---
+    # rules:
+    #   - preconditions:
+    #       slot_conditions:
+    #         <slot>: {equals_string: <value>}
+    #     postconditions:
+    #       slot_conditions:
+    #         <slot>: {required: true}
+    #     description: <why this rule exists>
+    mixins:
+      - StudyAnchored
+    slots:
+      - studyName
+      - studyProjectIdentifier
+      - studyKey
+      - studyDescription
+      - studyAbstract
+      - studyMetadata
+      - grantNumber
+      - principalInvestigator
+      - principalInvestigatorRoles
+      - principalInvestigatorContact
+      - institution
+      - dataType
+      - dataSubtype
+      - metadataType
+      - metadataFileID
+      - metadataCoverageScope
+      - metadataCoverageNotes
+      - cohortID
+      - cohortName
+      - longitudinalStudyID
+
+slots:
+  studyName:
+    title: studyName
+    description: Name of the study.
+  studyProjectIdentifier:
+    title: studyProjectIdentifier
+    description: The Synapse Project identifier (synID) with which this Study is related.
+  studyKey:
+    title: studyKey
+    description: The short acronym for a project the study is associated with.
+  studyDescription:
+    title: studyDescription
+    description: >-
+      The synID of the wiki that contains the study description. Description of the
+      study, including the types of experimental assays, model systems, types of
+      analysis, description of cohort, associated vulnerable populations, special
+      categories of data, rare diseases, etc. Maps to DUOplus2.
+  studyAbstract:
+    title: studyAbstract
+    description: >-
+      The short study description/abstract used to describe the study that is
+      visible on the Portal study card.
+  studyMetadata:
+    title: studyMetadata
+    description: The wiki from the CLASSIC Portal backend that describes study metadata files.
+  grantNumber:
+    title: grantNumber
+    description: >-
+      Grant number including activity code, institute code, and serial number
+      (e.g. U01MH103392).
+  principalInvestigator:
+    title: principalInvestigator
+    description: Name(s) of PI.
+  principalInvestigatorRoles:
+    title: principalInvestigatorRoles
+    description: Distinguishes original vs current vs co-PI.
+    range: principal_investigator_roles_enum
+  principalInvestigatorContact:
+    title: principalInvestigatorContact
+    description: Email of (each) PI.
+  institution:
+    title: institution
+    description: Institution conducting study.
+  dataType:
+    title: dataType
+    description: Types of input/output data in bioinformatics pipelines.
+  dataSubtype:
+    title: dataSubtype
+    description: >-
+      Further qualification of dataType, which may be used to indicate the state of
+      processing of the data, aggregation of the data, or presence of metadata.
+  metadataType:
+    title: metadataType
+    description: "For files of dataSubtype: metadata, a description of the type of metadata in the file."
+  metadataFileID:
+    title: metadataFileID
+    description: >-
+      Identifies a specific metadata artifact or file (i.e, a particular
+      "measures.tsv" version, etc. If the file is uploaded to Synapse, this will be
+      the Synapse file entity ID. Examples: syn99887766 (or FILE_STUDY_SCA_measures_v2)
+  metadataCoverageScope:
+    title: metadataCoverageScope
+    description: >-
+      Indicates whether the archived metadata describes all data collected in the
+      study or only the data types made available for external access.
+    range: metadata_coverage_scope_enum
+  metadataCoverageNotes:
+    title: metadataCoverageNotes
+    description: >-
+      Free-text clarification of what is included/excluded in the metadata record
+      and why (e.g., "some measures collected but not shareable due to licensing").
+  cohortName:
+    title: cohortName
+    description: Name of cohort.
+  longitudinalStudyID:
+    title: longitudinalStudyID
+    description: Linked longitudinal study identifier.
