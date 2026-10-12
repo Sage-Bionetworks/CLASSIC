@@ -17,7 +17,7 @@
             "type": "string"
         },
         "AccessRestrictionsEnum": {
-            "description": "Permitted research-use restrictions. No General Methods Research corresponds to DUO:0000015; see accessRestrictions for examples and interpretation.",
+            "description": "Permitted research-use restrictions; DUO:0000015 identifies the restriction on general methods research."
             "enum": [
                 "General Research Use",
                 "Disease-Specific Research",
