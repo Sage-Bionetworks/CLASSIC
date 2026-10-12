@@ -89,9 +89,10 @@ slots:
     title: deidentificationMethod
     description: De-ID method applied.
     range: deidentification_method_enum
-  accessRestrictions:
+ accessRestrictions:
     title: accessRestrictions
-    description: Access level (ex., open, controlled, embargoed).
+    description: >-
+      Specifies restrictions or conditions on permitted research uses of a dataset, based on applicable consent, governance policies, or data use agreements. These are data use limitations, not simply access levels. Where applicable, terminology aligns with the Data Use Ontology (DUO). "No General Methods Research" (DUO:0000015) restricts using data for general methods development research, such as developing software, statistical algorithms, or general-purpose analytical tools; AI/ML model development may be included depending on its purpose. Psychometric validation of an existing scale as part of substantive research is not automatically prohibited, but the permitted use must be confirmed against the dataset-specific restrictions and agreements.
     range: access_restrictions_enum
   dataUseConditions:
     title: dataUseConditions
