@@ -359,7 +359,8 @@ enums:
       No Commercial Use:
         todos: [map this to an ontology (DUO)]
       No General Methods Research:
-        todos: [map this to an ontology (DUO)]
+        description: This data use modifier indicates that use does not allow methods development research (e.g., development of software or algorithms).
+        meaning: DUO:0000015
       No Secondary Use:
         todos: [map this to an ontology (DUO)]
       Ethics Approval Required:
