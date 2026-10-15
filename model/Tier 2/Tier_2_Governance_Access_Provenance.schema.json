@@ -171,7 +171,7 @@
         "No Secondary Use",
         "Ethics Approval Required",
         "Other"
-      ],
+      ]
     },
     "dataUseConditions": {
       "type": "string",
