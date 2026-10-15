@@ -1,5 +1,5 @@
 {
-  "generated_on": "2026-07-06T17:32:10+00:00",
+  "generated_on": "2026-10-15T22:09:06+00:00",
   "organization": "org.synapse.classic",
   "repo": "Sage-Bionetworks/CLASSIC",
   "branch": "main",
@@ -245,7 +245,7 @@
           "name": "accessRestrictions",
           "type": "string",
           "required": false,
-          "description": "Access level (ex., open, controlled, embargoed)",
+          "description": "Specifies restrictions or conditions on permitted research uses of a dataset, based on applicable consent, governance policies, or data use agreements. These are data use limitations, not simply access levels. Where applicable, terminology aligns with the Data Use Ontology (DUO). \"No General Methods Research\" (DUO:0000015) restricts using data for general methods development research, such as developing software, statistical algorithms, or general-purpose analytical tools; AI/ML model development may be included depending on its purpose. Psychometric validation of an existing scale as part of substantive research is not automatically prohibited, but the permitted use must be confirmed against the dataset-specific restrictions and agreements.",
           "enum": [
             "General Research Use",
             "Disease-Specific Research",
@@ -253,7 +253,7 @@
             "Population Origins/Ancestry",
             "Research Prohibited",
             "No Commercial Use",
-            "No Methods Development",
+            "No General Methods Research",
             "No Secondary Use",
             "Ethics Approval Required",
             "Other"
@@ -466,7 +466,7 @@
       "source": "model/Tier 2/Tier_2_Governance_Access_Provenance.schema.json",
       "source_url": "https://github.com/Sage-Bionetworks/CLASSIC/blob/main/model/Tier%202/Tier_2_Governance_Access_Provenance.schema.json",
       "raw_url": "https://raw.githubusercontent.com/Sage-Bionetworks/CLASSIC/main/model/Tier%202/Tier_2_Governance_Access_Provenance.schema.json",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "schema_id": "10608",
       "created_on": "2026-06-24T19:23:50.594Z",
       "created_by": "3459953"
